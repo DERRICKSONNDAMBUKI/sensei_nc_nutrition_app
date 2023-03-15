@@ -22,7 +22,7 @@ class FoodsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val viewModel:FoodViewModel by activityViewModels {
+    private val viewModel: FoodViewModel by activityViewModels {
         FoodViewModelFactory(
             (activity?.application as NCNutritionApplication).database.foodDao()
         )
@@ -42,18 +42,25 @@ class FoodsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = FoodsAdapter{
+        val adapter = FoodsAdapter {
 
         }
 //        TODO("binding.recyclerView.adapter = adapter")
 
-
-
-        viewModel.allFoods.observe(this.viewLifecycleOwner){items->
+        viewModel.allFoods.observe(this.viewLifecycleOwner) { items ->
             items.let {
                 adapter.submitList(it)
             }
         }
+        TODO(
+            "binding.recyclerView.layoutManager = LinearLayoutManager(this.context)\n" +
+                    "   binding.floatingActionButton.setOnClickListener {\n" +
+                    "       val action = ItemListFragmentDirections.actionItemListFragmentToAddItemFragment(\n" +
+                    "           getString(R.string.add_fragment_title)\n" +
+                    "       )\n" +
+                    "       this.findNavController().navigate(action)\n" +
+                    "   }\n"
+        )
     }
 
     override fun onDestroyView() {
