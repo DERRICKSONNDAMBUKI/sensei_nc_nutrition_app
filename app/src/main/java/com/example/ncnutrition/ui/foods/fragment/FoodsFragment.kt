@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import com.example.ncnutrition.data.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentFoodsBinding
+import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
+import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
+import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
 
 /**
  * A fragment representing a list of Items.
@@ -17,6 +22,12 @@ class FoodsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val viewModel:FoodViewModel by activityViewModels {
+        FoodViewModelFactory(
+            (activity?.application as NCNutritionApplication).database.foodDao()
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -27,6 +38,22 @@ class FoodsFragment : Fragment() {
         return binding.root
 
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val adapter = FoodsAdapter{
+
+        }
+//        TODO("binding.recyclerView.adapter = adapter")
+
+
+
+        viewModel.allFoods.observe(this.viewLifecycleOwner){items->
+            items.let {
+                adapter.submitList(it)
+            }
+        }
     }
 
     override fun onDestroyView() {

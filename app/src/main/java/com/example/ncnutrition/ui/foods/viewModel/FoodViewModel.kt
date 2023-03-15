@@ -1,8 +1,6 @@
 package com.example.ncnutrition.ui.foods.viewModel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.ncnutrition.data.FoodDAO
 import com.example.ncnutrition.model.Food
 import kotlinx.coroutines.launch
@@ -255,6 +253,7 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
         }
         return true
     }
+    val allFoods:LiveData<List<Food>> = foodDao.getFoods().asLiveData()
 }
 
 class FoodViewModelFactory(private val FoodDao: FoodDAO) : ViewModelProvider.Factory {
