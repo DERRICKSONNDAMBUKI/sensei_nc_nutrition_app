@@ -29,16 +29,14 @@ class FoodsAdapter(private val onFoodClicked: (Food) -> Unit) :
         holder.bind(current)
     }
 
-    class FoodViewHolder(binding: FragmentFoodsBinding) :
+    class FoodViewHolder(private var binding: FragmentFoodsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(food: Food) {
 //            set data to fragment
-//            e.g
-//            binding.apply {
-//              itemName.text = item.itemName
-//              itemPrice.text = item.getFormattedPrice()
-//              itemQuantity.text = item.quantityInStock.toString()
-//          }
+            binding.apply {
+                itemNumber.text = food.code
+                content.text = food.food_name
+            }
         }
     }
 

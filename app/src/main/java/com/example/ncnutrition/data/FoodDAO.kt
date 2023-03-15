@@ -9,8 +9,8 @@ interface FoodDAO {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insert(food: Food)
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insertFoods(foods: List<Food>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(foods: List<Food>)
 
     //    suspend fun insertFoods(vararg foods:Food)
     @Update

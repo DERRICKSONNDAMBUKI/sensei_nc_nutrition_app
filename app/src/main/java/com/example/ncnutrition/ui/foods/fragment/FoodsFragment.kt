@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.data.NCNutritionApplication
-import com.example.ncnutrition.databinding.FragmentFoodsBinding
+import com.example.ncnutrition.databinding.FragmentFoodsListBinding
 import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
@@ -16,7 +17,7 @@ import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
  * A fragment representing a list of Items.
  */
 class FoodsFragment : Fragment() {
-    private var _binding: FragmentFoodsBinding? = null
+    private var _binding: FragmentFoodsListBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -33,8 +34,7 @@ class FoodsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
 
-        // Set the adapter
-        _binding = FragmentFoodsBinding.inflate(inflater, container, false)
+        _binding = FragmentFoodsListBinding.inflate(inflater, container, false)
         return binding.root
 
 
@@ -43,15 +43,18 @@ class FoodsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = FoodsAdapter {
-
+//            val action =
         }
-//        TODO("binding.recyclerView.adapter = adapter")
+        // Set the adapter
+        binding.recyclerView.adapter = adapter
 
         viewModel.allFoods.observe(this.viewLifecycleOwner) { items ->
             items.let {
                 adapter.submitList(it)
             }
         }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
+
         TODO(
             "binding.recyclerView.layoutManager = LinearLayoutManager(this.context)\n" +
                     "   binding.floatingActionButton.setOnClickListener {\n" +

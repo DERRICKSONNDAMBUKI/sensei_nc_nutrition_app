@@ -17,7 +17,7 @@ data class Food(
     @ColumnInfo(name = "Food_name")
     val food_name: String,
     @ColumnInfo(name = "Edible_conversion_factor")
-    val edible_conversion_factor: String,
+    val edible_conversion_factor: Double,
     @ColumnInfo(name = "Energy_in_kJ")
     val energy_in_kJ: Double,
     @ColumnInfo(name = "Energy_in_kcal")
@@ -78,6 +78,8 @@ data class Food(
     val dish_group_code: Int?,
     @ColumnInfo(name = "Dish_group_name")
     val dish_group_name: String?,
+    @ColumnInfo(name = "Dish_group_description")
+    val dish_group_description:String?,
     @ColumnInfo(name = "Food_description")
     val food_description: String?,
     @ColumnInfo(name = "Food_ingredients")
