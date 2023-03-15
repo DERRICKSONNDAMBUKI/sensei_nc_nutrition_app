@@ -1,4 +1,4 @@
-package com.example.ncnutrition.data
+package com.example.ncnutrition.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
