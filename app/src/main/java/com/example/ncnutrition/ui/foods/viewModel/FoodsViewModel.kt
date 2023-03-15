@@ -97,6 +97,7 @@ class FoodsViewModel(private val foodDao: FoodDAO) : ViewModel() {
             dish_time = dish_time
         )
     }
+
     fun addNewFood(
         food_group_code: Int,
         food_group: String,
@@ -137,7 +138,7 @@ class FoodsViewModel(private val foodDao: FoodDAO) : ViewModel() {
         food_ingredients: String,
         food_preparation_cooking_serves_makes: String,
         dish_time: String
-    ){
+    ) {
         val newFood = getNewFoodEntry(
             food_group_code,
             food_group,
@@ -180,6 +181,79 @@ class FoodsViewModel(private val foodDao: FoodDAO) : ViewModel() {
             dish_time
         )
         insertFood(newFood)
+    }
+
+    fun isEntryValid(
+        food_group: String,
+        code: String,
+        food_name: String,
+        edible_conversion_factor: String,
+        energy_in_kJ: Double,
+        energy_in_kcal: Double,
+        water_in_g: Double,
+        protein_in_g: Double,
+        fat_in_g: Double,
+        carbohydrate_available_in_g: Double,
+        fibre_in_g: Double,
+        ash_in_g: Double,
+        ca_in_mg: Double,
+        fe_in_mg: Double,
+        mg_in_mg: Double,
+        p_in_mg: Double,
+        k_in_mg: Double,
+        na_in_mg: Double,
+        zn_in_mg: Double,
+        se_in_mg: Double,
+        vit_a_rae_in_mcg: Double,
+        vit_a_re_in_mcg: Double,
+        retinol_in_mcg: Double,
+        beta_carotene_equivalent_in_mcg: Double,
+        thiamin_in_mcg: Double,
+        riboflavin_in_mcg: Double,
+        niacin_in_mcg: Double,
+        dietary_folate_eq_in_mcg: Double,
+        food_folate_in_mcg: Double,
+        vit_b12_mcg: Double,
+        vit_c_in_mcg: Double,
+        cholesterol_mg: Double,
+
+        ): Boolean {
+        if (food_group.isBlank() ||
+            code.isBlank() ||
+            food_name.isBlank() ||
+            edible_conversion_factor.isBlank() ||
+            energy_in_kJ.isNaN() ||
+            energy_in_kcal.isNaN() ||
+            water_in_g.isNaN() ||
+            protein_in_g.isNaN() ||
+            fat_in_g.isNaN() ||
+            carbohydrate_available_in_g.isNaN() ||
+            fibre_in_g.isNaN() ||
+            ash_in_g.isNaN() ||
+            ca_in_mg.isNaN() ||
+            fe_in_mg.isNaN() ||
+            mg_in_mg.isNaN() ||
+            p_in_mg.isNaN() ||
+            k_in_mg.isNaN() ||
+            na_in_mg.isNaN() ||
+            zn_in_mg.isNaN() ||
+            se_in_mg.isNaN() ||
+            vit_a_rae_in_mcg.isNaN() ||
+            vit_a_re_in_mcg.isNaN() ||
+            retinol_in_mcg.isNaN() ||
+            beta_carotene_equivalent_in_mcg.isNaN() ||
+            thiamin_in_mcg.isNaN() ||
+            riboflavin_in_mcg.isNaN() ||
+            niacin_in_mcg.isNaN() ||
+            dietary_folate_eq_in_mcg.isNaN() ||
+            food_folate_in_mcg.isNaN() ||
+            vit_b12_mcg.isNaN() ||
+            vit_c_in_mcg.isNaN() ||
+            cholesterol_mg.isNaN()
+        ) {
+            return false
+        }
+        return true
     }
 }
 

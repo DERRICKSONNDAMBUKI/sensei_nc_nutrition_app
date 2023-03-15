@@ -75,15 +75,15 @@ data class Food(
     @ColumnInfo(name = "Cholesterol_in_mcg")
     val cholesterol_mg:Double,
     @ColumnInfo(name = "Dish_group_code")
-    val dish_group_code:Int,
+    val dish_group_code:Int?,
     @ColumnInfo(name = "Dish_group_name")
-    val dish_group_name:String,
+    val dish_group_name:String?,
     @ColumnInfo(name = "Food_description")
-    val food_description:String,
+    val food_description:String?,
     @ColumnInfo(name = "Food_ingredients")
-    val food_ingredients:String,
+    val food_ingredients:String?,
     @ColumnInfo(name = "Food_preparation_cooking_serves_makes")
-    val food_preparation_cooking_serves_makes:String,
+    val food_preparation_cooking_serves_makes:String?,
     @ColumnInfo(name = "Dish_time")
-    val dish_time:String
+    val dish_time:String?
 )
