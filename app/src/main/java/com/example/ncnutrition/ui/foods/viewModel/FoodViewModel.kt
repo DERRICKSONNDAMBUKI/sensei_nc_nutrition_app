@@ -7,7 +7,7 @@ import com.example.ncnutrition.data.FoodDAO
 import com.example.ncnutrition.model.Food
 import kotlinx.coroutines.launch
 
-class FoodsViewModel(private val foodDao: FoodDAO) : ViewModel() {
+class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
     private fun insertFood(food: Food) {
         viewModelScope.launch {
             foodDao.insert(food)
@@ -257,11 +257,11 @@ class FoodsViewModel(private val foodDao: FoodDAO) : ViewModel() {
     }
 }
 
-class FoodsViewModelFactory(private val FoodDao: FoodDAO) : ViewModelProvider.Factory {
+class FoodViewModelFactory(private val FoodDao: FoodDAO) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FoodsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(FoodViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return FoodsViewModel(FoodDao) as T
+            return FoodViewModel(FoodDao) as T
         }
         throw IllegalArgumentException("Unknown viewModel class")
 //        return super.create(modelClass)

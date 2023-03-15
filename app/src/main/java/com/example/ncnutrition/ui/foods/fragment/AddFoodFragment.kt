@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import com.example.ncnutrition.data.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentAddFoodBinding
 import com.example.ncnutrition.model.Food
-import com.example.ncnutrition.ui.foods.viewModel.FoodsViewModel
-import com.example.ncnutrition.ui.foods.viewModel.FoodsViewModelFactory
+import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
+import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
 
 class AddFoodFragment : Fragment() {
 
@@ -20,8 +20,8 @@ class AddFoodFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val viewModel: FoodsViewModel by activityViewModels {
-        FoodsViewModelFactory(
+    private val viewModel: FoodViewModel by activityViewModels {
+        FoodViewModelFactory(
             (activity?.application as NCNutritionApplication).database.foodDao()
         )
     }
@@ -37,16 +37,12 @@ class AddFoodFragment : Fragment() {
         _binding = FragmentAddFoodBinding.inflate(inflater, container, false)
         return binding.root
     }
-    private fun isEntryValid():Boolean{
+    private fun isEntryValid():Boolean{ // to be continued
 //        return viewModel.isEntryValid(
 ////            provide binding from inputs
 //        )
         return false
     }
-
-//        val notificationsViewModel =
-//            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-//
 
     override fun onDestroyView() {
         super.onDestroyView()
