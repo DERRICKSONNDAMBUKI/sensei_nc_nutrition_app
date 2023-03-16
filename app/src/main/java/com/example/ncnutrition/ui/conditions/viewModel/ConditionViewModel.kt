@@ -44,6 +44,9 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO) : ViewModel() {
         }
         return true
     }
+    fun retrieveCondition(id:Int):LiveData<Condition>{
+        return conditionDAO.getCondition(id).asLiveData()
+    }
 }
 
 class ConditionViewModelFactory(private val conditionDAO: ConditionDAO) :
