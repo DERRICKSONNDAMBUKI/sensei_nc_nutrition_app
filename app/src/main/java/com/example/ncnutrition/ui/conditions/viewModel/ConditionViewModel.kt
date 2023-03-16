@@ -38,6 +38,12 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO) : ViewModel() {
         )
         insertCondition(newCondition)
     }
+    fun isEntryValid(name: String,description: String,nutrients: String):Boolean{
+        if (name.isBlank()||description.isBlank()||nutrients.isBlank()){
+            return false
+        }
+        return true
+    }
 }
 
 class ConditionViewModelFactory(private val conditionDAO: ConditionDAO) :
