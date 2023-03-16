@@ -1,28 +1,33 @@
-package com.example.ncnutrition.data
+package com.example.ncnutrition.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.ncnutrition.data.dao.ConditionDAO
+import com.example.ncnutrition.data.dao.FoodDAO
+import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.model.Food
 import kotlinx.coroutines.runBlocking
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-@Database(entities = [Food::class], version = 1, exportSchema = false)
+@Database(entities = [Food::class,Condition::class], version = 1, exportSchema = false)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
+    abstract fun conditionDao():ConditionDAO
 
     companion object {
         private var INSTANCE: NCNutritionRoomDatabase? = null
         fun getDatabase(context: Context): NCNutritionRoomDatabase {
             return INSTANCE ?: synchronized(this) {
-                var instance = Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     context.applicationContext, NCNutritionRoomDatabase::class.java,
                     "ncnutrition_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()
+
                 runBlocking {
                     instance.foodDao().insertAll(importFoodsFromCsv(context,"sensei_kenya_food_composition_data_with_KRB_2018 - Sheet2.csv"))
                 }
@@ -35,11 +40,11 @@ abstract class NCNutritionRoomDatabase : RoomDatabase() {
 
 }
 
-private fun importFoodsFromCsv(context: Context,fileName:String): MutableList<Food> {
-    val inputStream  = context.assets.open(fileName)
-    val reader = BufferedReader(InputStreamReader(inputStream))
+private fun importFoodsFromCsv(context: Context, foodsFileName:String): MutableList<Food> {
+    val foodsInputStream  = context.assets.open(foodsFileName)
+    val foodsReader = BufferedReader(InputStreamReader(foodsInputStream))
     val foodList = mutableListOf<Food>()
-    reader.useLines { lines->
+    foodsReader.useLines { lines->
         lines.forEach {
             val values = it.split(",")
             val food = Food(

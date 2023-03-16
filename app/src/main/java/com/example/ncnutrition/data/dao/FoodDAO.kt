@@ -1,4 +1,4 @@
-package com.example.ncnutrition.data
+package com.example.ncnutrition.data.dao
 
 import androidx.room.*
 import com.example.ncnutrition.model.Food

@@ -23,7 +23,21 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/foodsFragment"
+        android:id="@+id/foodFragment"
+        android:name="com.example.ncnutrition.ui.foods.fragment.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFoodFragment"
+        android:name="com.example.ncnutrition.ui.foods.fragment.AddFoodFragment"
+        android:label="fragment_add_food"
+        tools:layout="@layout/fragment_add_food" />
+    <fragment
+        android:id="@+id/navigation_foods"
         android:name="com.example.ncnutrition.ui.foods.fragment.FoodsFragment"
         android:label="fragment_foods_list"
         tools:layout="@layout/fragment_foods_list" >
@@ -31,14 +45,4 @@
             android:id="@+id/action_foodsFragment_to_foodFragment"
             app:destination="@id/foodFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/foodFragment"
-        android:name="com.example.ncnutrition.ui.foods.fragment.FoodFragment"
-        android:label="fragment_food"
-        tools:layout="@layout/fragment_food" />
-    <fragment
-        android:id="@+id/addFoodFragment"
-        android:name="com.example.ncnutrition.ui.foods.fragment.AddFoodFragment"
-        android:label="fragment_add_food"
-        tools:layout="@layout/fragment_add_food" />
 </navigation>
