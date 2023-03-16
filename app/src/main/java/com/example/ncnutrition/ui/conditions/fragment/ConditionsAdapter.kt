@@ -1,43 +1,57 @@
 package com.example.ncnutrition.ui.conditions.fragment
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.example.ncnutrition.R
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ncnutrition.databinding.ConditionsItemBinding
+import com.example.ncnutrition.model.Condition
 
-import com.example.ncnutrition.ui.conditions.fragment.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.ncnutrition.ui.conditions.fragment.databinding.ConditionsItemBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class ConditionsAdapter(
-        private val values: List<PlaceholderItem>)
-    : RecyclerView.Adapter<ConditionsAdapter.ViewHolder>() {
+    private val onConditionClicked: (Condition) -> Unit
+) : ListAdapter<Condition, ConditionsAdapter.ConditionViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-    return ViewHolder(ConditionsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConditionViewHolder {
+        return ConditionViewHolder(
+            ConditionsItemBinding.inflate(
+                LayoutInflater.from(parent.context)
+            )
+        )
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+    override fun onBindViewHolder(holder: ConditionViewHolder, position: Int) {
+      val current = getItem(position)
+        holder.itemView.setOnClickListener {
+            onConditionClicked(current)
+        }
+        holder.bind(current)
     }
 
-    override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: ConditionsItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+    inner class ConditionViewHolder(private var binding: ConditionsItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+       fun bind(condition: Condition){
+           binding.apply {
+               itemNumber.text = condition.id.toString()
+               content.text = condition.name
+           }
+       }
+    }
+
+    companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<Condition>() {
+            override fun areItemsTheSame(oldItem: Condition, newItem: Condition): Boolean {
+                return oldItem === newItem
+            }
+
+            override fun areContentsTheSame(oldItem: Condition, newItem: Condition): Boolean {
+                return oldItem.name == newItem.name
+            }
         }
     }
 

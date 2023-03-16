@@ -1,13 +1,13 @@
 package com.example.ncnutrition.ui.conditions.viewModel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.ncnutrition.data.dao.ConditionDAO
 import com.example.ncnutrition.model.Condition
 import kotlinx.coroutines.launch
 
 class ConditionViewModel(private val conditionDAO: ConditionDAO) : ViewModel() {
+    val allConditions:LiveData<List<Condition>> = conditionDAO.getConditions().asLiveData()
+
     private fun insertCondition(condition: Condition) {
         viewModelScope.launch {
             conditionDAO.insert(condition)
