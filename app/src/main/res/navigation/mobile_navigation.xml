@@ -76,10 +76,31 @@
         android:id="@+id/navigation_deficiencies"
         android:name="com.example.ncnutrition.ui.deficiencies.fragment.DeficienciesFragment"
         android:label="@string/title_deficiencies"
-        tools:layout="@layout/fragment_deficiencies_list" />
+        tools:layout="@layout/fragment_deficiencies_list" >
+        <action
+            android:id="@+id/action_navigation_deficiencies_to_deficiencyFragment"
+            app:destination="@id/deficiencyFragment" />
+        <action
+            android:id="@+id/action_navigation_deficiencies_to_addDeficiencyFragment"
+            app:destination="@id/addDeficiencyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addConditionFragment"
         android:name="com.example.ncnutrition.ui.conditions.fragment.AddConditionFragment"
         android:label="@string/title_add_condition"
         tools:layout="@layout/fragment_add_condition" />
+    <fragment
+        android:id="@+id/deficiencyFragment"
+        android:name="com.example.ncnutrition.ui.deficiencies.fragment.DeficiencyFragment"
+        android:label="@string/title_deficiency"
+        tools:layout="@layout/fragment_deficiency" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDeficiencyFragment"
+        android:name="com.example.ncnutrition.ui.deficiencies.fragment.AddDeficiencyFragment"
+        android:label="@string/title_add_deficiency"
+        tools:layout="@layout/fragment_add_deficiency" />
 </navigation>

@@ -4,4 +4,5 @@
     <string name="title_condition">Condition</string>
     <string name="title_add_condition">Add Condition</string>
     <string name="title_add_food">Add Food</string>
+    <string name="title_deficiency">Deficiency</string>
 </resources>

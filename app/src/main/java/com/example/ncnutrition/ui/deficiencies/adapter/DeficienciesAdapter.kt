@@ -2,47 +2,53 @@ package com.example.ncnutrition.ui.deficiencies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ncnutrition.databinding.FragmentDeficienciesBinding
-import com.example.ncnutrition.ui.deficiencies.fragment.placeholder.PlaceholderContent.PlaceholderItem
+import com.example.ncnutrition.model.Deficiency
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class DeficienciesAdapter(
-    private val values: List<PlaceholderItem>
-) : RecyclerView.Adapter<DeficienciesAdapter.ViewHolder>() {
+    private val onDeficiencyClicked: (Deficiency) -> Unit
+) : ListAdapter<Deficiency, DeficienciesAdapter.DeficiencyViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeficiencyViewHolder {
 
-        return ViewHolder(
+        return DeficiencyViewHolder(
             FragmentDeficienciesBinding.inflate(
                 LayoutInflater.from(parent.context),
-                parent,
-                false
             )
         )
-
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+    override fun onBindViewHolder(holder: DeficiencyViewHolder, position: Int) {
+        val current = getItem(position)
+        holder.itemView.setOnClickListener {
+            onDeficiencyClicked(current)
+        }
+        holder.bind(current)
     }
 
-    override fun getItemCount(): Int = values.size
-
-    inner class ViewHolder(binding: FragmentDeficienciesBinding) :
+    inner class DeficiencyViewHolder(private var binding: FragmentDeficienciesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+        fun bind(deficiency: Deficiency) {
+            binding.apply {
+                itemNumber.text = deficiency.id.toString()
+                content.text = deficiency.name
+            }
         }
     }
 
+    companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<Deficiency>() {
+            override fun areItemsTheSame(oldItem: Deficiency, newItem: Deficiency): Boolean {
+                return oldItem === newItem
+            }
+
+            override fun areContentsTheSame(oldItem: Deficiency, newItem: Deficiency): Boolean {
+                return oldItem.name == newItem.name
+            }
+        }
+    }
 }

@@ -23,9 +23,9 @@
         android:id="@+id/navigation_conditions"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_conditions" />
-<!--    <item-->
-<!--        android:id="@+id/navigation_deficiencies"-->
-<!--        android:icon="@drawable/ic_notifications_black_24dp"-->
-<!--        android:title="@string/title_deficiencies" />-->
+    <item
+        android:id="@+id/navigation_deficiencies"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/title_deficiencies" />
 
 </menu>

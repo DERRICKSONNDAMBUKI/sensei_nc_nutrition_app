@@ -15,12 +15,12 @@ class ConditionsAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConditionViewHolder {
+
         return ConditionViewHolder(
             FragmentConditionsBinding.inflate(
                 LayoutInflater.from(parent.context)
             )
         )
-
     }
 
     override fun onBindViewHolder(holder: ConditionViewHolder, position: Int) {

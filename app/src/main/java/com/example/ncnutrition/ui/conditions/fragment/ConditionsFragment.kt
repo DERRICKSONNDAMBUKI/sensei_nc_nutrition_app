@@ -19,11 +19,13 @@ import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
  * A fragment representing a list of Items.
  */
 class ConditionsFragment : Fragment() {
+
     private val viewModel: ConditionViewModel by activityViewModels {
         ConditionViewModelFactory(
             (activity?.application as NCNutritionApplication).database.conditionDao()
         )
     }
+
     private var _binding: FragmentConditionsListBinding? = null
     private val binding get() = _binding!!
 
@@ -39,6 +41,7 @@ class ConditionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val adapter = ConditionsAdapter { condition ->
             val action =
                 ConditionsFragmentDirections.actionConditionsFragmentToConditionFragment(condition.id)
@@ -49,7 +52,7 @@ class ConditionsFragment : Fragment() {
             condition.let {
                 adapter.submitList(it)
             }
-            if (condition.isEmpty()){
+            if (condition.isEmpty()) {
                 Toast.makeText(this.context, "no conditions", Toast.LENGTH_SHORT).show()
             }
         }

@@ -4,60 +4,64 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.ncnutrition.R
+import com.example.ncnutrition.NCNutritionApplication
+import com.example.ncnutrition.databinding.FragmentDeficienciesListBinding
 import com.example.ncnutrition.ui.deficiencies.adapter.DeficienciesAdapter
-import com.example.ncnutrition.ui.deficiencies.fragment.placeholder.PlaceholderContent
+import com.example.ncnutrition.ui.deficiencies.viewModel.DeficiencyViewModel
+import com.example.ncnutrition.ui.deficiencies.viewModel.DeficiencyViewModelFactory
 
 /**
  * A fragment representing a list of Items.
  */
 class DeficienciesFragment : Fragment() {
 
-    private var columnCount = 1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+    private val viewModel: DeficiencyViewModel by activityViewModels {
+        DeficiencyViewModelFactory(
+            (activity?.application as NCNutritionApplication).database.deficiencyDao()
+        )
     }
+
+    private var _binding: FragmentDeficienciesListBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_deficiencies_list, container, false)
+        _binding = FragmentDeficienciesListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = DeficienciesAdapter(PlaceholderContent.ITEMS)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val adapter = DeficienciesAdapter { deficiency ->
+            val action =
+                DeficienciesFragmentDirections.actionNavigationDeficienciesToDeficiencyFragment(
+                    deficiency.id
+                )
+            this.findNavController().navigate(action)
+        }
+        binding.recyclerView.adapter = adapter
+        viewModel.allDeficiencies.observe(this.viewLifecycleOwner) { deficiency ->
+            deficiency.let {
+                adapter.submitList(it)
+            }
+            if (deficiency.isEmpty()) {
+                Toast.makeText(this.context, "no deficiencies", Toast.LENGTH_SHORT).show()
             }
         }
-        return view
+        binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            DeficienciesFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 }
