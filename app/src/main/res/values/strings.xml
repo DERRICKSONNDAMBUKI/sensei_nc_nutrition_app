@@ -8,4 +8,8 @@
     <string name="title_foods">Foods</string>
     <string name="title_conditions">Conditions</string>
     <string name="title_deficiencies">Deficiencies</string>
+    <string name="title_food">Food</string>
+    <string name="title_condition">Condition</string>
+    <string name="title_add_condition">Add Condition</string>
+    <string name="title_add_food">Add Food</string>
 </resources>

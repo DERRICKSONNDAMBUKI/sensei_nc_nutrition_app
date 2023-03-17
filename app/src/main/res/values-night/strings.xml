@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_food">Food</string>
+    <string name="title_condition">Condition</string>
+    <string name="title_add_condition">Add Condition</string>
+    <string name="title_add_food">Add Food</string>
+</resources>

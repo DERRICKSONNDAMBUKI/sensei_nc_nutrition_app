@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
-import com.example.ncnutrition.data.database.NCNutritionApplication
+import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentFoodBinding
 import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel

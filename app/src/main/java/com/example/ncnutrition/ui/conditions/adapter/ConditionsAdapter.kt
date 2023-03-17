@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ncnutrition.databinding.ConditionsItemBinding
+import com.example.ncnutrition.databinding.FragmentConditionsBinding
 import com.example.ncnutrition.model.Condition
 
 
@@ -16,7 +16,7 @@ class ConditionsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConditionViewHolder {
         return ConditionViewHolder(
-            ConditionsItemBinding.inflate(
+            FragmentConditionsBinding.inflate(
                 LayoutInflater.from(parent.context)
             )
         )
@@ -24,7 +24,7 @@ class ConditionsAdapter(
     }
 
     override fun onBindViewHolder(holder: ConditionViewHolder, position: Int) {
-      val current = getItem(position)
+        val current = getItem(position)
         holder.itemView.setOnClickListener {
             onConditionClicked(current)
         }
@@ -32,15 +32,14 @@ class ConditionsAdapter(
     }
 
 
-
-    inner class ConditionViewHolder(private var binding: ConditionsItemBinding) :
+    inner class ConditionViewHolder(private var binding: FragmentConditionsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-       fun bind(condition: Condition){
-           binding.apply {
-               itemNumber.text = condition.id.toString()
-               content.text = condition.name
-           }
-       }
+        fun bind(condition: Condition) {
+            binding.apply {
+                itemNumber.text = condition.id.toString()
+                content.text = condition.name
+            }
+        }
     }
 
     companion object {

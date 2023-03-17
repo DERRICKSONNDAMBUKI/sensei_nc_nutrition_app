@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
-import com.example.ncnutrition.data.database.NCNutritionApplication
+import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentConditionBinding
 import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel

@@ -25,8 +25,8 @@
     <fragment
         android:id="@+id/foodFragment"
         android:name="com.example.ncnutrition.ui.foods.fragment.FoodFragment"
-        android:label="fragment_food"
-        tools:layout="@layout/fragment_food" >
+        android:label="@string/title_food"
+        tools:layout="@layout/fragment_food">
         <argument
             android:name="id"
             app:argType="integer" />
@@ -34,13 +34,13 @@
     <fragment
         android:id="@+id/addFoodFragment"
         android:name="com.example.ncnutrition.ui.foods.fragment.AddFoodFragment"
-        android:label="fragment_add_food"
+        android:label="@string/title_add_food"
         tools:layout="@layout/fragment_add_food" />
     <fragment
         android:id="@+id/navigation_foods"
         android:name="com.example.ncnutrition.ui.foods.fragment.FoodsFragment"
-        android:label="fragment_foods_list"
-        tools:layout="@layout/fragment_foods_list" >
+        android:label="@string/title_foods"
+        tools:layout="@layout/fragment_foods_list">
         <action
             android:id="@+id/action_foodsFragment_to_foodFragment"
             app:destination="@id/foodFragment" />
@@ -51,8 +51,8 @@
     <fragment
         android:id="@+id/navigation_conditions"
         android:name="com.example.ncnutrition.ui.conditions.fragment.ConditionsFragment"
-        android:label="conditions_item_list"
-        tools:layout="@layout/fragment_conditions_list" >
+        android:label="@string/title_conditions"
+        tools:layout="@layout/fragment_conditions_list">
         <action
             android:id="@+id/action_conditionsFragment_to_conditionFragment"
             app:destination="@id/conditionFragment" />
@@ -66,8 +66,8 @@
     <fragment
         android:id="@+id/conditionFragment"
         android:name="com.example.ncnutrition.ui.conditions.fragment.ConditionFragment"
-        android:label="fragment_condition"
-        tools:layout="@layout/fragment_condition" >
+        android:label="@string/title_condition"
+        tools:layout="@layout/fragment_condition">
         <argument
             android:name="id"
             app:argType="integer" />
@@ -75,11 +75,11 @@
     <fragment
         android:id="@+id/navigation_deficiencies"
         android:name="com.example.ncnutrition.ui.deficiencies.fragment.DeficienciesFragment"
-        android:label="fragment_deficiencies_list"
+        android:label="@string/title_deficiencies"
         tools:layout="@layout/fragment_deficiencies_list" />
     <fragment
         android:id="@+id/addConditionFragment"
         android:name="com.example.ncnutrition.ui.conditions.fragment.AddConditionFragment"
-        android:label="fragment_add_condition"
+        android:label="@string/title_add_condition"
         tools:layout="@layout/fragment_add_condition" />
 </navigation>
