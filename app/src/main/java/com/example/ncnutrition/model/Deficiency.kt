@@ -4,16 +4,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity("deficiency")
+@Entity(tableName = "deficiency")
 data class Deficiency(
     @PrimaryKey(autoGenerate = true)
-    val id:Int=0,
+    val id: Int = 0,
     @ColumnInfo("name")
-    val name:String,
+    val name: String,
     @ColumnInfo("sign_and_symptoms")
-    val sign_and_symptoms:String,
+    val sign_and_symptoms: String,
     @ColumnInfo("nutrients")
-    val nutrients:String,
+    val nutrients: String,
     @ColumnInfo("function")
-    val function:String
+    val function: String
 )

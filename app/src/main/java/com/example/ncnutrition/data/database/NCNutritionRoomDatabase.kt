@@ -8,12 +8,13 @@ import com.example.ncnutrition.data.dao.ConditionDAO
 import com.example.ncnutrition.data.dao.DeficiencyDAO
 import com.example.ncnutrition.data.dao.FoodDAO
 import com.example.ncnutrition.model.Condition
+import com.example.ncnutrition.model.Deficiency
 import com.example.ncnutrition.model.Food
 import kotlinx.coroutines.runBlocking
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-@Database(entities = [Food::class, Condition::class], version = 1, exportSchema = false)
+@Database(entities = [Food::class, Condition::class,Deficiency::class], version = 1, exportSchema = false)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
     abstract fun conditionDao(): ConditionDAO
