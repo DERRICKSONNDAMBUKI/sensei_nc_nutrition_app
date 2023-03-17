@@ -44,15 +44,24 @@
         <action
             android:id="@+id/action_foodsFragment_to_foodFragment"
             app:destination="@id/foodFragment" />
+        <action
+            android:id="@+id/action_navigation_foods_to_addFoodFragment"
+            app:destination="@id/addFoodFragment" />
     </fragment>
     <fragment
-        android:id="@+id/conditionsFragment"
+        android:id="@+id/navigation_conditions"
         android:name="com.example.ncnutrition.ui.conditions.fragment.ConditionsFragment"
         android:label="conditions_item_list"
-        tools:layout="@layout/conditions_item_list" >
+        tools:layout="@layout/fragment_conditions_list" >
         <action
             android:id="@+id/action_conditionsFragment_to_conditionFragment"
             app:destination="@id/conditionFragment" />
+        <action
+            android:id="@+id/action_navigation_conditions_to_addConditionFragment"
+            app:destination="@id/addConditionFragment" />
+        <action
+            android:id="@+id/action_navigation_conditions_to_addConditionFragment2"
+            app:destination="@id/addConditionFragment" />
     </fragment>
     <fragment
         android:id="@+id/conditionFragment"
@@ -63,4 +72,14 @@
             android:name="id"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_deficiencies"
+        android:name="com.example.ncnutrition.ui.deficiencies.fragment.DeficienciesFragment"
+        android:label="fragment_deficiencies_list"
+        tools:layout="@layout/fragment_deficiencies_list" />
+    <fragment
+        android:id="@+id/addConditionFragment"
+        android:name="com.example.ncnutrition.ui.conditions.fragment.AddConditionFragment"
+        android:label="fragment_add_condition"
+        tools:layout="@layout/fragment_add_condition" />
 </navigation>

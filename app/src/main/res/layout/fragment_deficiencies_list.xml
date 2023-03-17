@@ -4,18 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.conditions.fragment.ConditionsFragment">
+    tools:context=".ui.deficiencies.fragment.DeficienciesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:name="com.example.ncnutrition.ui.conditions.fragment.ConditionsFragment"
+        android:name="com.example.ncnutrition.ui.deficiencies.fragment.DeficienciesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ui.conditions.fragment.ConditionsFragment"
-        tools:listitem="@layout/conditions_item"/>
-
+        tools:context=".ui.deficiencies.fragment.DeficienciesFragment"
+        tools:listitem="@layout/fragment_deficiencies" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

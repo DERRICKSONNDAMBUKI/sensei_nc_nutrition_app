@@ -1,4 +1,4 @@
-package com.example.ncnutrition.ui.conditions.fragment
+package com.example.ncnutrition.ui.conditions.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.data.database.NCNutritionApplication
 import com.example.ncnutrition.databinding.ConditionsItemListBinding
+import com.example.ncnutrition.ui.conditions.adapter.ConditionsAdapter
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
 
