@@ -6,6 +6,7 @@ import com.example.ncnutrition.model.Condition
 import kotlinx.coroutines.launch
 
 class ConditionViewModel(private val conditionDAO: ConditionDAO) : ViewModel() {
+
     val allConditions:LiveData<List<Condition>> = conditionDAO.getConditions().asLiveData()
 
     private fun insertCondition(condition: Condition) {

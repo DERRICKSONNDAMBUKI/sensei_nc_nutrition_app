@@ -1,0 +1,101 @@
+[{
+  "Deficiency_disease": "xephthalmia",
+  "Sign_and_symptoms": "Night blindness, poor growth, dryness and keratinization of epithelial tissues",
+  "Nutrients": "Vitamin A, Retinol",
+  "Function": "Involved in immune function, vision, cell growth and cell communication."
+},{
+  "Deficiency_disease": "Microcytic anemia",
+  "Sign_and_symptoms": "Microcytic anemia, scaling of the lips and cracks in the corners of the mouth, swollen tongue, depression, and confusion",
+  "Nutrients": "Vitamin B6 (pyridoxine)",
+  "Function": "Involved in greater than 100 enzyme reactions in the body and involved in protein metabolism."
+},{
+  "Deficiency_disease": "Megaloblastic anemia",
+  "Sign_and_symptoms": "Megaloblastic anemia, fatigue, weakness, constipation, loss of appetite, and weight loss",
+  "Nutrients": "Vitamin B12 (cyanocobalamine)",
+  "Function": "Involved in red blood cell formation, neurological function, and DNA synthesis."
+},{
+  "Deficiency_disease": "Scuvy",
+  "Sign_and_symptoms": "Development of scurvy which would include: fatigue, inflammation of the gums, delayed wound healing, internal bleeding, abnormal formation of bones and teeth and weakened connective tissue",
+  "Nutrients": "Vitamin C",
+  "Function": "Involved in the formation of collagen, certain neurotransmitters, and protein synthesis. Helps the body to absorb calcium and iron, makes blood vessels stronger, promotes wound healing, protects the immune system, plays a role in synthesis of hormones and other body chemicals, acts as an anti-oxidant"
+},{
+  "Deficiency_disease": "Rickets",
+  "Sign_and_symptoms": "Development of rickets in children or osteomalacia in adults, weakened bones and fatigue",
+  "Nutrients": "Vitamin D",
+  "Function": "Promotes calcium absorption and proper bone formation, involved in cell growth, immune function, and reduces inflammation. Helps minerals to be deposited in bones and teeth (prevents rickets)"
+},{
+  "Deficiency_disease": "Megaloblastic anemia",
+  "Sign_and_symptoms": "Megaloblastic anemia",
+  "Nutrients": "Vitamin B9 (folate)",
+  "Function": "Involved in the synthesis of RNA and DNA and is required for cell division and the prevention of Neural Tube defects."
+},{
+  "Deficiency_disease": "Beriberi",
+  "Sign_and_symptoms": "nerve degeneration, altered muscle coordination, cardiovascular problems ",
+  "Nutrients": "Vitamin B1 (thiamin)",
+  "Function": "Helps the body use macronutrients for\nenergy and other purposes"
+},{
+  "Deficiency_disease": "Pellagra",
+  "Sign_and_symptoms": "diarrhea, skin inflammation, dementia ",
+  "Nutrients": "Vitamin B3 (niacin)",
+  "Function": "helps turn the food you eat into the energy you need. Niacin is important for the development and function of the cells in your body"
+},{
+  "Deficiency_disease": "Anemia and cataracts",
+  "Sign_and_symptoms": "skin disorders, hyperemia (excess blood) and edema of the mouth and throat, angular stomatitis (lesions at the corners of the mouth), cheilosis (swollen, cracked lips), hair loss, reproductive problems, sore throat, itchy and red eyes, and degeneration of the liver and nervous system",
+  "Nutrients": "Vitamin B2 (riboflavin)",
+  "Function": "Helps maintain normal levels of homocysteine, an amino acid in the blood, repair tissues-essential\nduring pregnancy for new maternal and\nfoetal tissue"
+},{
+  "Deficiency_disease": "Crohn’s disease, cystic fibrosis, and certain rare genetic diseases such as abetalipoproteinemia and ataxia",
+  "Sign_and_symptoms": "Nerve and muscle damage that results in loss of feeling in the arms and legs, loss of body movement control, muscle weakness, and vision problems",
+  "Nutrients": "Vitamin E",
+  "Function": "Required for the health of the reproductive system, nerves and muscles, Maintains healthy skin, Acts as an anti-oxidant. help older adults remain mentally alert and active as well as prevent or slow the decline of mental function and Alzheimer’s disease."
+},{
+  "Deficiency_disease": "Anaemia",
+  "Sign_and_symptoms": "bleeding and hemorrhage ",
+  "Nutrients": "Vitamin K",
+  "Function": "Used to manufacture proteins in blood plasma, Responsible for blood clotting, Important for maintaining healthy bone and kidney tissues, Required for synthesis of hormones, Required for the carboxylation of osteocalcin in bone"
+},{
+  "Deficiency_disease": "Cancers",
+  "Sign_and_symptoms": "Risk of lung cancer, non-Hodgkin lymphoma, pancreatic cancer, oral cavity cancer, laryngeal cancer, esophageal cancer, ovarian cancer, glioma, and bladder cancer",
+  "Nutrients": "Beta-carotene",
+  "Function": "For reproduction (embryonic development,\nmaintenance of male genital tract and\nSpermatogenesis), help prevent cancer or lower the chances of dying of cancer"
+},{
+  "Deficiency_disease": "Osteoporosis",
+  "Sign_and_symptoms": "Development of osteoporosis",
+  "Nutrients": "Calcium",
+  "Function": "Involved in muscle function, nerve transmission, and proper bone formation."
+},{
+  "Deficiency_disease": "Goitre",
+  "Sign_and_symptoms": "Stunted growth, enlarged thyroid gland, poor growth in infancy and childhood, possible mental retardation, cretinism and neurodevelopmental deficits",
+  "Nutrients": "Iodine",
+  "Function": "A component of thyroid hormones that regulate protein synthesis, metabolism, and enzyme activity."
+},{
+  "Deficiency_disease": "Iron-deficiency anemia",
+  "Sign_and_symptoms": "Microcytic, hypochromic anemia; impaired cognitive function, poor body temperature regulation, depressed immune function, decreased work output, reduced growth, increased health risk in pregnancy and spoon like shape of nails",
+  "Nutrients": "Iron",
+  "Function": "A component of hemoglobin and therefore important in the transfer of oxygen from the lungs to organs, and involved in the synthesis of hormones as well as normal growth and development."
+},{
+  "Deficiency_disease": "hypocalcemia or hypokalemia",
+  "Sign_and_symptoms": "Loss of appetite, fatigue, weakness, nausea, vomiting, numbness, tingling, muscle cramps, seizures, personality changes, and abnormal heart rhythms",
+  "Nutrients": "Magnesium",
+  "Function": "Involved in more than 300 enzyme reactions, protein synthesis, muscle function, nerve function, blood sugar control, and blood pressure control."
+},{
+  "Deficiency_disease": "Stunted growth",
+  "Sign_and_symptoms": "Stunted growth, depressed immune function, hair loss, eye and skin lesions, delayed wound healing, and taste alterations",
+  "Nutrients": "Zinc",
+  "Function": "Involved in cell metabolism, enzyme activity, immune function, protein synthesis, wound healing, DNA synthesis, and cell division."
+},{
+  "Deficiency_disease": "Hyponatremia (low blood sodium)",
+  "Sign_and_symptoms": "Muscle cramps, nausea, dizziness, weakness, and eventually shock and coma",
+  "Nutrients": "Sodium",
+  "Function": "Works with potassium to maintain healthy blood pressure and normal function of nerves and muscles. Works with potassium to maintain water balance and acid-base equilibrium in the body fluids. Vital for muscle sensitivity. Essential for transport of glucose and other nutrients across membranes. Plays a role in the function of the adrenal\ngland"
+},{
+  "Deficiency_disease": "Hypokalemia, cardiac arrhythmias",
+  "Sign_and_symptoms": "Weakness, loss of appetite, muscle cramps, and confusion. Increase blood pressure, kidney stone risk, bone turnover, urinary calcium excretion, and salt sensitivity",
+  "Nutrients": "Potassium",
+  "Function": "required for normal cell function because of its role in maintaining intracellular fluid volume and transmembrane electrochemical gradients"
+},{
+  "Deficiency_disease": "Dehydration (water deficiency), gastroenteritis in children",
+  "Sign_and_symptoms": "Thirst, dry mouth, sunken eyes, poor skin turgor, cold hands and feet, weak and rapid pulse, rapid and shallow breathing, confusion, exhaustion, and coma.",
+  "Nutrients": "Water",
+  "Function": "restore fluids lost through metabolism, breathing, sweating, and the removal of waste. It helps to keep you from overheating, lubricates the joints and tissues, maintains healthy skin, and is necessary for proper digestion."
+}]

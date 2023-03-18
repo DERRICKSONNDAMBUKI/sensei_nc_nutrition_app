@@ -14,11 +14,15 @@ import kotlinx.coroutines.runBlocking
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-@Database(entities = [Food::class, Condition::class,Deficiency::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Food::class, Condition::class, Deficiency::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
     abstract fun conditionDao(): ConditionDAO
-    abstract fun deficiencyDao():DeficiencyDAO
+    abstract fun deficiencyDao(): DeficiencyDAO
 
     companion object {
         private var INSTANCE: NCNutritionRoomDatabase? = null
@@ -33,50 +37,53 @@ abstract class NCNutritionRoomDatabase : RoomDatabase() {
 
                 runBlocking {
 //                    instance.foodDao().insertAll(importFoodsFromCsv(context,"database/sensei_kenya_food_composition_data_with_KRB_2018 - Sheet2.csv"))
-                    instance.foodDao().insert(
-                        Food(
+                    instance.foodDao().insertAll(
+                        mutableListOf(
+                            Food(
 //                            1,
-                            food_group_code = 15,
-                            food_group = "Mixed dishes",
-                            code = "15066s",
-                            food_name = "Biryani stew",
-                            edible_conversion_factor = 0.0,
-                            energy_in_kJ = 822.0,
-                            energy_in_kcal = 198.0,
-                            water_in_g = 65.3,
-                            protein_in_g = 8.1,
-                            fat_in_g = 14.3,
-                            carbohydrate_available_in_g = 8.3,
-                            fibre_in_g = 1.9,
-                            ash_in_g = 2.1,
-                            ca_in_mg = 28.0,
-                            fe_in_mg = 5.2,
-                            mg_in_mg = 24.0,
-                            p_in_mg = 139.0,
-                            k_in_mg = 332.0,
-                            na_in_mg = 480.0,
-                            zn_in_mg = 1.58,
-                            se_in_mg = 0.008,
-                            vit_a_rae_in_mcg = 24.0,
-                            vit_a_re_in_mcg = 43.0,
-                            retinol_in_mcg = 6.0,
-                            beta_carotene_equivalent_in_mcg = 225.0,
-                            thiamin_in_mcg = 40.0,
-                            riboflavin_in_mcg = 130.0,
-                            niacin_in_mcg = 1800.0,
-                            dietary_folate_eq_in_mcg = 14.0,
-                            food_folate_in_mcg = 14.0,
-                            vit_b12_mcg = 0.47,
-                            vit_c_in_mcg = 14500.0,
-                            cholesterol_mg = 21.0,
-                            dish_group_code = 7,
-                            dish_group_name = "Meats, Fish & Eggs",
-                            dish_group_description = "This section features different kinds of meats, fish and egg recipes that are common in Kenya. The various methods of cooking these proteins are explained.",
-                            food_description = "Biryani stew is a traditional delicacy of the Swahili community. It is made with meat and heavily spiced to produce a rich tasty meal. This recipe is sometimes served during special occasions such as weddings or other social ceremonies. It is eaten by the whole family and can be served for lunch or dinner usually accompanied by a colourful biryani rice.",
-                            food_ingredients = "\n1 kg beef, raw, medium fat \n8 onions, red skinned, raw, unpeeled (806 g) \n2 potatoes, unpeeled Irish, white, raw (454 g) \n9 tomatoes, red, ripe (1.1 kg) 1 cup (163 g) tomato paste, salted \n1 bunch (60 g) fresh coriander \n1 capsicum, green (242 g) \n2 1/3 cups (468 g) cooking oil \n1 piece (20 g) ginger \n1 garlic, whole (46 g) \n2 1⁄2 tbsp. (37 g) salt, iodized \n4 tbsp. (18 g) pilau masala \n1 cup (242 g) maziwa mala (fermented milk) \n1 1⁄4 tsp. (2 g) turmeric powder \n2 1⁄4 cups (511 g) water",
-                            food_preparation_cooking_serves_makes = "\nWash and cut the meat. \nBoil the meat in 1 cup of water for 20 minutes until meat is tender. \nPrepare and put coriander, capsicum, garlic, ginger and tomatoes into a blender and blend to a medium thick juice. Add 1 1⁄4 cups of water. \nPeel, wash and chop the onions into a separate bowl. \nPut oil into a cooking pot and heat for 1 minute. \nAdd the chopped onions. \nCook onions until golden brown. \nAdd the blended paste and stir. \nAdd meat, turmeric, tomato paste, potatoes, pilau masala and salt. \nCover and simmer until the potatoes are cooked or soft. \nAdd the fermented milk and continue to simmer for 5 minutes. \nStir and remove from fire. \nServe with the biryani rice.",
-                            dish_time = "Preparation 20 minutes | Cooking 1 hour 10 minutes | Serves 6"
+                                food_group_code = 15,
+                                food_group = "Mixed dishes",
+                                code = "15066s",
+                                food_name = "Biryani stew",
+                                edible_conversion_factor = 0.0,
+                                energy_in_kJ = 822.0,
+                                energy_in_kcal = 198.0,
+                                water_in_g = 65.3,
+                                protein_in_g = 8.1,
+                                fat_in_g = 14.3,
+                                carbohydrate_available_in_g = 8.3,
+                                fibre_in_g = 1.9,
+                                ash_in_g = 2.1,
+                                ca_in_mg = 28.0,
+                                fe_in_mg = 5.2,
+                                mg_in_mg = 24.0,
+                                p_in_mg = 139.0,
+                                k_in_mg = 332.0,
+                                na_in_mg = 480.0,
+                                zn_in_mg = 1.58,
+                                se_in_mg = 0.008,
+                                vit_a_rae_in_mcg = 24.0,
+                                vit_a_re_in_mcg = 43.0,
+                                retinol_in_mcg = 6.0,
+                                beta_carotene_equivalent_in_mcg = 225.0,
+                                thiamin_in_mcg = 40.0,
+                                riboflavin_in_mcg = 130.0,
+                                niacin_in_mcg = 1800.0,
+                                dietary_folate_eq_in_mcg = 14.0,
+                                food_folate_in_mcg = 14.0,
+                                vit_b12_mcg = 0.47,
+                                vit_c_in_mcg = 14500.0,
+                                cholesterol_mg = 21.0,
+                                dish_group_code = 7,
+                                dish_group_name = "Meats, Fish & Eggs",
+                                dish_group_description = "This section features different kinds of meats, fish and egg recipes that are common in Kenya. The various methods of cooking these proteins are explained.",
+                                food_description = "Biryani stew is a traditional delicacy of the Swahili community. It is made with meat and heavily spiced to produce a rich tasty meal. This recipe is sometimes served during special occasions such as weddings or other social ceremonies. It is eaten by the whole family and can be served for lunch or dinner usually accompanied by a colourful biryani rice.",
+                                food_ingredients = "\n1 kg beef, raw, medium fat \n8 onions, red skinned, raw, unpeeled (806 g) \n2 potatoes, unpeeled Irish, white, raw (454 g) \n9 tomatoes, red, ripe (1.1 kg) 1 cup (163 g) tomato paste, salted \n1 bunch (60 g) fresh coriander \n1 capsicum, green (242 g) \n2 1/3 cups (468 g) cooking oil \n1 piece (20 g) ginger \n1 garlic, whole (46 g) \n2 1⁄2 tbsp. (37 g) salt, iodized \n4 tbsp. (18 g) pilau masala \n1 cup (242 g) maziwa mala (fermented milk) \n1 1⁄4 tsp. (2 g) turmeric powder \n2 1⁄4 cups (511 g) water",
+                                food_preparation_cooking_serves_makes = "\nWash and cut the meat. \nBoil the meat in 1 cup of water for 20 minutes until meat is tender. \nPrepare and put coriander, capsicum, garlic, ginger and tomatoes into a blender and blend to a medium thick juice. Add 1 1⁄4 cups of water. \nPeel, wash and chop the onions into a separate bowl. \nPut oil into a cooking pot and heat for 1 minute. \nAdd the chopped onions. \nCook onions until golden brown. \nAdd the blended paste and stir. \nAdd meat, turmeric, tomato paste, potatoes, pilau masala and salt. \nCover and simmer until the potatoes are cooked or soft. \nAdd the fermented milk and continue to simmer for 5 minutes. \nStir and remove from fire. \nServe with the biryani rice.",
+                                dish_time = "Preparation 20 minutes | Cooking 1 hour 10 minutes | Serves 6"
+                            ),
                         )
+
                     )
                 }
 
