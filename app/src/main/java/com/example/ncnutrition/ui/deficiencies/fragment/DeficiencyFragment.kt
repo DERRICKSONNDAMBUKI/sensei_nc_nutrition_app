@@ -29,7 +29,10 @@ class DeficiencyFragment : Fragment() {
 
     private fun bind(deficiency: Deficiency){
         binding.apply {
-            deficiencyDescription.text = deficiency.sign_and_symptoms
+            deficiencyName.text = deficiency.name
+            deficiencySignsAndSymptoms.text = deficiency.sign_and_symptoms
+            deficiencyNutrients.text = deficiency.nutrients
+            deficiencyFunction.text = deficiency.function
         }
     }
     private val navigationArgs:DeficiencyFragmentArgs by navArgs()
