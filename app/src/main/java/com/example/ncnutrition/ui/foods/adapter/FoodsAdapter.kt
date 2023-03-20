@@ -34,8 +34,9 @@ class FoodsAdapter(private val onFoodClicked: (Food) -> Unit) :
         fun bind(food: Food) {
 //            set data to fragment
             binding.apply {
-                itemNumber.text = food.code
-                content.text = food.food_name
+                foodsFoodName.text = food.food_name
+                foodsFoodGroup.text = food.food_group
+                foodsEnergy.text = food.energy_in_kcal.toString()
             }
         }
     }

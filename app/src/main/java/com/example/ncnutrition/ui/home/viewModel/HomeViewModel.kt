@@ -1,4 +1,4 @@
-package com.example.ncnutrition.ui.home
+package com.example.ncnutrition.ui.home.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -34,8 +34,9 @@ class DeficienciesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(deficiency: Deficiency) {
             binding.apply {
-                itemNumber.text = deficiency.id.toString()
-                content.text = deficiency.name
+                deficienciesId.text = deficiency.id.toString()
+                deficienciesName.text = deficiency.name
+                deficienciesSignAndSymptoms.text = deficiency.sign_and_symptoms
             }
         }
     }

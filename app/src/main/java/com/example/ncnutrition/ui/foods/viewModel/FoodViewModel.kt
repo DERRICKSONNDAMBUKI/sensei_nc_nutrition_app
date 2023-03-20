@@ -259,8 +259,8 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
     }
     val allFoods:LiveData<List<Food>> = foodDao.getFoods().asLiveData()
 
-    fun retrieveFood(id:Int):LiveData<Food>{
-        return foodDao.getFood(id).asLiveData()
+    fun retrieveFood(code: String):LiveData<Food>{
+        return foodDao.getFood(code).asLiveData()
     }
 }
 

@@ -7,9 +7,28 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.ncnutrition.ui.home.HomeFragment"
+        android:name="com.example.ncnutrition.ui.home.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_deficiencies"
+            app:destination="@id/navigation_deficiencies" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_conditions"
+            app:destination="@id/navigation_conditions" />
+        <action
+            android:id="@+id/action_navigation_home_to_deficiencyFragment"
+            app:destination="@id/deficiencyFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_conditionFragment"
+            app:destination="@id/conditionFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_foods"
+            app:destination="@id/navigation_foods" />
+        <action
+            android:id="@+id/action_navigation_home_to_foodFragment"
+            app:destination="@id/foodFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -27,9 +46,10 @@
         android:name="com.example.ncnutrition.ui.foods.fragment.FoodFragment"
         android:label="@string/title_food"
         tools:layout="@layout/fragment_food">
+
         <argument
-            android:name="id"
-            app:argType="integer" />
+            android:name="code"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"

@@ -22,8 +22,8 @@ interface FoodDAO {
     @Query("select * from food ORDER BY Code asc")
     fun getFoods(): Flow<List<Food>>
 
-    @Query("select * from food where id = :id")
-    fun getFood(id: Int): Flow<Food>
+    @Query("select * from food where code = :code")
+    fun getFood(code: String): Flow<Food>
 
     @Query("select * from food where Food_Group_Code = :food_group_code")
     fun getFoodsByFoodGroup(food_group_code: Int): Flow<List<Food>>

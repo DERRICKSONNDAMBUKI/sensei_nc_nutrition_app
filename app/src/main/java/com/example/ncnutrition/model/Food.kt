@@ -6,14 +6,15 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "food")
 data class Food(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+//    @PrimaryKey(autoGenerate = true)
+//    val id: Int = 0,
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "Code")
+    val code: String,
     @ColumnInfo(name = "Food_group_code")
     val food_group_code: Int?,
     @ColumnInfo(name = "Food_group")
     val food_group: String,
-    @ColumnInfo(name = "Code")
-    val code: String,
     @ColumnInfo(name = "Food_name")
     val food_name: String,
     @ColumnInfo(name = "Edible_conversion_factor")

@@ -1,10 +1,10 @@
 package com.example.ncnutrition.ui.foods.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.ncnutrition.NCNutritionApplication
@@ -44,8 +44,8 @@ class FoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = navigationArgs.id
-        viewModel.retrieveFood(id).observe(this.viewLifecycleOwner){
+        val code = navigationArgs.code
+        viewModel.retrieveFood(code).observe(this.viewLifecycleOwner){
             selectedFood->
             food = selectedFood
             bind(food)
@@ -56,6 +56,4 @@ class FoodFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

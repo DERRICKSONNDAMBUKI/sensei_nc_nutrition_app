@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "deficiency")
+@Entity(tableName = "deficiency",indices = [androidx.room.Index(value = ["name"], unique = true)])
 data class Deficiency(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,

@@ -1,0 +1,101 @@
+[{
+  "name": "xephthalmia",
+  "sign_and_symptoms": "Night blindness, poor growth, dryness and keratinization of epithelial tissues",
+  "nutrients": "Vitamin A, Retinol",
+  "function": "Involved in immune function, vision, cell growth and cell communication."
+},{
+  "name": "Microcytic anemia",
+  "sign_and_symptoms": "Microcytic anemia, scaling of the lips and cracks in the corners of the mouth, swollen tongue, depression, and confusion",
+  "nutrients": "Vitamin B6 (pyridoxine)",
+  "function": "Involved in greater than 100 enzyme reactions in the body and involved in protein metabolism."
+},{
+  "name": "Megaloblastic anemia",
+  "sign_and_symptoms": "Megaloblastic anemia, fatigue, weakness, constipation, loss of appetite, and weight loss",
+  "nutrients": "Vitamin B12 (cyanocobalamine)",
+  "function": "Involved in red blood cell formation, neurological function, and DNA synthesis."
+},{
+  "name": "Scuvy",
+  "sign_and_symptoms": "Development of scurvy which would include: fatigue, inflammation of the gums, delayed wound healing, internal bleeding, abnormal formation of bones and teeth and weakened connective tissue",
+  "nutrients": "Vitamin C",
+  "function": "Involved in the formation of collagen, certain neurotransmitters, and protein synthesis. Helps the body to absorb calcium and iron, makes blood vessels stronger, promotes wound healing, protects the immune system, plays a role in synthesis of hormones and other body chemicals, acts as an anti-oxidant"
+},{
+  "name": "Rickets",
+  "sign_and_symptoms": "Development of rickets in children or osteomalacia in adults, weakened bones and fatigue",
+  "nutrients": "Vitamin D",
+  "function": "Promotes calcium absorption and proper bone formation, involved in cell growth, immune function, and reduces inflammation. Helps minerals to be deposited in bones and teeth (prevents rickets)"
+},{
+  "name": "Megaloblastic anemia",
+  "sign_and_symptoms": "Megaloblastic anemia",
+  "nutrients": "Vitamin B9 (folate)",
+  "function": "Involved in the synthesis of RNA and DNA and is required for cell division and the prevention of Neural Tube defects."
+},{
+  "name": "Beriberi",
+  "sign_and_symptoms": "nerve degeneration, altered muscle coordination, cardiovascular problems ",
+  "nutrients": "Vitamin B1 (thiamin)",
+  "function": "Helps the body use macronutrients for energy and other purposes"
+},{
+  "name": "Pellagra",
+  "sign_and_symptoms": "diarrhea, skin inflammation, dementia ",
+  "nutrients": "Vitamin B3 (niacin)",
+  "function": "helps turn the food you eat into the energy you need. Niacin is important for the development and function of the cells in your body"
+},{
+  "name": "Anemia and cataracts",
+  "sign_and_symptoms": "skin disorders, hyperemia (excess blood) and edema of the mouth and throat, angular stomatitis (lesions at the corners of the mouth), cheilosis (swollen, cracked lips), hair loss, reproductive problems, sore throat, itchy and red eyes, and degeneration of the liver and nervous system",
+  "nutrients": "Vitamin B2 (riboflavin)",
+  "function": "Helps maintain normal levels of homocysteine, an amino acid in the blood, repair tissues-essential during pregnancy for new maternal and foetal tissue"
+},{
+  "name": "Crohn’s disease, cystic fibrosis, and certain rare genetic diseases such as abetalipoproteinemia and ataxia",
+  "sign_and_symptoms": "Nerve and muscle damage that results in loss of feeling in the arms and legs, loss of body movement control, muscle weakness, and vision problems",
+  "nutrients": "Vitamin E",
+  "function": "Required for the health of the reproductive system, nerves and muscles, Maintains healthy skin, Acts as an anti-oxidant. help older adults remain mentally alert and active as well as prevent or slow the decline of mental function and Alzheimer’s disease."
+},{
+  "name": "Anaemia",
+  "sign_and_symptoms": "bleeding and hemorrhage ",
+  "nutrients": "Vitamin K",
+  "function": "Used to manufacture proteins in blood plasma, Responsible for blood clotting, Important for maintaining healthy bone and kidney tissues, Required for synthesis of hormones, Required for the carboxylation of osteocalcin in bone"
+},{
+  "name": "Cancers",
+  "sign_and_symptoms": "Risk of lung cancer, non-Hodgkin lymphoma, pancreatic cancer, oral cavity cancer, laryngeal cancer, esophageal cancer, ovarian cancer, glioma, and bladder cancer",
+  "nutrients": "Beta-carotene",
+  "function": "For reproduction (embryonic development, maintenance of male genital tract and Spermatogenesis), help prevent cancer or lower the chances of dying of cancer"
+},{
+  "name": "Osteoporosis",
+  "sign_and_symptoms": "Development of osteoporosis",
+  "nutrients": "Calcium",
+  "function": "Involved in muscle function, nerve transmission, and proper bone formation."
+},{
+  "name": "Goitre",
+  "sign_and_symptoms": "Stunted growth, enlarged thyroid gland, poor growth in infancy and childhood, possible mental retardation, cretinism and neurodevelopmental deficits",
+  "nutrients": "Iodine",
+  "function": "A component of thyroid hormones that regulate protein synthesis, metabolism, and enzyme activity."
+},{
+  "name": "Iron-deficiency anemia",
+  "sign_and_symptoms": "Microcytic, hypochromic anemia; impaired cognitive function, poor body temperature regulation, depressed immune function, decreased work output, reduced growth, increased health risk in pregnancy and spoon like shape of nails",
+  "nutrients": "Iron",
+  "function": "A component of hemoglobin and therefore important in the transfer of oxygen from the lungs to organs, and involved in the synthesis of hormones as well as normal growth and development."
+},{
+  "name": "hypocalcemia or hypokalemia",
+  "sign_and_symptoms": "Loss of appetite, fatigue, weakness, nausea, vomiting, numbness, tingling, muscle cramps, seizures, personality changes, and abnormal heart rhythms",
+  "nutrients": "Magnesium",
+  "function": "Involved in more than 300 enzyme reactions, protein synthesis, muscle function, nerve function, blood sugar control, and blood pressure control."
+},{
+  "name": "Stunted growth",
+  "sign_and_symptoms": "Stunted growth, depressed immune function, hair loss, eye and skin lesions, delayed wound healing, and taste alterations",
+  "nutrients": "Zinc",
+  "function": "Involved in cell metabolism, enzyme activity, immune function, protein synthesis, wound healing, DNA synthesis, and cell division."
+},{
+  "name": "Hyponatremia (low blood sodium)",
+  "sign_and_symptoms": "Muscle cramps, nausea, dizziness, weakness, and eventually shock and coma",
+  "nutrients": "Sodium",
+  "function": "Works with potassium to maintain healthy blood pressure and normal function of nerves and muscles. Works with potassium to maintain water balance and acid-base equilibrium in the body fluids. Vital for muscle sensitivity. Essential for transport of glucose and other nutrients across membranes. Plays a role in the function of the adrenal gland"
+},{
+  "name": "Hypokalemia, cardiac arrhythmias",
+  "sign_and_symptoms": "Weakness, loss of appetite, muscle cramps, and confusion. Increase blood pressure, kidney stone risk, bone turnover, urinary calcium excretion, and salt sensitivity",
+  "nutrients": "Potassium",
+  "function": "required for normal cell function because of its role in maintaining intracellular fluid volume and transmembrane electrochemical gradients"
+},{
+  "name": "Dehydration (water deficiency), gastroenteritis in children",
+  "sign_and_symptoms": "Thirst, dry mouth, sunken eyes, poor skin turgor, cold hands and feet, weak and rapid pulse, rapid and shallow breathing, confusion, exhaustion, and coma.",
+  "nutrients": "Water",
+  "function": "restore fluids lost through metabolism, breathing, sweating, and the removal of waste. It helps to keep you from overheating, lubricates the joints and tissues, maintains healthy skin, and is necessary for proper digestion."
+}]

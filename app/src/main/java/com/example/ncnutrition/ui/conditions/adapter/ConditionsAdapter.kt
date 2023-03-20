@@ -36,8 +36,9 @@ class ConditionsAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(condition: Condition) {
             binding.apply {
-                itemNumber.text = condition.id.toString()
-                content.text = condition.name
+                conditionsId.text = condition.id.toString()
+                conditionsName.text = condition.name
+                conditionsDescription.text = condition.description
             }
         }
     }
