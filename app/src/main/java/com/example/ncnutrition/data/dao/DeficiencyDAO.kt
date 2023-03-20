@@ -18,7 +18,7 @@ interface DeficiencyDAO {
     @Delete
     suspend fun delete(deficiency: Deficiency)
 
-    @Query("SELECT * FROM deficiency WHERE id=:id")
+    @Query("SELECT * FROM deficiency WHERE rowid=:id")
     fun getDeficiency(id: Int): Flow<Deficiency>
 
     @Query("select * from deficiency ORDER BY name")

@@ -2,13 +2,12 @@ package com.example.ncnutrition.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Fts4
 import androidx.room.PrimaryKey
 
-@Fts4
+//@Fts4
 @Entity(tableName = "deficiency",indices = [androidx.room.Index(value = ["name"], unique = true)])
 data class Deficiency(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid")
     val id: Int = 0,
     @ColumnInfo("name")
     val name: String,

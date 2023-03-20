@@ -18,7 +18,7 @@ interface ConditionDAO {
     @Delete
     suspend fun delete(condition: Condition)
 
-    @Query("SELECT * FROM condition WHERE id=:id")
+    @Query("SELECT * FROM condition WHERE rowid=:id")
     fun getCondition(id: Int): Flow<Condition>
 
     @Query("select * from condition order by name asc")

@@ -2,10 +2,10 @@ package com.example.ncnutrition.model
 
 import androidx.room.*
 
-@Fts4
+//@Fts4
 @Entity(tableName = "condition", indices = [Index(value = ["name"], unique = true)])
 data class Condition(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo("id")
+    @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid")
     val id: Int = 0,
     @ColumnInfo("name")
     val name: String,
