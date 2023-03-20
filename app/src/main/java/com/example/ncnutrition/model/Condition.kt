@@ -1,10 +1,8 @@
 package com.example.ncnutrition.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 
+@Fts4
 @Entity(tableName = "condition", indices = [Index(value = ["name"], unique = true)])
 data class Condition(
     @PrimaryKey(autoGenerate = true) @ColumnInfo("id")

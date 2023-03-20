@@ -8,4 +8,5 @@
     <string name="home_image">home image</string>
     <string name="title_recipes">Recipes</string>
     <string name="kilocalories">Kilocalories</string>
+    <string name="text_nutrients">Nutrients</string>
 </resources>

@@ -29,7 +29,9 @@ class ConditionFragment : Fragment() {
     
     private fun bind(condition: Condition) {
         binding.apply {
+            conditionName.text = condition.name
             conditionDescription.text = condition.description
+            conditionNutrients.text = condition.nutrients
         }
     }
 

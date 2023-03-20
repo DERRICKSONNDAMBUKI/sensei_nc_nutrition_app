@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     >
     <item
         android:id="@+id/navigation_foods"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_foods" />
+        android:title="@string/title_foods"
+        app:showAsAction="ifRoom"
+        />
 
     <item
         android:id="@+id/navigation_conditions"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_conditions" />
+        android:title="@string/title_conditions"
+        app:showAsAction="ifRoom|withText"
+        />
 
     <item
         android:id="@+id/navigation_deficiencies"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_deficiencies" />
+        android:title="@string/title_deficiencies"
+        app:showAsAction="ifRoom"/>
 </menu>
