@@ -2,10 +2,11 @@ package com.example.ncnutrition.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 //@Fts4
-@Entity(tableName = "food")
+@Entity(tableName = "food", indices = [Index(value = ["Code", "Food_name"], unique = true)])
 data class Food(
     @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid")
     val id: Int = 0,
@@ -81,7 +82,7 @@ data class Food(
     @ColumnInfo(name = "Dish_group_name")
     val dish_group_name: String?,
     @ColumnInfo(name = "Dish_group_description")
-    val dish_group_description:String?,
+    val dish_group_description: String?,
     @ColumnInfo(name = "Food_description")
     val food_description: String?,
     @ColumnInfo(name = "Food_ingredients")
