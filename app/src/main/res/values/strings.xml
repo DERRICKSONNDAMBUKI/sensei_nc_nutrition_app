@@ -3,7 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_foods">Foods</string>
     <string name="title_conditions">Conditions</string>
@@ -22,4 +21,11 @@
     <string name="title_recipes">Recipes</string>
     <string name="kilocalories">Kilocalories</string>
     <string name="text_nutrients">Nutrients</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="saturday">Saturday</string>
+    <string name="friday">Friday</string>
+    <string name="sunday">Sunday</string>
 </resources>

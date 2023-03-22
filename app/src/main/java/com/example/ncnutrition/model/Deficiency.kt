@@ -16,5 +16,7 @@ data class Deficiency(
     @ColumnInfo("nutrients")
     val nutrients: String,
     @ColumnInfo("function")
-    val function: String
+    val function: String,
+    @ColumnInfo("foods")
+    val foods: List<Food>? = null,
 )

@@ -12,7 +12,6 @@ interface FoodDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(foods: List<Food>)
 
-    //    suspend fun insertFoods(vararg foods:Food)
     @Update
     suspend fun update(food: Food)
 
@@ -30,4 +29,17 @@ interface FoodDAO {
 
     @Query("select * from food where Food_name LIKE :food_name LIMIT 5")
     fun findFoodByName(food_name: String): Flow<List<Food>>
+
+    @Query("select :nutrient from food order by :nutrient asc")
+    fun getNutrient(nutrient: String): Flow<List<Double>>
+
+    @Query("select * from food where :nutrient > :Q2 ORDER BY :nutrient asc ")
+    fun getHighNutrientFoods(nutrient: String, Q2: Double): Flow<List<Food>?>
+
+    @Query("select * from food where :nutrient < :Q2 ORDER BY :nutrient asc ")
+    fun getLowNutrientFoods(nutrient: String, Q2: Double): Flow<List<Food>?>
+
+//    @Query("select * from food where :nutrient > :Q1 AND < :Q3 ORDER BY :nutrient asc ")
+//    fun getRegularNutrientFoods(nutrient: String, Q1: Double, Q3: Double): Flow<List<Food>>
+
 }

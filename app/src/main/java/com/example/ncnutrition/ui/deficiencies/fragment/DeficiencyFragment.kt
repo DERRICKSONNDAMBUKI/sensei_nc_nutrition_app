@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
@@ -18,7 +19,9 @@ class DeficiencyFragment : Fragment() {
 
     private val viewModel : DeficiencyViewModel by activityViewModels {
         DeficiencyViewModelFactory(
-            (activity?.application as NCNutritionApplication).database.deficiencyDao()
+            (activity?.application as NCNutritionApplication).database.deficiencyDao(),
+            (activity?.application as NCNutritionApplication).database.foodDao(),
+
         )
     }
 
@@ -32,7 +35,8 @@ class DeficiencyFragment : Fragment() {
             deficiencyName.text = deficiency.name
             deficiencySignsAndSymptoms.text = deficiency.sign_and_symptoms
             deficiencyNutrients.text = deficiency.nutrients
-            deficiencyFunction.text = deficiency.function
+//            deficiencyFunction.text = deficiency.function
+            deficiencyFunction.text = deficiency.foods?.count().toString()
         }
     }
     private val navigationArgs:DeficiencyFragmentArgs by navArgs()
@@ -48,10 +52,15 @@ class DeficiencyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.id
+
         viewModel.retrieveDeficiency(id).observe(this.viewLifecycleOwner){selectedDeficiency->
             deficiency = selectedDeficiency
             bind(deficiency)
+            if (deficiency.foods.isNullOrEmpty()){
+            Toast.makeText(context,"No foods on '${deficiency.name}' yet",Toast.LENGTH_SHORT).show()
         }
+        }
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

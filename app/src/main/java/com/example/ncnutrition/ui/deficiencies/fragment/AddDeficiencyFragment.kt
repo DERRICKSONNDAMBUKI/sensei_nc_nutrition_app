@@ -16,7 +16,8 @@ class AddDeficiencyFragment : Fragment() {
 
     private val viewModel: DeficiencyViewModel by activityViewModels {
         DeficiencyViewModelFactory(
-            (activity?.application as NCNutritionApplication).database.deficiencyDao()
+            (activity?.application as NCNutritionApplication).database.deficiencyDao(),
+            (activity?.application as NCNutritionApplication).database.foodDao()
         )
     }
     lateinit var deficiency: Deficiency

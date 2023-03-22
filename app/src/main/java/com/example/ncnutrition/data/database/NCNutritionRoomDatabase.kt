@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.ncnutrition.data.dao.ConditionDAO
 import com.example.ncnutrition.data.dao.DeficiencyDAO
 import com.example.ncnutrition.data.dao.FoodDAO
@@ -16,10 +17,12 @@ import kotlinx.coroutines.runBlocking
 @Database(
     entities = [Food::class, Condition::class, Deficiency::class], version = 1, exportSchema = false
 )
+@TypeConverters(FoodListConverters::class)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
     abstract fun conditionDao(): ConditionDAO
     abstract fun deficiencyDao(): DeficiencyDAO
+
 
     companion object {
         private var INSTANCE: NCNutritionRoomDatabase? = null
@@ -123,7 +126,8 @@ private fun importDeficienciesJson(context: Context): List<Deficiency> {
             name = it.name,
             sign_and_symptoms = it.sign_and_symptoms,
             nutrients = it.nutrients,
-            function = it.function
+            function = it.function,
+        foods = it.foods
         )
     }
 }
