@@ -6,21 +6,10 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-    <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
-<!--    <item-->
+    <!--    <item-->
     <!--        android:id="@+id/navigation_notifications"-->
     <!--        android:icon="@drawable/ic_notifications_black_24dp"-->
     <!--        android:title="@string/title_notifications" />-->
-
-    <item
-        android:id="@+id/navigation_foods"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_foods" />
-
     <item
         android:id="@+id/navigation_conditions"
         android:icon="@drawable/ic_notifications_black_24dp"
@@ -30,5 +19,13 @@
         android:id="@+id/navigation_deficiencies"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_deficiencies" />
+    <item
+        android:id="@+id/navigation_foods"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_foods" />
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard" />
 
 </menu>

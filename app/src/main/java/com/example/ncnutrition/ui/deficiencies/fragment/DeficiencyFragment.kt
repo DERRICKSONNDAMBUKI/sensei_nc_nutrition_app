@@ -17,20 +17,20 @@ import com.example.ncnutrition.ui.deficiencies.viewModel.DeficiencyViewModelFact
 
 class DeficiencyFragment : Fragment() {
 
-    private val viewModel : DeficiencyViewModel by activityViewModels {
+    private val viewModel: DeficiencyViewModel by activityViewModels {
         DeficiencyViewModelFactory(
             (activity?.application as NCNutritionApplication).database.deficiencyDao(),
             (activity?.application as NCNutritionApplication).database.foodDao(),
 
-        )
+            )
     }
 
-   private var _binding:FragmentDeficiencyBinding?=null
-   private val binding get() = _binding!!
+    private var _binding: FragmentDeficiencyBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var deficiency: Deficiency
 
-    private fun bind(deficiency: Deficiency){
+    private fun bind(deficiency: Deficiency) {
         binding.apply {
             deficiencyName.text = deficiency.name
             deficiencySignsAndSymptoms.text = deficiency.sign_and_symptoms
@@ -39,29 +39,31 @@ class DeficiencyFragment : Fragment() {
             deficiencyFoods.text = deficiency.foods?.count().toString()
         }
     }
-    private val navigationArgs:DeficiencyFragmentArgs by navArgs()
+
+    private val navigationArgs: DeficiencyFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-       _binding = FragmentDeficiencyBinding.inflate(inflater,container,false)
+        _binding = FragmentDeficiencyBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.id
-        viewModel.retrieveDeficiency(id).observe(this.viewLifecycleOwner){selectedDeficiency->
+        viewModel.retrieveDeficiency(id).observe(this.viewLifecycleOwner) { selectedDeficiency ->
             viewModel.updateDeficiency(selectedDeficiency)
             deficiency = selectedDeficiency
             bind(deficiency)
-            if (deficiency.foods.isNullOrEmpty()){
-            Toast.makeText(context,"No foods on '${deficiency.name}' yet",Toast.LENGTH_SHORT).show()
-        }
+            if (deficiency.foods.isNullOrEmpty()) {
+                Toast.makeText(context, "No foods on '${deficiency.name}' yet", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

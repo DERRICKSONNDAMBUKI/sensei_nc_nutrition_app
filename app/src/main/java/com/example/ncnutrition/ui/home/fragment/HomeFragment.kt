@@ -20,7 +20,6 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
     }
 
     override fun onCreateView(
@@ -40,6 +39,7 @@ class HomeFragment : Fragment() {
 //        }
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
