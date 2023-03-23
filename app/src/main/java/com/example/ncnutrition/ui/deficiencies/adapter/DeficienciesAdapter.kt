@@ -14,7 +14,6 @@ class DeficienciesAdapter(
 ) : ListAdapter<Deficiency, DeficienciesAdapter.DeficiencyViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeficiencyViewHolder {
-
         return DeficiencyViewHolder(
             FragmentDeficienciesBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -33,6 +32,7 @@ class DeficienciesAdapter(
     inner class DeficiencyViewHolder(private var binding: FragmentDeficienciesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(deficiency: Deficiency) {
+
             binding.apply {
                 deficienciesId.text = deficiency.id.toString()
                 deficienciesName.text = deficiency.name

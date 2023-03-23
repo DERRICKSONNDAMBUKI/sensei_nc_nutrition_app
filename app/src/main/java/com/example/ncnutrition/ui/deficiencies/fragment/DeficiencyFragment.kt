@@ -35,8 +35,8 @@ class DeficiencyFragment : Fragment() {
             deficiencyName.text = deficiency.name
             deficiencySignsAndSymptoms.text = deficiency.sign_and_symptoms
             deficiencyNutrients.text = deficiency.nutrients
-//            deficiencyFunction.text = deficiency.function
-            deficiencyFunction.text = deficiency.foods?.count().toString()
+            deficiencyFunction.text = deficiency.function
+            deficiencyFoods.text = deficiency.foods?.count().toString()
         }
     }
     private val navigationArgs:DeficiencyFragmentArgs by navArgs()
@@ -52,8 +52,8 @@ class DeficiencyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.id
-
         viewModel.retrieveDeficiency(id).observe(this.viewLifecycleOwner){selectedDeficiency->
+            viewModel.updateDeficiency(selectedDeficiency)
             deficiency = selectedDeficiency
             bind(deficiency)
             if (deficiency.foods.isNullOrEmpty()){

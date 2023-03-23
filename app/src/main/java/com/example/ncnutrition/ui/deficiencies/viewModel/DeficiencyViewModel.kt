@@ -51,33 +51,16 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
         return true
     }
 
-    private fun updateDeficiency(deficiency: Deficiency) {
+    fun updateDeficiency(deficiency: Deficiency) {
         viewModelScope.launch {
-            deficiencyDAO.update(deficiency)
+            val foods = getFoodsByNutrients("energy_in_kcal", "low")
+            val newDeficiency = deficiency.copy(foods = foods)
+            deficiencyDAO.update(newDeficiency)
         }
     }
 
     fun retrieveDeficiency(id: Int): LiveData<Deficiency> {
-
-        viewModelScope.launch {
-            val foods = getFoodsByNutrients("energy_in_kcal", "low")
-            val oldDeficiency = deficiencyDAO.getDeficiency(id).toList()
-            oldDeficiency.map {
-                updateDeficiency(
-                    Deficiency(
-                        id = it.id,
-                        name = it.name,
-                        sign_and_symptoms = it.sign_and_symptoms,
-                        nutrients = it.nutrients,
-                        function = it.function,
-                        foods = foods
-                    )
-                )
-            }
-
-
-        }
-
+//        val deficiency = deficiencyDAO.getDeficiency(id)
         return deficiencyDAO.getDeficiency(id).asLiveData()
     }
 
