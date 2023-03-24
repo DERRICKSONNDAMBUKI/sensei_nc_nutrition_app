@@ -15,7 +15,8 @@ import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
 class AddConditionFragment : Fragment() {
     private val viewModel: ConditionViewModel by activityViewModels {
         ConditionViewModelFactory(
-            (activity?.application as NCNutritionApplication).database.conditionDao()
+            (activity?.application as NCNutritionApplication).database.conditionDao(),
+            (activity?.application as NCNutritionApplication).database.foodDao(),
         )
     }
     lateinit var condition: Condition

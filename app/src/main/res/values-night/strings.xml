@@ -15,4 +15,7 @@
     <string name="friday">Friday</string>
     <string name="sunday">Sunday</string>
     <string name="action_settings">Settings</string>
+    <string name="search_hint">Search...</string>
+    <string name="search_title">Search</string>
+    <string name="text_foods">foods</string>
 </resources>

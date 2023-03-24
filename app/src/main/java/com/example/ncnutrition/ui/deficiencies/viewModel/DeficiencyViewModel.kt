@@ -54,7 +54,8 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
     fun updateDeficiency(deficiency: Deficiency) {
         viewModelScope.launch {
             val foods = getFoodsByNutrients("energy_in_kcal", "low")
-            val newDeficiency = deficiency.copy(foods = foods)
+
+            val newDeficiency = deficiency.copy(foods = foods as List<Food>)
             deficiencyDAO.update(newDeficiency)
         }
     }
@@ -73,24 +74,20 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
         return (percentile / 100).times(maxValue)
     }
 
-    private suspend fun getFoodsByNutrients(nutrient: String, level: String): List<Food> {
+    private suspend fun getFoodsByNutrients(nutrient: String, level: String): Flow<List<Food>?> {
         val nutrientValues = foodDAO.getNutrient(nutrient)
 
-
 //        percentiles
-
         val q1 = getPercentile(nutrientValues, 25.0)
         val q2 = getPercentile(nutrientValues, 50.0)
         val q3 = getPercentile(nutrientValues, 75.0)
         return (when (level) {
-            "high" -> foodDAO.getHighNutrientFoods(nutrient, q2) as List<Food>
-            "low" -> foodDAO.getLowNutrientFoods(nutrient, q2) as List<Food>
+            "high" -> foodDAO.getRichEnergyFoods( q2,q3)
+            "low" -> foodDAO.getLowNutrientFoods(nutrient, q2)
             //                 "regular" -> foodDAO.getRegularNutrientFoods(nutrient, q1, q3) as List<Food>
-            else -> foodDAO.getFoods() as List<Food>
+            else -> foodDAO.getFoods()
         })
-
     }
-
 }
 
 class DeficiencyViewModelFactory(private val deficiencyDAO: DeficiencyDAO, val foodDAO: FoodDAO) :

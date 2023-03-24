@@ -30,14 +30,14 @@ interface FoodDAO {
     @Query("select * from food where Food_name LIKE :food_name LIMIT 5")
     fun findFoodByName(food_name: String): Flow<List<Food>>
 
-    @Query("select :nutrient from food order by :nutrient asc")
+    @Query("select energy_in_kcal from food ORDER BY :nutrient asc")
     fun getNutrient(nutrient: String): Flow<List<Double>>
 
-    @Query("select * from food where :nutrient > :Q2 ORDER BY :nutrient asc ")
-    fun getHighNutrientFoods(nutrient: String, Q2: Double): Flow<List<Food>?>
+    @Query("select * from food where energy_in_kcal between :Q2 and :Q3 ORDER BY energy_in_kcal asc ")
+    fun getRichEnergyFoods( Q2: Double,Q3:Double): Flow<List<Food>>
 
-    @Query("select * from food where :nutrient < :Q2 ORDER BY :nutrient asc ")
-    fun getLowNutrientFoods(nutrient: String, Q2: Double): Flow<List<Food>?>
+    @Query("select * from food where :nutrient <= :Q2 ORDER BY :nutrient asc ")
+    fun getLowNutrientFoods(nutrient: String, Q2: Double): Flow<List<Food>>
 
 //    @Query("select * from food where :nutrient > :Q1 AND < :Q3 ORDER BY :nutrient asc ")
 //    fun getRegularNutrientFoods(nutrient: String, Q1: Double, Q3: Double): Flow<List<Food>>

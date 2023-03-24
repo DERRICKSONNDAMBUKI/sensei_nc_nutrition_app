@@ -262,6 +262,10 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
     fun retrieveFood(code: String):LiveData<Food>{
         return foodDao.getFood(code).asLiveData()
     }
+
+    fun searchFood(food_name: String): LiveData<List<Food>> {
+        return foodDao.findFoodByName(food_name).asLiveData()
+    }
 }
 
 class FoodViewModelFactory(private val FoodDao: FoodDAO) : ViewModelProvider.Factory {
