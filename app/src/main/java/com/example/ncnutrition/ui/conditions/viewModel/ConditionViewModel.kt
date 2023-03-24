@@ -5,15 +5,15 @@ import com.example.ncnutrition.data.dao.ConditionDAO
 import com.example.ncnutrition.data.dao.FoodDAO
 import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.model.Food
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foodDAO: FoodDAO) :
     ViewModel() {
 
     val allConditions: LiveData<List<Condition>> = conditionDAO.getConditions().asLiveData()
-    val allFoods: LiveData<List<Food>> = foodDAO.getRichEnergyFoods(450.0,550.0).asLiveData()
+//    val allFoods: LiveData<List<Food>>  =  conditionFoods("Cancer")
 
     private fun insertCondition(condition: Condition) {
         viewModelScope.launch {
@@ -49,20 +49,68 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
         return conditionDAO.getCondition(id).asLiveData()
     }
 
-    // percentile
-    private suspend fun getPercentile(data: Flow<List<Double>>, percentile: Double): Double {
 
-        val maxValue = data.toList().maxOf {
-            it.max()
+    fun getConditionFoods(id: Int):LiveData<List<Food>>{
+        val conditionFlow = conditionDAO.getCondition(id)
+        val condition = runBlocking {
+            conditionFlow.first()
         }
-        return (percentile / 100).times(maxValue)
+        return conditionFoods(condition)
+    }
+
+    private fun conditionFoods(condition: Condition): LiveData<List<Food>> {
+        val liveDataFoodList = when (condition.name) {
+            "Cancer" ->  joinLiveDataLists(getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), getFoodsByNutrients("energy_in_kcal", "low").asLiveData())
+
+            else -> joinLiveDataLists(getFoodsByNutrients("energy_in_kcal", "low").asLiveData())
+        }
+        return liveDataFoodList
+    }
+    private fun joinLiveDataLists(vararg liveDataList:LiveData<List<Food>>):LiveData<List<Food>>{
+        val resultLiveData = MediatorLiveData<List<Food>>()
+        val dataList = mutableListOf<Food>()
+        for (liveData in liveDataList){
+            resultLiveData.addSource(liveData){ foodList->
+                dataList.addAll(foodList)
+                resultLiveData.value = dataList
+            }
+        }
+        return resultLiveData
+    }
+
+    // percentile
+    private fun getPercentile(data: List<Double>, percentile: Double): Double {
+        val maxValue = data.max()
+        return maxValue.times(percentile / 100)
+    }
+
+    private fun getFoodsByNutrients(nutrient: String, level: String): Flow<List<Food>> {
+
+        val nutrientValues = foodDAO.getEnergyInKcal()
+        val nutrientValueList:List<Double> = runBlocking {
+            nutrientValues.first()
+        }
+//        percentiles
+        val q1 = getPercentile(nutrientValueList, 25.0)
+        val q2 = getPercentile(nutrientValueList, 50.0)
+        val q3 = getPercentile(nutrientValueList, 75.0)
+
+        return when (nutrient) {
+            "energy_in_kcal" -> return (when (level) {
+                "high" -> foodDAO.getRichEnergyFoods(q2)
+                "low" -> foodDAO.getLowEnergyFoods(q2)
+                "regular" -> foodDAO.getRegularEnergyFoods(q1, q3)
+                else -> foodDAO.getFoods()
+            })
+            else -> foodDAO.getFoods()
+        }
+
     }
 }
 
 
 class ConditionViewModelFactory(
-    private val conditionDAO: ConditionDAO,
-    private val foodDAO: FoodDAO
+    private val conditionDAO: ConditionDAO, private val foodDAO: FoodDAO
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ConditionViewModel::class.java)) {

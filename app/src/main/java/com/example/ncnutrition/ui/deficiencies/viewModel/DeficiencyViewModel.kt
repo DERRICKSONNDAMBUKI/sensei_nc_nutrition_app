@@ -4,9 +4,6 @@ import androidx.lifecycle.*
 import com.example.ncnutrition.data.dao.DeficiencyDAO
 import com.example.ncnutrition.data.dao.FoodDAO
 import com.example.ncnutrition.model.Deficiency
-import com.example.ncnutrition.model.Food
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
 class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val foodDAO: FoodDAO) :
@@ -53,10 +50,10 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
 
     fun updateDeficiency(deficiency: Deficiency) {
         viewModelScope.launch {
-            val foods = getFoodsByNutrients("energy_in_kcal", "low")
+//            val foods = getFoodsByNutrients("energy_in_kcal", "low")
 
-            val newDeficiency = deficiency.copy(foods = foods as List<Food>)
-            deficiencyDAO.update(newDeficiency)
+//            val newDeficiency = deficiency.copy(foods = foods as List<Food>)
+//            deficiencyDAO.update(newDeficiency)
         }
     }
 
@@ -65,32 +62,32 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
         return deficiencyDAO.getDeficiency(id).asLiveData()
     }
 
-    // percentile
-    private suspend fun getPercentile(data: Flow<List<Double>>, percentile: Double): Double {
-
-        val maxValue = data.toList().maxOf {
-            it.max()
-        }
-        return (percentile / 100).times(maxValue)
-    }
-
-    private suspend fun getFoodsByNutrients(nutrient: String, level: String): Flow<List<Food>?> {
-        val nutrientValues = foodDAO.getNutrient(nutrient)
-
-//        percentiles
-        val q1 = getPercentile(nutrientValues, 25.0)
-        val q2 = getPercentile(nutrientValues, 50.0)
-        val q3 = getPercentile(nutrientValues, 75.0)
-        return (when (level) {
-            "high" -> foodDAO.getRichEnergyFoods( q2,q3)
-            "low" -> foodDAO.getLowNutrientFoods(nutrient, q2)
-            //                 "regular" -> foodDAO.getRegularNutrientFoods(nutrient, q1, q3) as List<Food>
-            else -> foodDAO.getFoods()
-        })
-    }
+//    // percentile
+//    private suspend fun getPercentile(data: Flow<List<Double>>, percentile: Double): Double {
+//
+//        val maxValue = data.toList().maxOf {
+//            it.max()
+//        }
+//        return (percentile / 100).times(maxValue)
+//    }
+//
+//    private suspend fun getFoodsByNutrients(nutrient: String, level: String): Flow<List<Food>?> {
+//        val nutrientValues = foodDAO.getEnergyInKcal(nutrient)
+//
+////        percentiles
+//        val q1 = getPercentile(nutrientValues, 25.0)
+//        val q2 = getPercentile(nutrientValues, 50.0)
+//        val q3 = getPercentile(nutrientValues, 75.0)
+//        return (when (level) {
+//            "high" -> foodDAO.getRichEnergyFoods( q2,q3)
+//            "low" -> foodDAO.getLowNutrientFoods(nutrient, q2)
+//            //                 "regular" -> foodDAO.getRegularNutrientFoods(nutrient, q1, q3) as List<Food>
+//            else -> foodDAO.getFoods()
+//        })
+//    }
 }
 
-class DeficiencyViewModelFactory(private val deficiencyDAO: DeficiencyDAO, val foodDAO: FoodDAO) :
+class DeficiencyViewModelFactory(private val deficiencyDAO: DeficiencyDAO, private val foodDAO: FoodDAO) :
     ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

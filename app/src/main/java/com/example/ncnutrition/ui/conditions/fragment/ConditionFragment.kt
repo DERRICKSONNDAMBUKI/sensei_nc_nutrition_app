@@ -57,36 +57,22 @@ class ConditionFragment : Fragment() {
             condition = selectedCondition
             bind(condition)
         }
-        viewModel.allFoods.observe(this.viewLifecycleOwner){
-            bindFoods(it)
+        viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner){ foods->
+//            bindFoods(it)
+            if (foods.isNullOrEmpty()) {
+                Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
+            } else {
+                conditionFoods =foods
+                bindFoods(conditionFoods)
+                Toast.makeText(this.context, "${conditionFoods.count()} foods", Toast.LENGTH_SHORT).show()
+            }
         }
-
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-//
-//                viewModel.getConditionFoods(id).observe(viewLifecycleOwner) { selectedFoods ->
-//                    if (selectedFoods != null) {
-//                        conditionFoods = selectedFoods
-//                    } else {
-//                        Toast.makeText(context, "no foods", Toast.LENGTH_SHORT).show()
-//                    }
-//                    Log.e("foods", conditionFoods.count().toString())
-//                    bindFoods(conditionFoods)
-//                }
-//            }
-//        }
     }
 
     private fun bindFoods(foods: List<Food>) {
         binding.apply {
-            conditionFoods.text = foods.toString()
+            conditionFoods.text = foods.count().toString()
         }
-        if (foods.isEmpty()) {
-            Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, "${foods.count()} foods", Toast.LENGTH_SHORT).show()
-        }
-
     }
 
     override fun onDestroyView() {
