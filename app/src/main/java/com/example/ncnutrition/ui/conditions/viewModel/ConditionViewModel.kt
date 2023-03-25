@@ -133,9 +133,6 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
             else -> emptyList()
         }
 
-//        val nutrientValueList: List<Double> = runBlocking {
-//            nutrientValues.first()
-//        }
 //        percentiles
         val q1 = getPercentile(nutrientValues, 25.0)
         val q2 = getPercentile(nutrientValues, 50.0)

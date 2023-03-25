@@ -42,10 +42,6 @@ class DeficienciesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = DeficienciesAdapter { deficiency ->
-//            call update by sending deficiency
-
-                viewModel.updateDeficiency(deficiency)
-                Toast.makeText(context,"updating ${deficiency.name}",Toast.LENGTH_SHORT).show()
 
             val action =
                 DeficienciesFragmentDirections.actionNavigationDeficienciesToDeficiencyFragment(

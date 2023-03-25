@@ -56,6 +56,7 @@ class ConditionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val adapter = FoodsAdapter { food ->
             val action =
                 FoodsFragmentDirections.actionFoodsFragmentToFoodFragment(food.code) // pass arg food.id bug
