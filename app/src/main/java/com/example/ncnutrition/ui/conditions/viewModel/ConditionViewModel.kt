@@ -62,17 +62,23 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
         val liveDataFoodList = when (condition.name) {
             "Cancer" -> joinLiveDataLists(
                 getFoodsByNutrients("energy_in_kcal", "low").asLiveData(),
-                getFoodsByNutrients("beta_carotene_equivalent_in_mcg","rich").asLiveData(),
-                getFoodsByNutrients("se_in_mg","regular").asLiveData(),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
+                getFoodsByNutrients("se_in_mg", "regular").asLiveData(),
                 foodDAO.getFoodsByFoodGroup(4).asLiveData(),
                 foodDAO.getFoodsByFoodGroup(5).asLiveData()
             )
-            "Cardiovascular disease"->joinLiveDataLists(
-                getFoodsByNutrients("niacin_in_mcg","rich").asLiveData(),
-                getFoodsByNutrients("fibre_in_g","rich").asLiveData(),
-                getFoodsByNutrients("fat_in_g","low").asLiveData(),
-                getFoodsByNutrients("beta_carotene_equivalent_in_mcg","rich").asLiveData(),
-                getFoodsByNutrients("cholesterol_in_mg","low").asLiveData() // vitamin E
+            "Cardiovascular disease" -> joinLiveDataLists(
+                getFoodsByNutrients("niacin_in_mcg", "rich").asLiveData(),
+                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
+                getFoodsByNutrients("cholesterol_in_mg", "low").asLiveData() // vitamin E
+            )
+            "Hypertension" -> joinLiveDataLists(
+                getFoodsByNutrients("na_in_mg", "low").asLiveData(), // extremely,
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(),
+                foodDAO.getFoodsByFoodGroup(4).asLiveData(),
+                foodDAO.getFoodsByFoodGroup(5).asLiveData()
             )
 // energy_in_kJ,
 //            energy_in_kcal,
@@ -118,12 +124,12 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
 //                check if all LiveData have emitted their values
                 if (dataList.size == liveDataList.size) {
 //                    combine all lists into a single list of foods
-                    val allFoods = mutableListOf<Food>()
+                    val allFoods = mutableSetOf<Food>()
                     for (foodList in dataList) {
                         allFoods.addAll(foodList)
                     }
 //                    Set the new value for the result LiveData
-                    resultLiveData.value = allFoods
+                    resultLiveData.value = allFoods.toList()
                 }
             }
         }
@@ -282,13 +288,13 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
                 else -> emptyFlow()
             })
             "retinol_in_mcg" -> return (when (level) {
-                "rich"-> foodDAO.getRichRetinolInMcg(q2)
+                "rich" -> foodDAO.getRichRetinolInMcg(q2)
                 "low" -> foodDAO.getLowRetinolInMcg(q2)
                 "regular" -> foodDAO.getRegularRetinolInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "beta_carotene_equivalent_in_mcg" -> return (when (level) {
-                "rich"-> foodDAO.getRichBetaCaroteneEquivalentInMcg(q2)
+                "rich" -> foodDAO.getRichBetaCaroteneEquivalentInMcg(q2)
                 "low" -> foodDAO.getLowBetaCaroteneEquivalentInMcg(q2)
                 "regular" -> foodDAO.getRegularBetaCaroteneEquivalentInMcg(q1, q3)
                 else -> emptyFlow()
@@ -330,7 +336,7 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
                 else -> emptyFlow()
             })
             "vit_c_in_mcg" -> return (when (level) {
-                "rich"-> foodDAO.getRichWaterInG(q2)
+                "rich" -> foodDAO.getRichWaterInG(q2)
                 "low" -> foodDAO.getLowWaterInG(q2)
                 "regular" -> foodDAO.getRegularVitCInMcg(q1, q3)
                 else -> emptyFlow()
