@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.NCNutritionApplication
@@ -16,6 +17,7 @@ import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
 import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
+import com.example.ncnutrition.ui.foods.fragment.FoodsFragmentDirections
 
 
 class ConditionFragment : Fragment() {
@@ -55,7 +57,9 @@ class ConditionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = FoodsAdapter { food ->
-
+            val action =
+                FoodsFragmentDirections.actionFoodsFragmentToFoodFragment(food.code) // pass arg food.id bug
+            this.findNavController().navigate(action)
         }
 //        set adapter
         binding.conditionFoodsRecyclerView.adapter = adapter

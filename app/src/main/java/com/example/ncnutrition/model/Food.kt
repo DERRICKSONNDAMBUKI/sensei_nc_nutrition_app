@@ -71,12 +71,12 @@ data class Food(
     val dietary_folate_eq_in_mcg: Double?,
     @ColumnInfo(name = "Food_folate_in_mcg")
     val food_folate_in_mcg: Double?,
-    @ColumnInfo(name = "Vit_B12_mcg")
-    val vit_b12_mcg: Double?,
+    @ColumnInfo(name = "Vit_b12_in_mcg")
+    val vit_b12_in_mcg: Double?,
     @ColumnInfo(name = "Vit_C_in_mcg")
     val vit_c_in_mcg: Double?,
-    @ColumnInfo(name = "Cholesterol_in_mcg")
-    val cholesterol_mg: Double?,
+    @ColumnInfo(name = "Cholesterol_in_mg")
+    val cholesterol_in_mg: Double?,
     @ColumnInfo(name = "Dish_group_code")
     val dish_group_code: Int?,
     @ColumnInfo(name = "Dish_group_name")

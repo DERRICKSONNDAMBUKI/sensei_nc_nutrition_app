@@ -43,12 +43,12 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
         niacin_in_mcg: Double,
         dietary_folate_eq_in_mcg: Double,
         food_folate_in_mcg: Double,
-        vit_b12_mcg: Double,
+        vit_b12_in_mcg: Double,
         vit_c_in_mcg: Double,
-        cholesterol_mg: Double,
+        cholesterol_in_mg: Double,
         dish_group_code: Int,
         dish_group_name: String,
-        dish_group_description:String,
+        dish_group_description: String,
         food_description: String,
         food_ingredients: String,
         food_preparation_cooking_serves_makes: String,
@@ -85,12 +85,12 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
             niacin_in_mcg = niacin_in_mcg,
             dietary_folate_eq_in_mcg = dietary_folate_eq_in_mcg,
             food_folate_in_mcg = food_folate_in_mcg,
-            vit_b12_mcg = vit_b12_mcg,
+            vit_b12_in_mcg = vit_b12_in_mcg,
             vit_c_in_mcg = vit_c_in_mcg,
-            cholesterol_mg = cholesterol_mg,
+            cholesterol_in_mg = cholesterol_in_mg,
             dish_group_code = dish_group_code,
             dish_group_name = dish_group_name,
-            dish_group_description=dish_group_description,
+            dish_group_description = dish_group_description,
             food_description = food_description,
             food_ingredients = food_ingredients,
             food_preparation_cooking_serves_makes = food_preparation_cooking_serves_makes,
@@ -129,12 +129,12 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
         niacin_in_mcg: Double,
         dietary_folate_eq_in_mcg: Double,
         food_folate_in_mcg: Double,
-        vit_b12_mcg: Double,
+        vit_b12_in_mcg: Double,
         vit_c_in_mcg: Double,
-        cholesterol_mg: Double,
+        cholesterol_in_mg: Double,
         dish_group_code: Int,
         dish_group_name: String,
-        dish_group_description:String,
+        dish_group_description: String,
         food_description: String,
         food_ingredients: String,
         food_preparation_cooking_serves_makes: String,
@@ -171,9 +171,9 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
             niacin_in_mcg,
             dietary_folate_eq_in_mcg,
             food_folate_in_mcg,
-            vit_b12_mcg,
+            vit_b12_in_mcg,
             vit_c_in_mcg,
-            cholesterol_mg,
+            cholesterol_in_mg,
             dish_group_code,
             dish_group_name,
             dish_group_description,
@@ -215,51 +215,21 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
         niacin_in_mcg: Double,
         dietary_folate_eq_in_mcg: Double,
         food_folate_in_mcg: Double,
-        vit_b12_mcg: Double,
+        vit_b12_in_mcg: Double,
         vit_c_in_mcg: Double,
-        cholesterol_mg: Double,
+        cholesterol_in_mg: Double,
 
         ): Boolean {
-        if (food_group.isBlank() ||
-            code.isBlank() ||
-            food_name.isBlank() ||
-            edible_conversion_factor.isBlank() ||
-            energy_in_kJ.isNaN() ||
-            energy_in_kcal.isNaN() ||
-            water_in_g.isNaN() ||
-            protein_in_g.isNaN() ||
-            fat_in_g.isNaN() ||
-            carbohydrate_available_in_g.isNaN() ||
-            fibre_in_g.isNaN() ||
-            ash_in_g.isNaN() ||
-            ca_in_mg.isNaN() ||
-            fe_in_mg.isNaN() ||
-            mg_in_mg.isNaN() ||
-            p_in_mg.isNaN() ||
-            k_in_mg.isNaN() ||
-            na_in_mg.isNaN() ||
-            zn_in_mg.isNaN() ||
-            se_in_mg.isNaN() ||
-            vit_a_rae_in_mcg.isNaN() ||
-            vit_a_re_in_mcg.isNaN() ||
-            retinol_in_mcg.isNaN() ||
-            beta_carotene_equivalent_in_mcg.isNaN() ||
-            thiamin_in_mcg.isNaN() ||
-            riboflavin_in_mcg.isNaN() ||
-            niacin_in_mcg.isNaN() ||
-            dietary_folate_eq_in_mcg.isNaN() ||
-            food_folate_in_mcg.isNaN() ||
-            vit_b12_mcg.isNaN() ||
-            vit_c_in_mcg.isNaN() ||
-            cholesterol_mg.isNaN()
+        if (food_group.isBlank() || code.isBlank() || food_name.isBlank() || edible_conversion_factor.isBlank() || energy_in_kJ.isNaN() || energy_in_kcal.isNaN() || water_in_g.isNaN() || protein_in_g.isNaN() || fat_in_g.isNaN() || carbohydrate_available_in_g.isNaN() || fibre_in_g.isNaN() || ash_in_g.isNaN() || ca_in_mg.isNaN() || fe_in_mg.isNaN() || mg_in_mg.isNaN() || p_in_mg.isNaN() || k_in_mg.isNaN() || na_in_mg.isNaN() || zn_in_mg.isNaN() || se_in_mg.isNaN() || vit_a_rae_in_mcg.isNaN() || vit_a_re_in_mcg.isNaN() || retinol_in_mcg.isNaN() || beta_carotene_equivalent_in_mcg.isNaN() || thiamin_in_mcg.isNaN() || riboflavin_in_mcg.isNaN() || niacin_in_mcg.isNaN() || dietary_folate_eq_in_mcg.isNaN() || food_folate_in_mcg.isNaN() || vit_b12_in_mcg.isNaN() || vit_c_in_mcg.isNaN() || cholesterol_in_mg.isNaN()
         ) {
             return false
         }
         return true
     }
-    val allFoods:LiveData<List<Food>> = foodDao.getFoods().asLiveData()
 
-    fun retrieveFood(code: String):LiveData<Food>{
+    val allFoods: LiveData<List<Food>> = foodDao.getFoods().asLiveData()
+
+    fun retrieveFood(code: String): LiveData<Food> {
         return foodDao.getFood(code).asLiveData()
     }
 
@@ -271,8 +241,7 @@ class FoodViewModel(private val foodDao: FoodDAO) : ViewModel() {
 class FoodViewModelFactory(private val FoodDao: FoodDAO) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FoodViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return FoodViewModel(FoodDao) as T
+            @Suppress("UNCHECKED_CAST") return FoodViewModel(FoodDao) as T
         }
         throw IllegalArgumentException("Unknown viewModel class")
 //        return super.create(modelClass)

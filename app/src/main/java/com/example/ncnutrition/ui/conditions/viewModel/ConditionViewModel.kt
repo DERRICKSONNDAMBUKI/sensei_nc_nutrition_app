@@ -69,11 +69,22 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
 
     private fun joinLiveDataLists(vararg liveDataList: LiveData<List<Food>>): LiveData<List<Food>> {
         val resultLiveData = MediatorLiveData<List<Food>>()
-        val dataList = mutableListOf<Food>()
+        val dataList = mutableListOf<List<Food>>()
+
+//        add each source LiveData to the MediatorLiveData
         for (liveData in liveDataList) {
-            resultLiveData.addSource(liveData) { foodList ->
-                dataList.addAll(foodList)
-                resultLiveData.value = dataList
+            resultLiveData.addSource(liveData) { data ->
+                dataList.add(data)
+//                check if all LiveData have emitted their values
+                if (dataList.size == liveDataList.size) {
+//                    combine all lists into a single list of foods
+                    val allFoods = mutableListOf<Food>()
+                    for (foodList in dataList) {
+                        allFoods.addAll(foodList)
+                    }
+//                    Set the new value for the result LiveData
+                    resultLiveData.value = allFoods
+                }
             }
         }
         return resultLiveData
@@ -92,7 +103,9 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
             "water_in_g" -> runBlocking { foodDAO.getWaterInG().first() }
             "protein_in_g" -> runBlocking { foodDAO.getProteinInG().first() }
             "fat_in_g" -> runBlocking { foodDAO.getFatInG().first() }
-            "carbohydrate_available_in_g" -> runBlocking { foodDAO.getCarbohydrateAvailableInG().first() }
+            "carbohydrate_available_in_g" -> runBlocking {
+                foodDAO.getCarbohydrateAvailableInG().first()
+            }
             "fibre_in_g" -> runBlocking { foodDAO.getFibreInG().first() }
             "ash_in_g" -> runBlocking { foodDAO.getAshInG().first() }
             "ca_in_mg" -> runBlocking { foodDAO.getCaInMg().first() }
@@ -102,19 +115,21 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
             "k_in_mg" -> runBlocking { foodDAO.getKInMg().first() }
             "na_in_mg" -> runBlocking { foodDAO.getNaInMg().first() }
             "zn_in_mg" -> runBlocking { foodDAO.getZnInMg().first() }
-            "se_in_mg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "vit_a_rae_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "vit_a_re_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "retinol_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "beta_carotene_equivalent_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "thiamin_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "riboflavin_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "niacin_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "dietary_folate_eq_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "food_folate_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "vit_b12_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "vit_c_in_mcg" -> runBlocking { foodDAO.getWaterInG().first() }
-            "cholesterol_mg" -> runBlocking { foodDAO.getWaterInG().first() }
+            "se_in_mg" -> runBlocking { foodDAO.getSeInMg().first() }
+            "vit_a_rae_in_mcg" -> runBlocking { foodDAO.getVitARaeInMcg().first() }
+            "vit_a_re_in_mcg" -> runBlocking { foodDAO.getVitAReInMcg().first() }
+            "retinol_in_mcg" -> runBlocking { foodDAO.getRetinolInMcg().first() }
+            "beta_carotene_equivalent_in_mcg" -> runBlocking {
+                foodDAO.getBetaCaroteneEquivalentInMcg().first()
+            }
+            "thiamin_in_mcg" -> runBlocking { foodDAO.getThiaminInMcg().first() }
+            "riboflavin_in_mcg" -> runBlocking { foodDAO.getRiboflavinInMcg().first() }
+            "niacin_in_mcg" -> runBlocking { foodDAO.getNiacinInMcg().first() }
+            "dietary_folate_eq_in_mcg" -> runBlocking { foodDAO.getDietaryFolateEqInMcg().first() }
+            "food_folate_in_mcg" -> runBlocking { foodDAO.getFoodFolateInMcg().first() }
+            "vit_b12_in_mcg" -> runBlocking { foodDAO.getVitB12InMcg().first() }
+            "vit_c_in_mcg" -> runBlocking { foodDAO.getVitCInMcg().first() }
+            "cholesterol_in_mg" -> runBlocking { foodDAO.getCholesterolInMg().first() }
             else -> emptyList()
         }
 
@@ -212,81 +227,81 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
                 else -> emptyFlow()
             })
             "se_in_mg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichSeInMg(q2)
+                "low" -> foodDAO.getLowSeInMg(q2)
+                "regular" -> foodDAO.getRegularSeInMg(q1, q3)
                 else -> emptyFlow()
             })
             "vit_a_rae_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichVitARaeInMcg(q2)
+                "low" -> foodDAO.getLowVitARaeInMcg(q2)
+                "regular" -> foodDAO.getRegularVitARaeInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "vit_a_re_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichVitAReInMcg(q2)
+                "low" -> foodDAO.getLowVitAReInMcg(q2)
+                "regular" -> foodDAO.getRegularVitAReInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "retinol_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichRetinolInMcg(q2)
+                "low" -> foodDAO.getLowRetinolInMcg(q2)
+                "regular" -> foodDAO.getRegularRetinolInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "beta_carotene_equivalent_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichBetaCaroteneEquivalentInMcg(q2)
+                "low" -> foodDAO.getLowBetaCaroteneEquivalentInMcg(q2)
+                "regular" -> foodDAO.getRegularBetaCaroteneEquivalentInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "thiamin_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichThiaminInMcg(q2)
+                "low" -> foodDAO.getLowThiaminInMcg(q2)
+                "regular" -> foodDAO.getRegularThiaminInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "riboflavin_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichRiboflavinInMcg(q2)
+                "low" -> foodDAO.getLowRiboflavinInMcg(q2)
+                "regular" -> foodDAO.getRegularRiboflavinInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "niacin_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichNiacinInMcg(q2)
+                "low" -> foodDAO.getLowNiacinInMcg(q2)
+                "regular" -> foodDAO.getRegularNiacinInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "dietary_folate_eq_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichDietaryFolateEqInMcg(q2)
+                "low" -> foodDAO.getLowDietaryFolateEqInMcg(q2)
+                "regular" -> foodDAO.getRegularDietaryFolateEqInMcg(q1, q3)
                 else -> emptyFlow()
             })
             "food_folate_in_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "high" -> foodDAO.getRichFoodFolateInMcg(q2)
+                "low" -> foodDAO.getLowFoodFolateInMcg(q2)
+                "regular" -> foodDAO.getRegularFoodFolateInMcg(q1, q3)
                 else -> emptyFlow()
             })
-            "vit_b12_mcg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+            "vit_b12_in_mcg" -> return (when (level) {
+                "high" -> foodDAO.getRichVitB12InMcg(q2)
+                "low" -> foodDAO.getLowVitB12InMcg(q2)
+                "regular" -> foodDAO.getRegularVitB12InMcg(q1, q3)
                 else -> emptyFlow()
             })
             "vit_c_in_mcg" -> return (when (level) {
                 "high" -> foodDAO.getRichWaterInG(q2)
                 "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+                "regular" -> foodDAO.getRegularVitCInMcg(q1, q3)
                 else -> emptyFlow()
             })
-            "cholesterol_mg" -> return (when (level) {
-                "high" -> foodDAO.getRichWaterInG(q2)
-                "low" -> foodDAO.getLowWaterInG(q2)
-                "regular" -> foodDAO.getRegularWaterInG(q1, q3)
+            "cholesterol_in_mg" -> return (when (level) {
+                "high" -> foodDAO.getRichCholesterolInMg(q2)
+                "low" -> foodDAO.getLowCholesterolInMg(q2)
+                "regular" -> foodDAO.getRegularCholesterolInMg(q1, q3)
                 else -> emptyFlow()
             })
             else -> emptyFlow()
