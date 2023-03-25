@@ -41,7 +41,6 @@ class DeficiencyFragment : Fragment() {
             deficiencySignsAndSymptoms.text = deficiency.sign_and_symptoms
             deficiencyNutrients.text = deficiency.nutrients
             deficiencyFunction.text = deficiency.function
-            deficiencyFoods.text = deficiency.foods?.count().toString()
         }
     }
 

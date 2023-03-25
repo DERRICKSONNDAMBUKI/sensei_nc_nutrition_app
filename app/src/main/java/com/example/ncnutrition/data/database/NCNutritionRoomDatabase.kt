@@ -127,7 +127,6 @@ private fun importDeficienciesJson(context: Context): List<Deficiency> {
             sign_and_symptoms = it.sign_and_symptoms,
             nutrients = it.nutrients,
             function = it.function,
-        foods = it.foods
         )
     }
 }

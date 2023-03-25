@@ -31,7 +31,6 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
             sign_and_symptoms = sign_and_symptoms,
             nutrients = nutrients,
             function = function,
-            foods = null
         )
     }
 
@@ -70,7 +69,7 @@ class DeficiencyViewModel(private val deficiencyDAO: DeficiencyDAO, private val 
 
     private fun deficiencyFoods(deficiency: Deficiency): LiveData<List<Food>> {
         val liveDataFoodList = when (deficiency.name) {
-            "Cancer" -> joinLiveDataLists(getFoodsByNutrients("water_in_g", "low").asLiveData())
+            "Beriberi" -> joinLiveDataLists(getFoodsByNutrients("water_in_g", "high").asLiveData())
 
             else -> emptyFlow<List<Food>>().asLiveData()
         }

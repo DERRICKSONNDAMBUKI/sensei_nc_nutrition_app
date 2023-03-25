@@ -84,7 +84,6 @@ class ConditionFragment : Fragment() {
         }
         binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
-
     }
 
 
