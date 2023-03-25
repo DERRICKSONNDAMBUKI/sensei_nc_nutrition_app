@@ -17,7 +17,6 @@ import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
 import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
-import com.example.ncnutrition.ui.foods.fragment.FoodsFragmentDirections
 
 
 class ConditionFragment : Fragment() {
@@ -59,7 +58,7 @@ class ConditionFragment : Fragment() {
 
         val adapter = FoodsAdapter { food ->
             val action =
-                FoodsFragmentDirections.actionFoodsFragmentToFoodFragment(food.code) // pass arg food.id bug
+                ConditionFragmentDirections.actionConditionFragmentToFoodFragment(food.code)
             this.findNavController().navigate(action)
         }
 //        set adapter

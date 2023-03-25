@@ -17,7 +17,6 @@ import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.deficiencies.viewModel.DeficiencyViewModel
 import com.example.ncnutrition.ui.deficiencies.viewModel.DeficiencyViewModelFactory
 import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
-import com.example.ncnutrition.ui.foods.fragment.FoodsFragmentDirections
 
 
 class DeficiencyFragment : Fragment() {
@@ -58,7 +57,7 @@ class DeficiencyFragment : Fragment() {
 
         val adapter = FoodsAdapter { food ->
             val action =
-                FoodsFragmentDirections.actionFoodsFragmentToFoodFragment(food.code) // pass arg food.id bug
+                DeficiencyFragmentDirections.actionDeficiencyFragmentToFoodFragment(food.code)
             this.findNavController().navigate(action)
         }
 //        set adapter
