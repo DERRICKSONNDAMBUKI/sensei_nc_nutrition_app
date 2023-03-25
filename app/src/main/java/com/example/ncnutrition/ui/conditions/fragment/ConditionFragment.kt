@@ -66,10 +66,10 @@ class ConditionFragment : Fragment() {
             bind(condition)
         }
         viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner) { foods ->
-            if (foods.isNullOrEmpty()) {
+            conditionFoods = foods
+            if (conditionFoods.isEmpty()) {
                 Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
             } else {
-                conditionFoods = foods
                 conditionFoods.let {
                     adapter.submitList(it)
                 }
