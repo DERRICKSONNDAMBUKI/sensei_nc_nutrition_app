@@ -8,12 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentConditionBinding
 import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel
 import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
+import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
 
 
 class ConditionFragment : Fragment() {
@@ -52,28 +54,34 @@ class ConditionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = FoodsAdapter { food ->
+
+        }
+//        set adapter
+        binding.conditionFoodsRecyclerView.adapter = adapter
+
         val id = navigationArgs.id
         viewModel.retrieveCondition(id).observe(this.viewLifecycleOwner) { selectedCondition ->
             condition = selectedCondition
             bind(condition)
         }
-        viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner){ foods->
-//            bindFoods(it)
+        viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner) { foods ->
             if (foods.isNullOrEmpty()) {
                 Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
             } else {
-                conditionFoods =foods
-                bindFoods(conditionFoods)
-                Toast.makeText(this.context, "${conditionFoods.count()} foods", Toast.LENGTH_SHORT).show()
+                conditionFoods = foods
+                conditionFoods.let {
+                    adapter.submitList(it)
+                }
+                Toast.makeText(this.context, "${conditionFoods.count()} foods", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
+        binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+
     }
 
-    private fun bindFoods(foods: List<Food>) {
-        binding.apply {
-            conditionFoods.text = foods.count().toString()
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

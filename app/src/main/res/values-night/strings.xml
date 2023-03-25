@@ -18,4 +18,5 @@
     <string name="search_hint">Search...</string>
     <string name="search_title">Search</string>
     <string name="text_foods">foods</string>
+    <string name="condition_foods">Condition Foods</string>
 </resources>

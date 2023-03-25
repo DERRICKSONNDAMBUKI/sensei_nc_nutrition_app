@@ -8,8 +8,9 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,13 +43,15 @@
                 android:textStyle="italic" />
 
             <!-- condition foods recyclerView-->
-            <TextView
-                android:id="@+id/conditionFoods"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/conditionFoodsRecyclerView"
+                android:name="Condition foods"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_foods"
-                android:textStyle="italic" />
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/fragment_foods" />
 
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
