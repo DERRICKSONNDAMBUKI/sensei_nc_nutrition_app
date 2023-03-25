@@ -13,7 +13,10 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
     ViewModel() {
 
     val allConditions: LiveData<List<Condition>> = conditionDAO.getConditions().asLiveData()
-//    val allFoods: LiveData<List<Food>>  =  conditionFoods("Cancer")
+
+    fun getFoodsByFoodGroup(food_group_code: Int): Flow<List<Food>> {
+        return foodDAO.getFoodsByFoodGroup(food_group_code)
+    }
 
     private fun insertCondition(condition: Condition) {
         viewModelScope.launch {
@@ -64,21 +67,67 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
                 getFoodsByNutrients("energy_in_kcal", "low").asLiveData(),
                 getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
                 getFoodsByNutrients("se_in_mg", "regular").asLiveData(),
-                foodDAO.getFoodsByFoodGroup(4).asLiveData(),
-                foodDAO.getFoodsByFoodGroup(5).asLiveData()
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData()
             )
             "Cardiovascular disease" -> joinLiveDataLists(
                 getFoodsByNutrients("niacin_in_mcg", "rich").asLiveData(),
                 getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(),
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(), // extremely
+                getFoodsByNutrients("vit_c_in_mcg","rich").asLiveData(),
                 getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
                 getFoodsByNutrients("cholesterol_in_mg", "low").asLiveData() // vitamin E
             )
             "Hypertension" -> joinLiveDataLists(
                 getFoodsByNutrients("na_in_mg", "low").asLiveData(), // extremely,
                 getFoodsByNutrients("fat_in_g", "low").asLiveData(),
-                foodDAO.getFoodsByFoodGroup(4).asLiveData(),
-                foodDAO.getFoodsByFoodGroup(5).asLiveData()
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData()
+            )
+            "Colorectal cancer" -> joinLiveDataLists(
+                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData(),
+            )
+            "Prostate cancer" -> joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
+                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
+                getFoodsByNutrients("se_in_mg", "rich").asLiveData(),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
+               getFoodsByFoodGroup(4).asLiveData(),
+               getFoodsByFoodGroup(5).asLiveData(),
+            )
+            "Diabetes mellitus and metabolic disorders" -> joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
+                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
+                getFoodsByNutrients(" carbohydrate_available_in_g", "low").asLiveData(),//extremely
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData(),
+            )
+            "Obesity and overweight weight"->joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData(),
+            )
+            "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"->joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "rich").asLiveData(), //extremely
+                getFoodsByNutrients("energy_in_kcal", "regular").asLiveData(), //extremely
+                getFoodsByNutrients("ca_in_mg","rich").asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData(),
+            )
+            "Dental carries (Tooth decay)"->joinLiveDataLists(
+                getFoodsByNutrients("vit_c_in_mcg","rich").asLiveData(),
+                getFoodsByNutrients("ca_in_mg","rich").asLiveData(), // vitamin D
+            )
+            "Bowel conditions and diseases"->joinLiveDataLists(
+                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
+                getFoodsByNutrients("water_in_g","rich").asLiveData(),
+                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
+                getFoodsByFoodGroup(4).asLiveData(),
+                getFoodsByFoodGroup(5).asLiveData(),
             )
 // energy_in_kJ,
 //            energy_in_kcal,
