@@ -64,70 +64,72 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
     private fun conditionFoods(condition: Condition): LiveData<List<Food>> {
         val liveDataFoodList = when (condition.name) {
             "Cancer" -> joinLiveDataLists(
-                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(),
-                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
-                getFoodsByNutrients("se_in_mg", "regular").asLiveData(),
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData()
+                getFoodsByNutrients("energy_in_kcal", "low"),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich"),
+                getFoodsByNutrients("se_in_mg", "regular"),
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5)
             )
             "Cardiovascular disease" -> joinLiveDataLists(
-                getFoodsByNutrients("niacin_in_mcg", "rich").asLiveData(),
-                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(), // extremely
-                getFoodsByNutrients("vit_c_in_mcg","rich").asLiveData(),
-                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
-                getFoodsByNutrients("cholesterol_in_mg", "low").asLiveData() // vitamin E
+                getFoodsByNutrients("niacin_in_mcg", "rich"),
+                getFoodsByNutrients("fibre_in_g", "rich"),
+                getFoodsByNutrients("fat_in_g", "low"), // extremely
+                getFoodsByNutrients("vit_c_in_mcg", "rich"),
+                getFoodsByNutrients("vit_c_in_mcg", "regular"),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich"),
+                getFoodsByNutrients("cholesterol_in_mg", "low")// vitamin E
             )
             "Hypertension" -> joinLiveDataLists(
-                getFoodsByNutrients("na_in_mg", "low").asLiveData(), // extremely,
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(),
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData()
+                getFoodsByNutrients("na_in_mg", "low"), // extremely,
+                getFoodsByNutrients("fat_in_g", "low"),
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5)
             )
             "Colorectal cancer" -> joinLiveDataLists(
-                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData(),
+                getFoodsByNutrients("fibre_in_g", "rich"),
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5),
             )
             "Prostate cancer" -> joinLiveDataLists(
-                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
-                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByNutrients("se_in_mg", "rich").asLiveData(),
-                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich").asLiveData(),
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
-               getFoodsByFoodGroup(4).asLiveData(),
-               getFoodsByFoodGroup(5).asLiveData(),
+                getFoodsByNutrients("energy_in_kcal", "low"), //extremely
+                getFoodsByNutrients("fibre_in_g", "rich"),
+                getFoodsByNutrients("se_in_mg", "rich"),
+                getFoodsByNutrients("beta_carotene_equivalent_in_mcg", "rich"),
+                getFoodsByNutrients("fat_in_g", "low"), //extremely
+//                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5),
             )
             "Diabetes mellitus and metabolic disorders" -> joinLiveDataLists(
-                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
-                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
-                getFoodsByNutrients(" carbohydrate_available_in_g", "low").asLiveData(),//extremely
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData(),
+                getFoodsByNutrients("energy_in_kcal", "low"), //extremely
+                getFoodsByNutrients("fibre_in_g", "rich"),
+                getFoodsByNutrients("fat_in_g", "low"), //extremely
+                getFoodsByNutrients("carbohydrate_available_in_g", "low"),//extremely
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5),
             )
-            "Obesity and overweight weight"->joinLiveDataLists(
-                getFoodsByNutrients("energy_in_kcal", "low").asLiveData(), //extremely
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData(),
+            "Obesity and overweight weight" -> joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "low"), //extremely
+                getFoodsByNutrients("fat_in_g", "low"), //extremely
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5),
             )
-            "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"->joinLiveDataLists(
-                getFoodsByNutrients("energy_in_kcal", "rich").asLiveData(), //extremely
-                getFoodsByNutrients("energy_in_kcal", "regular").asLiveData(), //extremely
-                getFoodsByNutrients("ca_in_mg","rich").asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData(),
+            "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa" -> joinLiveDataLists(
+                getFoodsByNutrients("energy_in_kcal", "rich"), //extremely
+                getFoodsByNutrients("energy_in_kcal", "regular"), //extremely
+                getFoodsByNutrients("ca_in_mg", "rich"),
+                getFoodsByFoodGroup(5),
             )
-            "Dental carries (Tooth decay)"->joinLiveDataLists(
-                getFoodsByNutrients("vit_c_in_mcg","rich").asLiveData(),
-                getFoodsByNutrients("ca_in_mg","rich").asLiveData(), // vitamin D
+            "Dental carries (Tooth decay)" -> joinLiveDataLists(
+                getFoodsByNutrients("vit_c_in_mcg", "rich"),
+                getFoodsByNutrients("vit_c_in_mcg", "regular"),
+                getFoodsByNutrients("ca_in_mg", "rich"), // vitamin D
             )
-            "Bowel conditions and diseases"->joinLiveDataLists(
-                getFoodsByNutrients("fat_in_g", "low").asLiveData(), //extremely
-                getFoodsByNutrients("water_in_g","rich").asLiveData(),
-                getFoodsByNutrients("fibre_in_g", "rich").asLiveData(),
-                getFoodsByFoodGroup(4).asLiveData(),
-                getFoodsByFoodGroup(5).asLiveData(),
+            "Bowel conditions and diseases" -> joinLiveDataLists(
+                getFoodsByNutrients("fat_in_g", "low"), //extremely
+                getFoodsByNutrients("water_in_g", "rich"),
+                getFoodsByNutrients("fibre_in_g", "rich"),
+                getFoodsByFoodGroup(4),
+                getFoodsByFoodGroup(5),
             )
 // energy_in_kJ,
 //            energy_in_kcal,
@@ -162,13 +164,13 @@ class ConditionViewModel(private val conditionDAO: ConditionDAO, private val foo
         return liveDataFoodList
     }
 
-    private fun joinLiveDataLists(vararg liveDataList: LiveData<List<Food>>): LiveData<List<Food>> {
+    private fun joinLiveDataLists(vararg liveDataList: Flow<List<Food>>): LiveData<List<Food>> {
         val resultLiveData = MediatorLiveData<List<Food>>()
         val dataList = mutableListOf<List<Food>>()
 
 //        add each source LiveData to the MediatorLiveData
         for (liveData in liveDataList) {
-            resultLiveData.addSource(liveData) { data ->
+            resultLiveData.addSource(liveData.asLiveData()) { data ->
                 dataList.add(data)
 //                check if all LiveData have emitted their values
                 if (dataList.size == liveDataList.size) {

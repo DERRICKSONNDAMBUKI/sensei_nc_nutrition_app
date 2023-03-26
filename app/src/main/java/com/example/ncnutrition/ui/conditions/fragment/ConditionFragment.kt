@@ -62,13 +62,14 @@ class ConditionFragment : Fragment() {
             this.findNavController().navigate(action)
         }
 //        set adapter
-        binding.conditionFoodsRecyclerView.adapter = adapter
+
+        binding.apply {
+           conditionFoodsRecyclerView.adapter = adapter
+        }
+
 
         val id = navigationArgs.id
-        viewModel.retrieveCondition(id).observe(this.viewLifecycleOwner) { selectedCondition ->
-            condition = selectedCondition
-            bind(condition)
-        }
+
         viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner) { foods ->
             conditionFoods = foods
             if (conditionFoods.isEmpty()) {
@@ -83,6 +84,10 @@ class ConditionFragment : Fragment() {
         }
         binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
+        viewModel.retrieveCondition(id).observe(this.viewLifecycleOwner) { selectedCondition ->
+            condition = selectedCondition
+            bind(condition)
+        }
     }
 
 

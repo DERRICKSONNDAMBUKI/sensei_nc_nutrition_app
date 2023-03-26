@@ -1,5 +1,7 @@
 package com.example.ncnutrition
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -74,15 +76,15 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.profile_menu, menu)
         val search = menu?.findItem(R.id.search)?.actionView as SearchView
 
-//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         search.apply {
             search.queryHint = "Search..."
 
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
-                    Toast.makeText(this@MainActivity,"query $query",Toast.LENGTH_SHORT).show()
-                    getSearched(query)
-                    return true
+//                    Toast.makeText(this@MainActivity,"query $query",Toast.LENGTH_SHORT).show()
+//                    getSearched(query)
+                    return false
                 }
 
                 override fun onQueryTextChange(query: String): Boolean {
@@ -91,14 +93,10 @@ class MainActivity : AppCompatActivity() {
                     return false
                 }
             })
-
-
-//            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
 
-//        (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
-//            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//        }
+
         return true
     }
 

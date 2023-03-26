@@ -38,6 +38,7 @@ class FoodsAdapter(private val onFoodClicked: (Food) -> Unit) :
                 foodsFoodGroup.text = food.food_group
                 foodsEnergy.text = food.energy_in_kcal.toString()
             }
+
         }
     }
 

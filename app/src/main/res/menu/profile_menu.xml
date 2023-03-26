@@ -12,6 +12,9 @@
     <item android:id="@+id/search"
         android:title="@string/search_title"
         android:icon="@drawable/ic_baseline_search_24"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="?attr/actionBarItemBackground"
         app:showAsAction="ifRoom|withText"
         app:actionViewClass="android.widget.SearchView" />
 

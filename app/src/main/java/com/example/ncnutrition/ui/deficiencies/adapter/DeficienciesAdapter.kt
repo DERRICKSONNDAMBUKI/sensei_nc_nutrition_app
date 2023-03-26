@@ -34,7 +34,7 @@ class DeficienciesAdapter(
         fun bind(deficiency: Deficiency) {
 
             binding.apply {
-                deficienciesId.text = deficiency.id.toString()
+//                deficienciesId.text = deficiency.id.toString()
                 deficienciesName.text = deficiency.name
                 deficienciesSignAndSymptoms.text = deficiency.sign_and_symptoms
             }

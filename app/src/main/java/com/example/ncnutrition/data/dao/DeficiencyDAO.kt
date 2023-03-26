@@ -24,6 +24,6 @@ interface DeficiencyDAO {
     @Query("select * from deficiency ORDER BY name")
     fun getDeficiencies(): Flow<List<Deficiency>>
 
-    @Query("select * from deficiency where name like :name limit 5")
-    fun findDeficiencyByName(name: String): Flow<List<Deficiency>>
+    @Query("select * from deficiency where name LIKE :query or sign_and_symptoms LIKE :query or function LIKE :query LIMIT 5")
+    fun findDeficiencyByName(query: String): Flow<List<Deficiency>>
 }

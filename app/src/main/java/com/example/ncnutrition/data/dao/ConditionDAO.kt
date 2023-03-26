@@ -24,6 +24,6 @@ interface ConditionDAO {
     @Query("select * from condition order by name asc")
     fun getConditions(): Flow<List<Condition>>
 
-    @Query("select * from condition where name LIKE :name LIMIT 5")
-    fun findConditionByName(name: String): Flow<List<Condition>>
+    @Query("select * from condition where name LIKE :query or description LIKE :query LIMIT 5")
+    fun findConditionByName(query: String): Flow<List<Condition>>
 }
