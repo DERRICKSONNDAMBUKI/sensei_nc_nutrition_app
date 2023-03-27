@@ -8,6 +8,7 @@ import androidx.room.TypeConverters
 import com.example.ncnutrition.data.dao.ConditionDAO
 import com.example.ncnutrition.data.dao.DeficiencyDAO
 import com.example.ncnutrition.data.dao.FoodDAO
+import com.example.ncnutrition.data.dao.MealDAO
 import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.model.Deficiency
 import com.example.ncnutrition.model.Food
@@ -17,11 +18,12 @@ import kotlinx.coroutines.runBlocking
 @Database(
     entities = [Food::class, Condition::class, Deficiency::class], version = 1, exportSchema = false
 )
-@TypeConverters(FoodListConverters::class)
+@TypeConverters(FoodListConverters::class, MealListConverters::class)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
     abstract fun conditionDao(): ConditionDAO
     abstract fun deficiencyDao(): DeficiencyDAO
+    abstract fun mealDao(): MealDAO
 
 
     companion object {

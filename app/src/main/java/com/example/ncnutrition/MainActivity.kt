@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 //            R.id.action_settings,
             R.id.profile,
             R.id.search,
+            R.id.navigation_meals
         ),
         fallbackOnNavigateUpListener = ::onSupportNavigateUp
     )
@@ -105,7 +106,6 @@ class MainActivity : AppCompatActivity() {
 
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
-
 
     private fun getSearched(query: String) {
         foodsViewModel.searchFood(query).observe(this@MainActivity) { foods ->

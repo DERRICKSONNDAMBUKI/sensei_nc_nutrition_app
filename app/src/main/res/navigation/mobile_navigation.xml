@@ -50,6 +50,9 @@
         <argument
             android:name="code"
             app:argType="string" />
+        <action
+            android:id="@+id/action_foodFragment_to_navigation_meals"
+            app:destination="@id/navigation_meals" />
     </fragment>
     <fragment
         android:id="@+id/addFoodFragment"
@@ -129,4 +132,9 @@
         android:name="com.example.ncnutrition.ui.deficiencies.fragment.AddDeficiencyFragment"
         android:label="@string/title_add_deficiency"
         tools:layout="@layout/fragment_add_deficiency" />
+    <fragment
+        android:id="@+id/navigation_meals"
+        android:name="com.example.ncnutrition.ui.mealTable.fragment.MealsFragment"
+        android:label="@string/title_meals"
+        tools:layout="@layout/fragment_meals_list" />
 </navigation>
