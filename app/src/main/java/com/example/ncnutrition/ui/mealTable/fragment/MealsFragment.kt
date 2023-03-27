@@ -4,14 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentMealsListBinding
+import com.example.ncnutrition.ui.mealTable.adapter.MealsAdapter
+import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
+import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModelFactory
 
 /**
  * A fragment representing a list of Items.
  */
 class MealsFragment : Fragment() {
 
+    private val viewModel: MealViewModel by activityViewModels {
+        MealViewModelFactory(
+            (activity?.application as NCNutritionApplication).database.mealDao()
+        )
+    }
 
     private var _binding: FragmentMealsListBinding? = null
     private val binding get() = _binding!!
@@ -29,6 +41,25 @@ class MealsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set the adapter
+        val adapter = MealsAdapter { meal ->
+
+        }
+        binding.mealsRecyclerView.adapter = adapter
+//        viewModel
+        viewModel.allMeals.observe(this.viewLifecycleOwner) { meals ->
+            meals.let {
+                adapter.submitList(it)
+            }
+            if (meals.isEmpty()) {
+                Toast.makeText(
+                    this.context,
+                    "no meals, please choose foods to take",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        binding.mealsRecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
     override fun onDestroyView() {

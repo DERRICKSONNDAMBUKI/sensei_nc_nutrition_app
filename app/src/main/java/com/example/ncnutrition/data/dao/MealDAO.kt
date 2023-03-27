@@ -23,9 +23,9 @@ interface MealDAO {
     fun getMeals():Flow<List<Meal>>
 
     @Query("select * from meal where date = :date")
-    fun getMeal(date:Date):Flow<Meal>
+    fun getMeal(date:Date):Flow<List<Meal>>
 
-    @Query("select * from meal where data like :date limit 5")
+    @Query("select * from meal where data like :date limit 10")
     fun findMealByDate(date: Date):Flow<List<Meal>>
 
 }

@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 
-@Entity("meal",indices = [androidx.room.Index(value = ["name"], unique = true)])
+@Entity("meal")
 data class Meal(
     @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid")
-    val id:Int,
+    val id:Int =0,
     @ColumnInfo("name")
     val name:String,
     @ColumnInfo("date")
