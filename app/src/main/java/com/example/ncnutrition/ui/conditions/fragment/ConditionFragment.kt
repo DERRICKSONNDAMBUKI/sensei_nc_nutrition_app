@@ -63,9 +63,7 @@ class ConditionFragment : Fragment() {
         }
 //        set adapter
 
-        binding.apply {
-           conditionFoodsRecyclerView.adapter = adapter
-        }
+
 
 
         val id = navigationArgs.id
@@ -81,6 +79,9 @@ class ConditionFragment : Fragment() {
                 Toast.makeText(this.context, "${conditionFoods.count()} foods", Toast.LENGTH_SHORT)
                     .show()
             }
+        }
+        binding.apply {
+            conditionFoodsRecyclerView.adapter = adapter
         }
         binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
 

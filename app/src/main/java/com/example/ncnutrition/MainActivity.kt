@@ -5,16 +5,14 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.example.ncnutrition.databinding.ActivityMainBinding
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
@@ -42,8 +40,10 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_foods,
             R.id.navigation_dashboard,
 //            R.id.action_settings,
-            R.id.search
-        )
+            R.id.profile,
+            R.id.search,
+        ),
+        fallbackOnNavigateUpListener = ::onSupportNavigateUp
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
 
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -82,8 +81,7 @@ class MainActivity : AppCompatActivity() {
 
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
-//                    Toast.makeText(this@MainActivity,"query $query",Toast.LENGTH_SHORT).show()
-//                    getSearched(query)
+                    getSearched(query)
                     return false
                 }
 
@@ -96,15 +94,24 @@ class MainActivity : AppCompatActivity() {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
 
-
         return true
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navController = navHostFragment.navController
+
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+    }
+
 
     private fun getSearched(query: String) {
         foodsViewModel.searchFood(query).observe(this@MainActivity) { foods ->
             foods.let {
                 Log.e("Foods", it.toString())
-                Toast.makeText(this@MainActivity,"query $it",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "query $it", Toast.LENGTH_SHORT).show()
             }
         }
     }
