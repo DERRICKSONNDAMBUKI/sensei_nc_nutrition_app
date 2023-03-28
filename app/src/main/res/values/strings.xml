@@ -38,5 +38,8 @@
     <string name="recipe_description">Encouraging dietary diversity by first appreciating local recipes is a key step in enhancing good nutrition at community level. This recipes is work that has taken into account diversity of lifestyles, cultures and food patterns of the various communities in Kenya. The recipes have been sampled from across the country and representatives from the different people groups provided guidance in the development of these recipes. They forms an initial step in promotion of good nutrition at community level by promoting and enhancing of local recipes. They will also be an important reference tool for teaching people and for nutrition education programs in the communities.</string>
     <string name="profile">Profile</string>
     <string name="title_meals">Meals</string>
+    <string name="take_food">Day to Take</string>
+    <string name="lunch">Meal</string>
+    <string name="take">Take</string>
 
 </resources>

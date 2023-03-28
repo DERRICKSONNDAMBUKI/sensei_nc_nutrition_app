@@ -37,6 +37,8 @@ class MealsAdapter(private val onMealClicked: (Meal) -> Unit) :
         fun bind(meal: Meal) {
             binding.apply {
 //                 set meal to list
+                content.text = meal.name
+                itemNumber.text = meal.date.toString()
 
             }
         }

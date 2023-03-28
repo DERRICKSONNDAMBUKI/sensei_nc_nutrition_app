@@ -26,6 +26,14 @@
         />
 
     <item
+        android:id="@+id/notifications_menu_item"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="Notifications"
+        android:background="?attr/actionBarItemBackground"
+        app:showAsAction="always"
+        android:actionLayout="@layout/notifications_menu_item_layout"
+        />
+    <item
         android:id="@+id/navigation_meals"
         android:title= "@string/title_meals" />
     <item

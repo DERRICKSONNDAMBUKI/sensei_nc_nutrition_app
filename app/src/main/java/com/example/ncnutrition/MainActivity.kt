@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 //            R.id.action_settings,
             R.id.profile,
             R.id.search,
+            R.id.notifications_menu_item,
             R.id.navigation_meals
         ),
         fallbackOnNavigateUpListener = ::onSupportNavigateUp
@@ -74,6 +77,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
+
+//        search
         val search = menu?.findItem(R.id.search)?.actionView as SearchView
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
@@ -95,8 +100,28 @@ class MainActivity : AppCompatActivity() {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
 
+//        notifications
+        val notificationsMenuItem = menu.findItem(R.id.notifications_menu_item)
+        val notificationsItemView = notificationsMenuItem.actionView
+        val notificationsItemBadge = notificationsItemView?.findViewById<TextView>(R.id.notifications_menu_item_badge)
+
+//        set the badge count
+        val badgeCount = 10
+        notificationsItemBadge?.let { setBadgeCountVisibility(it,badgeCount) }
+
+
         return true
     }
+
+    private fun setBadgeCountVisibility(notificationsItemBadge: TextView, badgeCount: Int) {
+        if (badgeCount == 0){
+            notificationsItemBadge.visibility  = View.GONE
+        }else{
+            notificationsItemBadge.visibility = View.VISIBLE
+            notificationsItemBadge.text = badgeCount.toString()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val navHostFragment =

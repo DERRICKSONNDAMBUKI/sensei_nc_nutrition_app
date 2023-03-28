@@ -12,11 +12,12 @@ import com.example.ncnutrition.data.dao.MealDAO
 import com.example.ncnutrition.model.Condition
 import com.example.ncnutrition.model.Deficiency
 import com.example.ncnutrition.model.Food
+import com.example.ncnutrition.model.Meal
 import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 
 @Database(
-    entities = [Food::class, Condition::class, Deficiency::class], version = 1, exportSchema = false
+    entities = [Food::class, Condition::class, Deficiency::class,Meal::class], version = 1, exportSchema = false
 )
 @TypeConverters(FoodListConverters::class, MealListConverters::class)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
