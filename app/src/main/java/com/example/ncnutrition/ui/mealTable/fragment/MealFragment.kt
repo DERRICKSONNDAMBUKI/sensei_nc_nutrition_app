@@ -53,10 +53,8 @@ class MealFragment : Fragment() {
         val date = navigationArgs.date
         selectedMealDate = Date(date)
         calendarViewMeal.date = date
-        val adapter = FoodsAdapter { food ->
-//            to recipe if it's a dish
-        }
-        recyclerViewMealFoods.adapter = adapter
+
+
 
         calendarViewMeal.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance().apply {
@@ -65,23 +63,34 @@ class MealFragment : Fragment() {
                 set(Calendar.DAY_OF_MONTH, dayOfMonth)
             }
             selectedMealDate = calendar.time
+            selectMeal(selectedMealDate)
         }
 
+
+        recyclerViewMealFoods.layoutManager = LinearLayoutManager(this.context)
+
+
+    }
+
+    private fun selectMeal(selectedMealDate: Date) {
+        val adapter = FoodsAdapter { food ->
+//            to recipe if it's a dish
+        }
+        val recyclerViewMealFoods = binding.recyclerViewMealFoods
+        recyclerViewMealFoods.adapter = adapter
+        Toast.makeText(context,"no meals on $selectedMealDate", Toast.LENGTH_SHORT).show()
         viewModel.selectedMeal(selectedMealDate).observe(this.viewLifecycleOwner) {
             mealFoods = it
             if (mealFoods.isEmpty()){
-                Toast.makeText(context,"no meals on $selectedMealDate",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"no meals on $selectedMealDate", Toast.LENGTH_SHORT).show()
             }else{
                 mealFoods.let {
                     adapter.submitList(it)
-                    Toast.makeText(context,"${mealFoods.count()} foods on $selectedMealDate",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"${mealFoods.count()} foods on $selectedMealDate", Toast.LENGTH_SHORT).show()
                 }
             }
 
         }
-        recyclerViewMealFoods.layoutManager = LinearLayoutManager(this.context)
-
-
     }
 
     override fun onDestroyView() {
