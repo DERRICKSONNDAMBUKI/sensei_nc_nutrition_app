@@ -37,8 +37,8 @@
         android:id="@+id/navigation_meals"
         android:title= "@string/title_meals" />
     <item
-        android:id="@+id/navigation_foods"
+        android:id="@+id/navigation_progress"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_foods" />
+        android:title="@string/title_progress" />
 
 </menu>

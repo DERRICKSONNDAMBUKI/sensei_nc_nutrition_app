@@ -36,7 +36,7 @@ class FoodsAdapter(private val onFoodClicked: (Food) -> Unit) :
             binding.apply {
                 foodsFoodName.text = food.food_name
                 foodsFoodGroup.text = food.food_group
-                foodsEnergy.text = food.energy_in_kcal.toString()
+                foodsEnergy.text = "${food.energy_in_kcal.toString()} Kilocalories"
             }
 
         }

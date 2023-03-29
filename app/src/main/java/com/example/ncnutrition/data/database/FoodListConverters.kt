@@ -8,12 +8,12 @@ import java.util.*
 
 class FoodListConverters {
     @TypeConverter
-    fun listToJson(value: List<Food>?):String{
+    fun listToJson(value: Food?):String{
         return Gson().toJson(value)
     }
     @TypeConverter
-    fun jsonToList(value: String):List<Food>?{
-        return Gson().fromJson(value,Array<Food>::class.java)?.toList()
+    fun jsonToList(value: String):Food{
+        return Gson().fromJson(value,Food::class.java)
     }
 }
 class  MealListConverters{

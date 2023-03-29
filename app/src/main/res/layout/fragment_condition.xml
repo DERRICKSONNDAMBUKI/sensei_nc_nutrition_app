@@ -18,7 +18,11 @@
             android:id="@+id/conditionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_condition" />
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/title_condition"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
 
         <!--        <ScrollView-->
         <!--            android:id="@+id/scrollView2"-->
@@ -41,7 +45,8 @@
             android:id="@+id/conditionDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
+            android:text="@string/description"
+            android:layout_margin="@dimen/text_margin"
             android:textSize="20sp" />
 
         <TextView
@@ -49,17 +54,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_nutrients"
+            android:layout_margin="@dimen/text_margin"
             android:textStyle="italic" />
 
         <!-- condition foods recyclerView-->
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/conditionFoodsRecyclerView"
             android:name="Condition foods"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
             android:nestedScrollingEnabled="false"
-            android:overScrollMode="always"
             app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/fragment_foods" />
 

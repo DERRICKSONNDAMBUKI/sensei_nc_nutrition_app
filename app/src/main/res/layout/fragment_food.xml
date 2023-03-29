@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:autofillHints="lunch"
         android:ems="10"
-        android:hint="@string/lunch"
+        android:hint="@string/e_g_breakfast"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#546E7A"

@@ -7,13 +7,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ncnutrition.databinding.FragmentMealsBinding
 import com.example.ncnutrition.model.Meal
+import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
+import java.time.ZoneId
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class MealsAdapter(private val onMealClicked: (Meal) -> Unit) :
-    ListAdapter<Meal, MealsAdapter.MealViewHolder>(DiffCallback) {
+class MealsAdapter(
+    private val viewModel: MealViewModel, private val onMealClicked: (Meal) -> Unit
+) : ListAdapter<Meal, MealsAdapter.MealViewHolder>(DiffCallback) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         return MealViewHolder(
@@ -35,10 +39,17 @@ class MealsAdapter(private val onMealClicked: (Meal) -> Unit) :
     inner class MealViewHolder(private var binding: FragmentMealsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(meal: Meal) {
+            val day = meal.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfWeek
+            val month = meal.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().month
+            val date = meal.date.toInstant().atZone(ZoneId.systemDefault()).dayOfMonth
             binding.apply {
 //                 set meal to list
-                content.text = meal.name
-                itemNumber.text = meal.date.toString()
+                textViewFoodName.text = meal.food.food_name
+                textViewMealName.text = meal.name
+                textViewMealDate.text = "${date}th $month $day"
+                imageButtonRemove.setOnClickListener {
+                    viewModel.deleteMeal(meal)
+                }
 
             }
         }

@@ -15,8 +15,7 @@ import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModelFactory
-import java.text.DateFormat
-import java.text.SimpleDateFormat
+import java.time.ZoneId
 import java.util.*
 
 class FoodFragment : Fragment() {
@@ -36,6 +35,7 @@ class FoodFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var food: Food
+    lateinit var selectedDate:Date
 
 
     private fun bind(food: Food) {
@@ -63,15 +63,34 @@ class FoodFragment : Fragment() {
             food = selectedFood
             bind(food)
         }
+        val calendarDate = binding.calendarViewMealDate
+
+        calendarDate.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            // Do something with the selected date
+
+            // Create a calendar object and set it to the selected date
+            val calendar = Calendar.getInstance().apply {
+                set(Calendar.YEAR, year)
+                set(Calendar.MONTH, month)
+                set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            }
+
+            // Save the selected date to the public variable
+            selectedDate = calendar.time
+//            Toast.makeText(context,"Selected date $selectedDate",Toast.LENGTH_SHORT).show()
+        }
         binding.takeButton.setOnClickListener {
             addNewCondition()
         }
     }
 
     private fun isEntryValid(): Boolean {
+
+        Toast.makeText(context,"Selected date $selectedDate",Toast.LENGTH_SHORT).show()
         return mealViewModel.isEntryValid(
             name = binding.editTextMealName.text.toString(),
-            date = Date(binding.calendarViewMealDate.date),
+//            date = Date(binding.calendarViewMealDate.date),
+            date = selectedDate,
             food = food,
         )
     }
@@ -79,16 +98,25 @@ class FoodFragment : Fragment() {
     private fun addNewCondition() {
         if (isEntryValid()) {
             val name = binding.editTextMealName.text.toString()
-            val date = Date(binding.calendarViewMealDate.date)
+            val date = selectedDate
             val food = food
             mealViewModel.addNewMeal(
                 name = name,
                 date = date,
                 food = food,
             )
-            Toast.makeText(context, "a valid meal $date.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "saved food for $name on  ${
+                    date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
+                }.",
+                Toast.LENGTH_SHORT
+            ).show()
+            binding.editTextMealName.text.clear()
+
+
         } else {
-            Toast.makeText(context, "not a valid meal", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "e.g breakfast", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -96,10 +124,4 @@ class FoodFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-}
-
-private fun formattedDate(date: android.icu.util.Calendar): String {
-    val dateFormat: DateFormat = SimpleDateFormat("dd-mm-yyy HH:mm:ss")
-    val formattedDate = dateFormat.format(date.time)
-    return formattedDate
 }

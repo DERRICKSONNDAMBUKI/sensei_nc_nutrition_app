@@ -8,12 +8,10 @@ import java.util.*
 
 @Entity("meal")
 data class Meal(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid")
-    val id:Int =0,
-    @ColumnInfo("name")
-    val name:String,
-    @ColumnInfo("date")
-    val date: Date,
-    @ColumnInfo("foods")
-    val foods:List<Food>
+    @PrimaryKey(autoGenerate = true) @ColumnInfo("rowid") val id: Int = 0,
+    @ColumnInfo("name") val name: String,
+    @ColumnInfo("date") val date: Date,
+//    @ColumnInfo("foods")
+//    val foods:List<Food>
+    @ColumnInfo("food") val food: Food
 )

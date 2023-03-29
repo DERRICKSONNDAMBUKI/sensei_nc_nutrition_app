@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentMealsListBinding
@@ -41,8 +42,9 @@ class MealsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Set the adapter
-        val adapter = MealsAdapter { meal ->
-
+        val adapter = MealsAdapter(viewModel){ meal ->
+            val action = MealsFragmentDirections.actionNavigationMealsToMealFragment2(meal.date.time)
+            this.findNavController().navigate(action)
         }
         binding.mealsRecyclerView.adapter = adapter
 //        viewModel

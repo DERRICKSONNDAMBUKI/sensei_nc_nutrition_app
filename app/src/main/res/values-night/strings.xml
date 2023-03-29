@@ -25,4 +25,7 @@
     <string name="profile">Profile</string>
     <string name="take_food">Take this Food</string>
     <string name="take">Take</string>
+    <string name="remove_from_meals">remove from meals</string>
+    <string name="e_g_breakfast">e.g breakfast</string>
+    <string name="title_meal">Meal</string>
 </resources>

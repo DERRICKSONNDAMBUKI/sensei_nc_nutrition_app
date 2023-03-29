@@ -19,7 +19,9 @@ import kotlinx.coroutines.runBlocking
 @Database(
     entities = [Food::class, Condition::class, Deficiency::class,Meal::class], version = 1, exportSchema = false
 )
-@TypeConverters(FoodListConverters::class, MealListConverters::class)
+@TypeConverters(
+    FoodListConverters::class,
+    MealListConverters::class)
 abstract class NCNutritionRoomDatabase : RoomDatabase() {
     abstract fun foodDao(): FoodDAO
     abstract fun conditionDao(): ConditionDAO

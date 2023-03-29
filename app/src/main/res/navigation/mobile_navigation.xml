@@ -136,5 +136,23 @@
         android:id="@+id/navigation_meals"
         android:name="com.example.ncnutrition.ui.mealTable.fragment.MealsFragment"
         android:label="@string/title_meals"
-        tools:layout="@layout/fragment_meals_list" />
+        tools:layout="@layout/fragment_meals_list" >
+        <action
+            android:id="@+id/action_navigation_meals_to_mealFragment2"
+            app:destination="@id/mealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.example.ncnutrition.ui.mealTable.fragment.MealFragment"
+        android:label="@string/title_meal"
+        tools:layout="@layout/fragment_meal" >
+        <argument
+            android:name="date"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_progress"
+        android:name="com.example.ncnutrition.ui.mealTable.fragment.ProgressFragment"
+        android:label="@string/title_progress"
+        tools:layout="@layout/fragment_progress" />
 </navigation>
