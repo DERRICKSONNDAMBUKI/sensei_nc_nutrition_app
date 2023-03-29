@@ -27,6 +27,9 @@ interface FoodDAO {
     @Query("select * from food where Food_Group_Code = :food_group_code")
     fun getFoodsByFoodGroup(food_group_code: Int): Flow<List<Food>>
 
+    @Query("select * from food where Dish_group_code = :dish_group_code")
+    fun getFoodsByDishGroup(dish_group_code: Int): Flow<List<Food>>
+
     @Query("select * from food where Food_name LIKE :food_name LIMIT 5")
     fun findFoodByName(food_name: String): Flow<List<Food>>
 

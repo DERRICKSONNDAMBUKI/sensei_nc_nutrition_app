@@ -59,7 +59,7 @@ class ProgressFragment : Fragment() {
 
     }
     private fun selectDate(selectedMealDate: Date) {
-        viewModel.getMealBefore(selectedMealDate).observe(this.viewLifecycleOwner){
+        viewModel.getMealsBefore(selectedMealDate).observe(this.viewLifecycleOwner){
             mealFoods = it
             if (mealFoods.isEmpty()){
                 Toast.makeText(context,"${mealFoods.count()} no meals on $selectedMealDate", Toast.LENGTH_SHORT).show()

@@ -82,7 +82,7 @@ class MealFragment : Fragment() {
         viewModel.selectedMeal(selectedMealDate).observe(this.viewLifecycleOwner) {
             mealFoods = it
             if (mealFoods.isEmpty()){
-                Toast.makeText(context,"no meals on $selectedMealDate", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"${mealFoods.count()} no meals on $selectedMealDate", Toast.LENGTH_SHORT).show()
             }else{
                 mealFoods.let {
                     adapter.submitList(it)

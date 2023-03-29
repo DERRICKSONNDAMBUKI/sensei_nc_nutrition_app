@@ -155,4 +155,9 @@
         android:name="com.example.ncnutrition.ui.mealTable.fragment.ProgressFragment"
         android:label="@string/title_progress"
         tools:layout="@layout/fragment_progress" />
+    <fragment
+        android:id="@+id/navigation_recipes"
+        android:name="com.example.ncnutrition.ui.recipes.fragment.RecipesFragment"
+        android:label="@string/title_recipes"
+        tools:layout="@layout/fragment_recipes_list" />
 </navigation>

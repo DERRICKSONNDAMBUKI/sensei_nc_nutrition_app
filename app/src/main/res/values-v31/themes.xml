@@ -1,5 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
     <style name="Theme.NCNutrition" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
@@ -13,7 +14,16 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
-<!--        <item name="android:windowSplashScreenBackground">@color/background_color</item>-->
+<!--        splash screen-->
+        <item name="android:windowSplashScreenBackground">@color/background_color</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/background_color</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_launcher_foreground</item>
+<!--        <item name="android:windowSplashScreenBehavior">icon_preferred</item>-->
+
+
+
 
     </style>
 </resources>

@@ -24,8 +24,7 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_foods" />
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_recipes"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
+        android:title="@string/title_recipes" />
 </menu>

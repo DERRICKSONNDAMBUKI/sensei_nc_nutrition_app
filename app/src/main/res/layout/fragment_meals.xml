@@ -28,8 +28,8 @@
 
     <ImageButton
         android:id="@+id/imageButtonRemove"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="end"
         android:layout_weight="1"
         app:srcCompat="@drawable/ic_baseline_playlist_remove_24"
