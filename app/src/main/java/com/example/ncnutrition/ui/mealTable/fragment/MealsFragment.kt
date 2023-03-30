@@ -44,7 +44,7 @@ class MealsFragment : Fragment() {
         // Set the adapter
         val adapter = MealsAdapter(viewModel){ meal ->
             val date : Date = Date(meal.date.time)
-//            val action = MealsFragmentDirections.actionNavigationMealsToMealFragment2(meal.date.time)
+//            val action = MealsFragmentDirections.actionNavigationMealsToMealFragment2(meal.date.Dish_time)
 //            this.findNavController().navigate(action)
         }
         binding.mealsRecyclerView.adapter = adapter

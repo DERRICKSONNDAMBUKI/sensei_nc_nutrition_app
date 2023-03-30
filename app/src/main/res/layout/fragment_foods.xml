@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/foods_food_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textSize="20sp"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/foods_food_group"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textStyle="italic"
@@ -29,13 +29,19 @@
 
     <TextView
         android:id="@+id/foods_energy"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_margin="@dimen/text_margin"
         android:textSize="16sp"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 
 
     <!--        <TextView-->

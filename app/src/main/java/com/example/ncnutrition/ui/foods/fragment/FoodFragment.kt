@@ -86,7 +86,6 @@ class FoodFragment : Fragment() {
 
     private fun isEntryValid(): Boolean {
 
-        Toast.makeText(context,"Selected date $selectedDate",Toast.LENGTH_SHORT).show()
         return mealViewModel.isEntryValid(
             name = binding.editTextMealName.text.toString(),
 //            date = Date(binding.calendarViewMealDate.date),
@@ -116,7 +115,7 @@ class FoodFragment : Fragment() {
 
 
         } else {
-            Toast.makeText(context, "e.g breakfast", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "invalid meal, e.g breakfast", Toast.LENGTH_SHORT).show()
         }
     }
 

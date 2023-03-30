@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.databinding.FragmentRecipesListBinding
@@ -38,13 +39,15 @@ class RecipesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerViewRecipes =binding.recyclerViewRecipes
+        val recyclerViewRecipes = binding.recyclerViewRecipes
         // Set the adapter
         val adapter = RecipesAdapter { foods ->
-
+            val action =
+                RecipesFragmentDirections.actionNavigationRecipesToRecipeFragment(foods.code)
+            this.findNavController().navigate(action)
         }
         recyclerViewRecipes.adapter = adapter
-        viewModel.allRecipes.observe(this.viewLifecycleOwner) { foods ->
+        viewModel.allRecipes().observe(this.viewLifecycleOwner) { foods ->
             foods.let {
                 adapter.submitList(it)
             }

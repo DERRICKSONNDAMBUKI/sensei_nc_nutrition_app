@@ -5,12 +5,24 @@ import com.example.ncnutrition.data.dao.FoodDAO
 import com.example.ncnutrition.model.Food
 
 class RecipeViewModel(private val foodDAO: FoodDAO):ViewModel(){
-    val allRecipes :LiveData<List<Food>> = foodDAO.getFoodsByFoodGroup(15).asLiveData()
+    fun allRecipes ():LiveData<List<Food>> {
+        val foodLisLiveData =foodDAO.getFoodsByFoodGroup(15).asLiveData()
+        foodLisLiveData.value?.filter {
+            it.dish_group_code != null
+        }
+       return foodLisLiveData
+    }
 
 //    dish group foods
     fun getFoodsByDishGroup(  dish_group_code:Int): LiveData<List<Food>> {
+
         return foodDAO.getFoodsByDishGroup(dish_group_code ).asLiveData()
     }
+
+    fun retrieveRecipe(code: String): LiveData<Food> {
+        return foodDAO.getFood(code).asLiveData()
+    }
+
 }
 
 class RecipeViewModelFactory(

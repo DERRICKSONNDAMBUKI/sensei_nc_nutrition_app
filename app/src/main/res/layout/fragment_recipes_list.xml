@@ -7,14 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRecipes"
         android:name="com.example.ncnutrition.ui.recipes.fragment.RecipesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_margin="@dimen/text_margin"
+        android:foregroundGravity="right"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.recipes.fragment.RecipesFragment"
         tools:listitem="@layout/fragment_recipes" />
 

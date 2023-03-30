@@ -14,9 +14,12 @@ import java.util.*
 class MealViewModel(private val mealDAO: MealDAO) : ViewModel() {
     val allMeals: LiveData<List<Meal>> = mealDAO.getMeals().asLiveData()
 
+
     fun getMealsBefore(date: Date): LiveData<List<Food>> {
         val mealsBefore = mealDAO.getMealsBefore(date)
         val foodListLiveData = getMealPropertyList(mealsBefore)
+
+        val mealTotals: MealTotals? = foodListLiveData.value?.let { MealTotals(it) } // totals
 
         getTotalFoodsNutrients(foodListLiveData.value)
         return foodListLiveData
@@ -34,43 +37,7 @@ class MealViewModel(private val mealDAO: MealDAO) : ViewModel() {
     }
 
     private fun getTotalFoodsNutrients(foodList: List<Food>?) {
-//        energy
-        val energyInKJ: Double
-        val energyInKcal: Double
-               
-//        proximate
-        val waterInG: Double
-        val proteinInG: Double
-        val fatInG: Double
-        val carbohydrateAvailableInG: Double
-        val fibreInG: Double
-        val ashInG: Double
 
-//        minerals
-        val caInMg: Double
-        val feInMg: Double
-        val mgInMg: Double
-        val pInMg: Double
-        val kInMg: Double
-        val naInMg: Double
-        val znInMg: Double
-        val seInMg: Double
-
-//        vitamins
-        val vitARaeInMcg: Double
-        val vitAReInMcg: Double
-        val retinolInMcg: Double
-        val betaCaroteneEquivalentInMcg: Double
-        val thiaminInMcg: Double
-        val riboflavinInMcg: Double
-        val niacinInMcg: Double
-        val dietaryFolateEqInMcg: Double
-        val foodFolateInMcg: Double
-        val vitB12InMcg: Double
-        val vitCInMcg: Double
-
-//        cholesterol
-        val cholesterolInMg: Double
     }
 
     fun selectedMeal(date: Date): LiveData<List<Food>> {

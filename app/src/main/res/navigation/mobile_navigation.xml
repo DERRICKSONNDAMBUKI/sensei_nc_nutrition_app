@@ -9,38 +9,8 @@
         android:id="@+id/navigation_home"
         android:name="com.example.ncnutrition.ui.home.fragment.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_deficiencies"
-            app:destination="@id/navigation_deficiencies" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_conditions"
-            app:destination="@id/navigation_conditions" />
-        <action
-            android:id="@+id/action_navigation_home_to_deficiencyFragment"
-            app:destination="@id/deficiencyFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_conditionFragment"
-            app:destination="@id/conditionFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_foods"
-            app:destination="@id/navigation_foods" />
-        <action
-            android:id="@+id/action_navigation_home_to_foodFragment"
-            app:destination="@id/foodFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.ncnutrition.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.ncnutrition.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/foodFragment"
         android:name="com.example.ncnutrition.ui.foods.fragment.FoodFragment"
@@ -140,6 +110,9 @@
         <action
             android:id="@+id/action_navigation_meals_to_mealFragment2"
             app:destination="@id/mealFragment" />
+        <action
+            android:id="@+id/action_navigation_meals_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
     <fragment
         android:id="@+id/mealFragment"
@@ -159,5 +132,18 @@
         android:id="@+id/navigation_recipes"
         android:name="com.example.ncnutrition.ui.recipes.fragment.RecipesFragment"
         android:label="@string/title_recipes"
-        tools:layout="@layout/fragment_recipes_list" />
+        tools:layout="@layout/fragment_recipes_list" >
+        <action
+            android:id="@+id/action_navigation_recipes_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.example.ncnutrition.ui.recipes.fragment.RecipeFragment"
+        android:label="@string/recipe"
+        tools:layout="@layout/fragment_recipe">
+        <argument
+            android:name="code"
+            app:argType="string" />
+    </fragment>
 </navigation>

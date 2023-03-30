@@ -41,7 +41,7 @@
     <string name="take_food">Day to Take</string>
     <string name="lunch">Meal</string>
     <string name="take">Take</string>
-    <string name="remove_from_meals">remove from meals</string>
+    <string name="remove_meal">Remove Meal</string>
     <string name="e_g_breakfast">e.g breakfast</string>
     <string name="title_meal">Meal</string>
     <string name="large_text">
@@ -135,6 +135,12 @@
     </string>
     <string name="title_progress">Progress</string>
     <string name="splash_screen">Splash Screen</string>
+    <string name="recipe_image">Recipe Image</string>
+    <string name="recipe">Recipe</string>
+    <string name="recipe_tabs">Recipe Tabs</string>
+    <string name="time">Time</string>
+    <string name="title_ingredients">Ingredients</string>
+    <string name="title_directions">Directions</string>
 
 
 </resources>

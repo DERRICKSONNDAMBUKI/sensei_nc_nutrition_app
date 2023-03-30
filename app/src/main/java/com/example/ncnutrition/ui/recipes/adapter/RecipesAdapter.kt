@@ -40,9 +40,18 @@ class RecipesAdapter(
     inner class RecipeViewHolder(private var binding: FragmentRecipesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Food) {
+//            val drawableResId = binding.imageViewRecipe.resources?.getIdentifier("_${recipe.code}","drawable",binding.imageViewRecipe.context.packageName)
+//
+//            val drawable:Drawable? = if (drawableResId == 0 ||drawableResId==null){
+//                ContextCompat.getDrawable(binding.imageViewRecipe.context, R.drawable.ic_launcher_foreground)
+//            }else{
+//                ContextCompat.getDrawable(binding.imageViewRecipe.context,drawableResId)
+//            }
+
             binding.apply {
                 itemNumber.text = recipe.code
                 content.text = recipe.food_name
+//                imageViewRecipe.setImageDrawable(drawable)
             }
         }
     }
