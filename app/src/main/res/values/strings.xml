@@ -134,6 +134,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_progress">Progress</string>
+    <string name="splash_screen">Splash Screen</string>
 
 
 </resources>
