@@ -29,7 +29,14 @@
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <Button
-        android:id="@+id/imageButtonRemove"
+        android:id="@+id/buttonRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recipe"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/buttonRemoveMeal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/remove_meal" />

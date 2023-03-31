@@ -40,9 +40,9 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_deficiencies,
             R.id.navigation_foods,
             R.id.navigation_recipes,
-            R.id.profile,
+//            R.id.profile,
             R.id.search,
-            R.id.notifications_menu_item,
+//            R.id.notifications_menu_item,
             R.id.navigation_meals,
             R.id.navigation_progress
         ),

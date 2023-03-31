@@ -17,28 +17,13 @@ class MealViewModel(private val mealDAO: MealDAO) : ViewModel() {
 
     fun getMealsBefore(date: Date): LiveData<List<Food>> {
         val mealsBefore = mealDAO.getMealsBefore(date)
-        val foodListLiveData = getMealPropertyList(mealsBefore)
 
+       val foodListLiveData = getMealPropertyList(mealsBefore)
         val mealTotals: MealTotals? = foodListLiveData.value?.let { MealTotals(it) } // totals
 
-        getTotalFoodsNutrients(foodListLiveData.value)
         return foodListLiveData
     }
-    fun getEnergyTotals(date:Date){
-        val mealsBefore = mealDAO.getMealsBefore(date)
-        val foodListLiveData = getMealPropertyList(mealsBefore)
-        energyTotals(foodListLiveData.value)
-    }
 
-    private fun energyTotals(foodList: List<Food>?) {
-        //        energy foodList
-        val energyInKJ: Double
-        val energyInKcal: Double
-    }
-
-    private fun getTotalFoodsNutrients(foodList: List<Food>?) {
-
-    }
 
     fun selectedMeal(date: Date): LiveData<List<Food>> {
         val allMealsForDate = allMeals.value

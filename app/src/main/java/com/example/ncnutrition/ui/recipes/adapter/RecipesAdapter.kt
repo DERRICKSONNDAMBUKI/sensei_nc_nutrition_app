@@ -1,18 +1,17 @@
 package com.example.ncnutrition.ui.recipes.adapter
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentRecipesBinding
 import com.example.ncnutrition.model.Food
 
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class RecipesAdapter(
     private val onRecipeClicked: (Food) -> Unit
 ) : ListAdapter<Food, RecipesAdapter.RecipeViewHolder>(DiffCallback) {
@@ -40,18 +39,18 @@ class RecipesAdapter(
     inner class RecipeViewHolder(private var binding: FragmentRecipesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Food) {
-//            val drawableResId = binding.imageViewRecipe.resources?.getIdentifier("_${recipe.code}","drawable",binding.imageViewRecipe.context.packageName)
-//
-//            val drawable:Drawable? = if (drawableResId == 0 ||drawableResId==null){
-//                ContextCompat.getDrawable(binding.imageViewRecipe.context, R.drawable.ic_launcher_foreground)
-//            }else{
-//                ContextCompat.getDrawable(binding.imageViewRecipe.context,drawableResId)
-//            }
+            val drawableResId = binding.imageViewRecipe.resources?.getIdentifier("_${recipe.code}","drawable",binding.imageViewRecipe.context.packageName)
+
+            val drawable: Drawable? = if (drawableResId == 0 ||drawableResId==null){
+                ContextCompat.getDrawable(binding.imageViewRecipe.context, R.drawable.ic_broken_image)
+            }else{
+                ContextCompat.getDrawable(binding.imageViewRecipe.context,drawableResId)
+            }
 
             binding.apply {
                 itemNumber.text = recipe.code
                 content.text = recipe.food_name
-//                imageViewRecipe.setImageDrawable(drawable)
+                imageViewRecipe.setImageDrawable(drawable)
             }
         }
     }

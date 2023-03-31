@@ -141,6 +141,11 @@
     <string name="time">Time</string>
     <string name="title_ingredients">Ingredients</string>
     <string name="title_directions">Directions</string>
+    <string name="proximate">Proximate</string>
+    <string name="minerals">Minerals</string>
+    <string name="vitamins">Vitamins</string>
+    <string name="cholesterol">Cholesterol</string>
+    <string name="energies">Energies</string>
 
 
 </resources>

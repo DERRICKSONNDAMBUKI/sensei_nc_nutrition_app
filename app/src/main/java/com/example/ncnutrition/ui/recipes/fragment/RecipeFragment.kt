@@ -1,13 +1,16 @@
 package com.example.ncnutrition.ui.recipes.fragment
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.ncnutrition.NCNutritionApplication
+import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentRecipeBinding
 import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.recipes.viewModel.RecipeViewModel
@@ -27,7 +30,15 @@ class RecipeFragment : Fragment() {
     lateinit var recipe: Food
 
     private fun bind(recipe: Food) {
+        val drawableResId = binding.imageViewRecipe.resources?.getIdentifier("_${recipe.code}","drawable",binding.imageViewRecipe.context.packageName)
+
+        val drawable: Drawable? = if (drawableResId == 0 ||drawableResId==null){
+            ContextCompat.getDrawable(binding.imageViewRecipe.context, R.drawable.ic_broken_image)
+        }else{
+            ContextCompat.getDrawable(binding.imageViewRecipe.context,drawableResId)
+        }
         binding.apply {
+            imageViewRecipe.setImageDrawable(drawable)
             textViewRecipeName.text = recipe.food_name
             textViewDishDescription.text = recipe.food_description
             textViewDishTimeP.text = recipe.dish_time
