@@ -28,18 +28,39 @@
         android:layout_margin="@dimen/text_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
 
-    <Button
-        android:id="@+id/buttonRecipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/recipe"
-        android:visibility="gone" />
 
-    <Button
-        android:id="@+id/buttonRemoveMeal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/remove_meal" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonRemoveMeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/remove_meal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/background_color" />
+
+        <Button
+            android:id="@+id/buttonRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:background="@drawable/round_button"
+            android:text="@string/recipe"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/background_color"
+            android:visibility="invisible" />
+
+
+    </LinearLayout>
+
+
 
     <View
         android:id="@+id/divider3"

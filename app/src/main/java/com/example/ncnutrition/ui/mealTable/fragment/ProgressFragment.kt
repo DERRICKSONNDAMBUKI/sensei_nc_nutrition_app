@@ -42,9 +42,9 @@ class ProgressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val calendarViewProgress = binding.calendarViewProgress
 
-//        val minDate = Date()
+        val date = Date()
 //        calendarViewProgress.minDate = minDate.time
-
+        selectedMealDate = date
         calendarViewProgress.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val calendar = Calendar.getInstance().apply {
                 set(Calendar.YEAR, year)
@@ -87,42 +87,42 @@ class ProgressFragment : Fragment() {
     private fun bindTotals(mealTotals: MealTotals) {
         binding.apply {
             //        energy
-            textViewEnergyInKJ.text = "${mealTotals.energyInKcal} Kilojoules"
+            textViewEnergyInKJ.text = "${mealTotals.energyInKJ} Kilojoules"
             textViewEnergyInKcal.text = "${mealTotals.energyInKcal} Kilocalories"
 
             //        proximate
-            textViewWaterInG.text = "${mealTotals.waterInG} g"
-            textViewProteinInG.text = "${mealTotals.proteinInG} g"
-            textViewFatInG.text = "${mealTotals.fatInG} g"
-            textViewCarbohydrateAvailableInG.text = "${mealTotals.carbohydrateAvailableInG} g"
-            textViewFibreInG.text="${mealTotals.fibreInG} g"
-            textViewAshInG.text ="${mealTotals.ashInG} g"
+            textViewWaterInG.text = "Water: ${mealTotals.waterInG} g"
+            textViewProteinInG.text = "Protein: ${mealTotals.proteinInG} g"
+            textViewFatInG.text = "Fat: ${mealTotals.fatInG} g"
+            textViewCarbohydrateAvailableInG.text = "Carbohydrates available: ${mealTotals.carbohydrateAvailableInG} g"
+            textViewFibreInG.text="Fibre: ${mealTotals.fibreInG} g"
+            textViewAshInG.text ="Ash: ${mealTotals.ashInG} g"
 
    //        minerals
-            textViewCaInMg.text = "${mealTotals.caInMg} mg"
-            textViewFeInMg.text = "${mealTotals.feInMg} mg"
-            textViewMgInMg.text = "${mealTotals.mgInMg} mg"
-            textViewPInMg.text = "${mealTotals.pInMg} mg"
-            textViewKInMg.text = "${mealTotals.kInMg} mg"
-            textViewNaInMg.text = "${mealTotals.naInMg} mg"
-            textViewZnInMg.text = "${mealTotals.znInMg} mg"
-            textViewSeInMg.text = "${mealTotals.seInMg} mg"
+            textViewCaInMg.text = "Calcium: ${mealTotals.caInMg} mg"
+            textViewFeInMg.text = "Iron: ${mealTotals.feInMg} mg"
+            textViewMgInMg.text = "Magnesium: ${mealTotals.mgInMg} mg"
+            textViewPInMg.text = "Phosphorus: ${mealTotals.pInMg} mg"
+            textViewKInMg.text = "Potassium: ${mealTotals.kInMg} mg"
+            textViewNaInMg.text = "Sodium: ${mealTotals.naInMg} mg"
+            textViewZnInMg.text = "Zinc: ${mealTotals.znInMg} mg"
+            textViewSeInMg.text = "Selenium: ${mealTotals.seInMg} mg"
 
     //        vitamins
-            textViewVitARaeInMcg.text  ="${mealTotals.vitARaeInMcg} mcg"
-            textViewVitAReInMcg.text ="${mealTotals.vitAReInMcg} mcg"
-            textViewRetinolInMcg.text = "${mealTotals.retinolInMcg} mcg"
-            textViewBetaCaroteneEquivalentInMcg.text = "${mealTotals.betaCaroteneEquivalentInMcg} mcg"
-            textViewThiaminInMcg.text ="${mealTotals.thiaminInMcg} mcg"
-            textViewRiboflavinInMcg.text ="${mealTotals.riboflavinInMcg} mcg"
-            textViewNiacinInMcg.text = "${mealTotals.niacinInMcg}  mcg"
-            textViewDietaryFolateInMcg.text = "${mealTotals.dietaryFolateEqInMcg} mcg"
-            textViewFoodFolateInMcg.text ="${mealTotals.foodFolateInMcg} mcg"
-            textViewVitB12InMcg.text ="${mealTotals.vitB12InMcg} mcg"
-            textViewVitCInMcg.text = "${mealTotals.vitCInMcg} mcg"
+            textViewVitARaeInMcg.text  ="Vitamin A RAE: ${mealTotals.vitARaeInMcg} mcg"
+            textViewVitAReInMcg.text ="Vitamin A RE: ${mealTotals.vitAReInMcg} mcg"
+            textViewRetinolInMcg.text = "Retinol: ${mealTotals.retinolInMcg} mcg"
+            textViewBetaCaroteneEquivalentInMcg.text = "beta-Carotene: ${mealTotals.betaCaroteneEquivalentInMcg} mcg"
+            textViewThiaminInMcg.text ="Thiamin: ${mealTotals.thiaminInMcg} mcg"
+            textViewRiboflavinInMcg.text ="Riboflavin: ${mealTotals.riboflavinInMcg} mcg"
+            textViewNiacinInMcg.text = "Niacin: ${mealTotals.niacinInMcg}  mcg"
+            textViewDietaryFolateInMcg.text = "Dietary: ${mealTotals.dietaryFolateEqInMcg} mcg"
+            textViewFoodFolateInMcg.text ="Food folate: ${mealTotals.foodFolateInMcg} mcg"
+            textViewVitB12InMcg.text ="Vitamin B12: ${mealTotals.vitB12InMcg} mcg"
+            textViewVitCInMcg.text = "Vitamin C: ${mealTotals.vitCInMcg} mcg"
 
     //        cholesterol
-            textViewCholesterolInMg.text = "${mealTotals.cholesterolInMg} mg"
+            textViewCholesterolInMg.text = "Cholesterol ${mealTotals.cholesterolInMg} mg"
         }
 
     }

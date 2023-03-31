@@ -35,7 +35,7 @@ class FoodFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var food: Food
-    lateinit var selectedDate:Date
+    private var selectedDate:Date = Date()
 
 
     private fun bind(food: Food) {

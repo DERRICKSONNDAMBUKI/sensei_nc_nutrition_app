@@ -146,6 +146,7 @@
     <string name="vitamins">Vitamins</string>
     <string name="cholesterol">Cholesterol</string>
     <string name="energies">Energies</string>
+    <string name="search_not_found">search  not found</string>
 
 
 </resources>

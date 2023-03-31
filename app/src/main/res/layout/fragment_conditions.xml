@@ -10,8 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:textStyle="bold"
+        android:textSize="25sp"
         android:textAppearance="?attr/textAppearanceListItem"
-        android:textSize="25sp" />
+      />
 
 
     <TextView

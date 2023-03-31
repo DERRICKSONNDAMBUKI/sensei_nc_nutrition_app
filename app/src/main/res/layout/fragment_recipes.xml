@@ -27,6 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
+        android:textSize="18sp"
+        android:textStyle="italic"
         android:textAppearance="?attr/textAppearanceListItem" />
 
     <View

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:title="@string/title_home"
+        app:showAsAction="withText" />
 
     <!--    <item-->
     <!--        android:id="@+id/navigation_notifications"-->
@@ -12,19 +14,23 @@
     <!--        android:title="@string/title_notifications" />-->
     <item
         android:id="@+id/navigation_conditions"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_conditions" />
+        android:icon="@drawable/ic_baseline_medical_information_24"
+        android:title="@string/title_conditions"
+        app:showAsAction="withText" />
 
     <item
         android:id="@+id/navigation_deficiencies"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_deficiencies" />
+        android:icon="@drawable/ic_baseline_sick_24"
+        android:title="@string/title_deficiencies"
+        app:showAsAction="withText" />
     <item
         android:id="@+id/navigation_foods"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_foods" />
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="@string/title_foods"
+        app:showAsAction="withText" />
     <item
         android:id="@+id/navigation_recipes"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_recipes" />
+        android:icon="@drawable/ic_baseline_receipt_long_24"
+        android:title="@string/title_recipes"
+        app:showAsAction="withText" />
 </menu>
