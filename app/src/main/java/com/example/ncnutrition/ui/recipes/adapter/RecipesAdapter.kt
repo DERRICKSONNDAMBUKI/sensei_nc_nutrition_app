@@ -48,7 +48,7 @@ class RecipesAdapter(
             }
 
             binding.apply {
-                itemNumber.text = recipe.code
+//                itemNumber.text = recipe.code
                 content.text = recipe.food_name
                 imageViewRecipe.setImageDrawable(drawable)
             }

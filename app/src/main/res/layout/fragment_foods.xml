@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/text_margin"
-    android:layout_marginBottom="@dimen/text_margin"
     app:cardBackgroundColor="@color/background_color"
-    android:backgroundTintMode="src_over"
     android:foregroundTint="@color/foreground_color"
-    app:cardCornerRadius="5dp"
+    android:layout_margin="@dimen/text_margin"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
     app:cardElevation="10dp">
 
     <LinearLayout
