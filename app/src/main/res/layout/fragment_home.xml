@@ -27,8 +27,7 @@
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/welcome"
                 android:textAlignment="textStart"
-                android:textSize="20sp"
-              />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -36,8 +35,7 @@
                 android:layout_height="275dp"
                 android:layout_marginTop="8dp"
                 android:contentDescription="@string/home_image"
-                android:src="@drawable/_1"
-             />
+                android:src="@drawable/_1" />
 
             <!--conditions-->
             <TextView
@@ -50,17 +48,27 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/conditionsDescription"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/text_margin"
-                android:layout_weight="1"
-                android:justificationMode="inter_word"
-                android:letterSpacing="0.001"
-                android:lineSpacingExtra="3sp"
-                android:text="@string/condition_description"
-                android:textSize="18sp" />
+                android:backgroundTint="@color/background_color"
+                android:foregroundTint="@color/foreground_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/conditionsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.001"
+                    android:lineSpacingExtra="3sp"
+                    android:text="@string/condition_description"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
 
 
             <!--deficiencies-->
@@ -74,18 +82,29 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/deficienciesDescription"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/text_margin"
-                android:layout_weight="1"
-                android:justificationMode="inter_word"
-                android:letterSpacing="0.001"
-                android:lineSpacingExtra="3sp"
-                android:text="@string/deficiency_description"
-                android:textSize="18sp"
-                />
+                android:backgroundTint="@color/background_color"
+                android:foregroundTint="@color/foreground_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/deficienciesDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.001"
+                    android:lineSpacingExtra="3sp"
+                    android:text="@string/deficiency_description"
+                    android:textSize="18sp" />
+            </androidx.cardview.widget.CardView>
+
 
             <!--foods-->
 
@@ -99,17 +118,30 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/foodsDescription"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/text_margin"
-                android:layout_weight="1"
-                android:justificationMode="inter_word"
-                android:letterSpacing="0.001"
-                android:lineSpacingExtra="3sp"
-                android:text="@string/food_description"
-                android:textSize="18sp" />
+                android:backgroundTint="@color/background_color"
+                android:foregroundTint="@color/foreground_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/foodsDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.001"
+                    android:lineSpacingExtra="3sp"
+                    android:text="@string/food_description"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
 
             <!--recipes-->
             <TextView
@@ -122,17 +154,29 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/recipesDescription"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/text_margin"
-                android:layout_weight="1"
-                android:justificationMode="inter_word"
-                android:letterSpacing="0.001"
-                android:lineSpacingExtra="3sp"
-                android:text="@string/recipe_description"
-                android:textSize="18sp" />
+                android:backgroundTint="@color/background_color"
+                android:foregroundTint="@color/foreground_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/recipesDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin"
+                    android:layout_weight="1"
+                    android:justificationMode="inter_word"
+                    android:letterSpacing="0.001"
+                    android:lineSpacingExtra="3sp"
+                    android:text="@string/recipe_description"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </ScrollView>

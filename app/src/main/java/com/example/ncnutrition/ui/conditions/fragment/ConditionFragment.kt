@@ -62,9 +62,8 @@ class ConditionFragment : Fragment() {
             this.findNavController().navigate(action)
         }
 //        set adapter
+        binding.conditionFoodsRecyclerView.adapter = adapter
 
-        val conditionFoodsRecyclerView = binding.conditionFoodsRecyclerView
-        val nestedScrollView = binding.nestedScrollView
         val id = navigationArgs.id
 
         viewModel.getConditionFoods(id).observe(this.viewLifecycleOwner) { foods ->
@@ -73,16 +72,6 @@ class ConditionFragment : Fragment() {
                 Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
             } else {
                 conditionFoods.let {
-//                    fun loadData(): Flow<Food> {
-//                        // Load data from data source
-//                        return conditionFoods.asFlow()
-//                    }
-//                    conditionFoodsRecyclerView.adapter = adapter
-//
-//                    runBlocking {
-//                        val data = loadData().toList()
-//                        adapter.submitList(data)
-//                    }
 
                     adapter.submitList(it)
                 }
@@ -92,11 +81,10 @@ class ConditionFragment : Fragment() {
         }
 
 //        conditionFoodsRecyclerView.adapter = adapter
-        conditionFoodsRecyclerView.isNestedScrollingEnabled = false
 
-        val layoutManager = LinearLayoutManager(this.context)
-//        layoutManager.isAutoMeasureEnabled = false
-        conditionFoodsRecyclerView.layoutManager = layoutManager
+        binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+
 
         viewModel.retrieveCondition(id).observe(this.viewLifecycleOwner) { selectedCondition ->
             condition = selectedCondition
