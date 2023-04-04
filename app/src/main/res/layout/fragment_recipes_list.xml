@@ -13,7 +13,6 @@
         android:name="com.example.ncnutrition.ui.recipes.fragment.RecipesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_margin"
         android:foregroundGravity="right"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"

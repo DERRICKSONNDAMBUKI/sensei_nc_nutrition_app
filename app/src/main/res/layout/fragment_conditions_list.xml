@@ -11,11 +11,13 @@
         android:name="com.example.ncnutrition.ui.conditions.fragment.ConditionsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.conditions.fragment.ConditionsFragment"
-        tools:listitem="@layout/fragment_conditions"/>
+        tools:listitem="@layout/fragment_conditions" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

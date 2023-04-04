@@ -54,8 +54,7 @@
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
                 app:cardCornerRadius="8dp"
-
-                app:cardElevation="10dp"
+                app:cardElevation="5dp"
                 app:cardUseCompatPadding="true">
 
                 <TextView
@@ -90,8 +89,9 @@
                 android:layout_margin="@dimen/text_margin"
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
                 <TextView
                     android:id="@+id/deficienciesDescription"
@@ -126,8 +126,9 @@
                 android:layout_margin="@dimen/text_margin"
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
                 <TextView
                     android:id="@+id/foodsDescription"
@@ -162,8 +163,9 @@
                 android:layout_margin="@dimen/text_margin"
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="10dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
                 <TextView
                     android:id="@+id/recipesDescription"
