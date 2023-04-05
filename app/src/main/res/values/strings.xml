@@ -153,6 +153,7 @@
     <string name="tools">Tools</string>
     <string name="_167cm">167cm</string>
     <string name="height_in_cm">Height in cm</string>
+    <string name="measure_bmi">Measure BMI</string>
 
 
 </resources>

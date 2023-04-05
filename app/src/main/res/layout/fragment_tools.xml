@@ -66,4 +66,15 @@
         android:visibility="invisible"
         />
 
+    <Button
+        android:id="@+id/measureBMI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="@string/measure_bmi"
+        android:textSize="16sp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/round_button"
+        />
+
 </LinearLayout>
