@@ -40,7 +40,7 @@
             <!--conditions-->
             <TextView
                 android:id="@+id/text_home_conditions"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/title_conditions"
@@ -74,7 +74,7 @@
             <!--deficiencies-->
             <TextView
                 android:id="@+id/text_home_deficiencies"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/title_deficiencies"
@@ -86,7 +86,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/text_margin"
+
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
                 app:cardCornerRadius="8dp"
@@ -111,7 +111,7 @@
 
             <TextView
                 android:id="@+id/text_home_foods"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/title_foods"
@@ -123,7 +123,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/text_margin"
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
                 app:cardCornerRadius="8dp"
@@ -148,7 +147,7 @@
             <!--recipes-->
             <TextView
                 android:id="@+id/text_home_recipes"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/title_recipes"
@@ -160,7 +159,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/text_margin"
                 android:backgroundTint="@color/background_color"
                 android:foregroundTint="@color/foreground_color"
                 app:cardCornerRadius="8dp"

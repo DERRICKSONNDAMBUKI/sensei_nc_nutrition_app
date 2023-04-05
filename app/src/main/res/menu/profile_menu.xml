@@ -40,5 +40,7 @@
         android:id="@+id/navigation_progress"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_progress" />
+    <item android:id="@+id/navigation_tools"
+        android:title="@string/tools"/>
 
 </menu>

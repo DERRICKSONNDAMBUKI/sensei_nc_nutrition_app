@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
             R.id.search,
 //            R.id.notifications_menu_item,
             R.id.navigation_meals,
-            R.id.navigation_progress
+            R.id.navigation_progress,
+            R.id.navigation_tools
         ),
         fallbackOnNavigateUpListener = ::onSupportNavigateUp
     )

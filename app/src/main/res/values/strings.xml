@@ -147,6 +147,12 @@
     <string name="cholesterol">Cholesterol</string>
     <string name="energies">Energies</string>
     <string name="search_not_found">search  not found</string>
+    <string name="bmi">BMI</string>
+    <string name="weight_in_kg">Weight in Kg</string>
+    <string name="_50kgs">50kgs</string>
+    <string name="tools">Tools</string>
+    <string name="_167cm">167cm</string>
+    <string name="height_in_cm">Height in cm</string>
 
 
 </resources>

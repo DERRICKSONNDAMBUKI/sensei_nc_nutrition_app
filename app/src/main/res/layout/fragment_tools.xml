@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.tools.fragment.ToolsFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/bmi"
+        android:textColor="@color/foreground_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="1"
+            android:autofillHints="50"
+            android:ems="5"
+            android:hint="@string/weight_in_kg"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:textColor="@color/foreground_color"
+            android:textColorHint="#546E7A" />
+
+        <EditText
+            android:id="@+id/editTextNumberDecimalHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="1"
+            android:autofillHints="50"
+            android:ems="5"
+            android:hint="@string/height_in_cm"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:textColor="@color/foreground_color"
+            android:textColorHint="#546E7A" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewBMIResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@color/foreground_color"
+        android:text="@string/bmi"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>

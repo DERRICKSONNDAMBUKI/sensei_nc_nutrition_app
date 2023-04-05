@@ -146,4 +146,9 @@
             android:name="code"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_tools"
+        android:name="com.example.ncnutrition.ui.tools.fragment.ToolsFragment"
+        android:label="@string/tools"
+        tools:layout="@layout/fragment_tools" />
 </navigation>
