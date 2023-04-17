@@ -13,10 +13,7 @@ import com.example.ncnutrition.ui.mealTable.fragment.MealsFragmentDirections
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
 import java.time.ZoneId
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class MealsAdapter(
     private val viewModel: MealViewModel, private val onMealClicked: (Meal) -> Unit
 ) : ListAdapter<Meal, MealsAdapter.MealViewHolder>(DiffCallback) {

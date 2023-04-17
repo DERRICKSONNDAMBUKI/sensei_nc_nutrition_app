@@ -3,34 +3,47 @@ package com.example.ncnutrition
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.SearchView
-import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ncnutrition.databinding.ActivityMainBinding
-import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
-import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
+import com.example.ncnutrition.ui.search.search_view.SearchRecyclerViewAdapter
+import com.example.ncnutrition.ui.search.viewModel.SearchViewModel
+import com.example.ncnutrition.ui.search.viewModel.SearchViewModelFactory
 
 class MainActivity : AppCompatActivity() {
-    //    private val viewModel: DeficiencyViewModel by activityViewModels {
-//        DeficiencyViewModelFactory(
-//            (activity?.application as NCNutritionApplication).database.deficiencyDao(),
-//            (activity?.application as NCNutritionApplication).database.foodDao()
+//
+//    private val foodsViewModel: FoodViewModel by viewModels {
+//        FoodViewModelFactory(
+//            (this.application as NCNutritionApplication).database.foodDao()
 //        )
 //    }
-    private val foodsViewModel: FoodViewModel by viewModels {
-        FoodViewModelFactory(
-            (this.application as NCNutritionApplication).database.foodDao()
+    private val searchViewModel: SearchViewModel by viewModels {
+        SearchViewModelFactory(
+            (this.application as NCNutritionApplication).database.foodDao(),
+            (this.application as NCNutritionApplication).database.conditionDao(),
+            (this.application as NCNutritionApplication).database.deficiencyDao()
         )
     }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var progressSpinner: ProgressBar
+    private lateinit var searchNotFound: TextView
+    private lateinit var searchList: RecyclerView
+    private lateinit var searchView: SearchView
+    private lateinit var searchRecyclerViewAdapter: SearchRecyclerViewAdapter
+
     private val appBarConfiguration = AppBarConfiguration(
         setOf(
             R.id.navigation_home,
@@ -44,8 +57,7 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_meals,
             R.id.navigation_progress,
             R.id.navigation_tools
-        ),
-        fallbackOnNavigateUpListener = ::onSupportNavigateUp
+        ), fallbackOnNavigateUpListener = ::onSupportNavigateUp
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,16 +67,47 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        progressSpinner = binding.progressSpinner
+        searchList = binding.recyclerViewSearchList
+        searchNotFound = binding.searchNotFound
+
+        initSearchListView()
+
+        searchViewModel.searchQuery().observe(
+            this
+        ) {
+            searchRecyclerViewAdapter.submitList(it)
+            progressSpinner.visibility = View.GONE
+            if (it.isEmpty()) {
+                searchList.visibility = View.GONE
+                searchNotFound.visibility = View.VISIBLE
+            } else {
+                searchList.visibility = View.VISIBLE
+                searchNotFound.visibility = View.GONE
+            }
+        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
-//        val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val navController = navHostFragment.navController
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
+
+    }
+
+    private fun initSearchListView() {
+        searchRecyclerViewAdapter = SearchRecyclerViewAdapter {
+//           TODO navigation action
+
+        }
+        searchList.adapter = searchRecyclerViewAdapter
+        searchList.addItemDecoration(
+            DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+        )
+        searchList.layoutManager = LinearLayoutManager(this)
 
     }
 
@@ -75,14 +118,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
-
 //        search
-        val search = menu?.findItem(R.id.search)?.actionView as SearchView
+        searchView = menu?.findItem(R.id.search)?.actionView as SearchView
 
+        initQueryListener()
+
+        return true
+    }
+
+    private fun initQueryListener() {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        search.apply {
-            search.queryHint = "Search..."
-
+        searchView.apply {
+            queryHint = getString(R.string.search_hint)
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     getSearched(query)
@@ -90,35 +137,15 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onQueryTextChange(query: String): Boolean {
-//                    adapter.filter.filter(query)
-
+                    // This resets the notes list to display all notes if the query is
+                    // cleared.
+                    if (query.isEmpty()) searchViewModel.searchQuery()
                     return false
                 }
             })
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
-
-//        notifications
-//        val notificationsMenuItem = menu.findItem(R.id.notifications_menu_item)
-//        val notificationsItemView = notificationsMenuItem.actionView
-//        val notificationsItemBadge = notificationsItemView?.findViewById<TextView>(R.id.notifications_menu_item_badge)
-
-//        set the badge count
-//        val badgeCount = 10
-//        notificationsItemBadge?.let { setBadgeCountVisibility(it,badgeCount) }
-
-
-        return true
     }
-
-//    private fun setBadgeCountVisibility(notificationsItemBadge: TextView, badgeCount: Int) {
-//        if (badgeCount == 0){
-//            notificationsItemBadge.visibility  = View.GONE
-//        }else{
-//            notificationsItemBadge.visibility = View.VISIBLE
-//            notificationsItemBadge.text = badgeCount.toString()
-//        }
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -131,11 +158,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getSearched(query: String) {
-        foodsViewModel.searchFood(query).observe(this@MainActivity) { foods ->
-            foods.let {
-                Log.e("Foods", it.toString())
-                Toast.makeText(this@MainActivity, "query $it", Toast.LENGTH_SHORT).show()
-            }
-        }
+        searchViewModel.searchQuery(query)
     }
 }
