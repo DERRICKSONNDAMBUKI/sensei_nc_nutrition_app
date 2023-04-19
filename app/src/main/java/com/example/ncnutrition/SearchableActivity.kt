@@ -45,6 +45,7 @@ class SearchableActivity : AppCompatActivity() {
     private lateinit var progressSpinner: ProgressBar
     private lateinit var searchNotFound: TextView
     private lateinit var searchList: RecyclerView
+    private lateinit var searchView: SearchView
 
 
     private lateinit var searchRecyclerViewAdapter: SearchRecyclerViewAdapter
@@ -97,5 +98,23 @@ class SearchableActivity : AppCompatActivity() {
                 searchNotFound.visibility = View.GONE
             }
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.profile_menu, menu)
+//        search
+        searchView = menu?.findItem(R.id.search)?.actionView as SearchView
+
+//         // Inflate the options menu from XML
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        searchView.apply {
+            queryHint = getString(R.string.search_hint)
+
+            isQueryRefinementEnabled=true
+//            Assumes current activity is the searchable activity
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        }
+//        initQueryListener()
+
+        return true
     }
 }
