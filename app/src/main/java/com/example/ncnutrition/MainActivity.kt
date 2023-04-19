@@ -39,10 +39,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        val foodCode = intent.getStringExtra("code")
+//        val bundle = Bundle()
+//        bundle.putString("code", foodCode)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
+
+//        navController.navigate(R.id.foodFragment,bundle)
+//
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

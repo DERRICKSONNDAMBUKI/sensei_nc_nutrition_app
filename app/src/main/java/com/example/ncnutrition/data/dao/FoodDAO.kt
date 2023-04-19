@@ -30,7 +30,7 @@ interface FoodDAO {
     @Query("select * from food where Dish_group_code = :dish_group_code")
     fun getFoodsByDishGroup(dish_group_code: Int): Flow<List<Food>>
 
-    @Query("select * from food where Food_name LIKE :food_name LIMIT 5")
+    @Query("select * from food where Food_name LIKE :food_name order by food_name asc")
     fun findFoodByName(food_name: String): Flow<List<Food>>
 
     //    energy_in_kcal

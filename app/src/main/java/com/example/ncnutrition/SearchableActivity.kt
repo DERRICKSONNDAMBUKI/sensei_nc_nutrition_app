@@ -72,9 +72,17 @@ class SearchableActivity : AppCompatActivity() {
     }
 
     private fun initSearchListView() {
-        searchRecyclerViewAdapter = SearchRecyclerViewAdapter {
+        searchRecyclerViewAdapter = SearchRecyclerViewAdapter { selectedFood->
 //           TODO navigation action
 
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.putExtra("code", selectedFood.code)
+//            startActivity(intent)
+
+//            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+//            val args = Bundle()
+//            args.putString("code", selectedFood.code)
+//            navHostFragment.navController.navigate(R.id.foodFragment, args)
         }
 
         searchList.adapter = searchRecyclerViewAdapter
