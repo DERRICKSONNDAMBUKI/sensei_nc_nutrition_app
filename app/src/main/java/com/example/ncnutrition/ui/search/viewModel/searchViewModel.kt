@@ -13,7 +13,7 @@ class SearchViewModel(private val foodDAO: FoodDAO,private val conditionDAO: Con
 ViewModel(){
 
     fun searchQuery(query: String=""):LiveData<List<Food>>{
-        return foodDAO.findFoodByName(query).asLiveData()
+        return foodDAO.findFoodByName("%$query%").asLiveData()
     }
 
 }

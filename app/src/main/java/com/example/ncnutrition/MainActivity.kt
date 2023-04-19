@@ -82,10 +82,11 @@ class MainActivity : AppCompatActivity() {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.apply {
 
+            isSubmitButtonEnabled= true
+            isQueryRefinementEnabled=true
 //            Assumes current activity is the searchable activity
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
-
 //        initQueryListener()
 
         return true

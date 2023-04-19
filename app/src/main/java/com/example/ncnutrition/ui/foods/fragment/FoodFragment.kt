@@ -62,11 +62,14 @@ class FoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val code = navigationArgs.code
+//val intentFoodCode = arguments?.getString("Code")
+
+        val code:String = navigationArgs.code
         viewModel.retrieveFood(code).observe(this.viewLifecycleOwner) { selectedFood ->
             food = selectedFood
             bind(food)
         }
+
         val calendarDate = binding.calendarViewMealDate
 
         calendarDate.setOnDateChangeListener { _, year, month, dayOfMonth ->

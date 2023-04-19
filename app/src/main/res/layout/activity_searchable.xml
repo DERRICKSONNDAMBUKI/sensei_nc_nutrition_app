@@ -10,15 +10,18 @@
         android:id="@+id/progressSpinner"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         />
 
     <TextView
         android:id="@+id/searchNotFound"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_not_found"
         android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:visibility="gone"
         android:layout_centerInParent="true"
        />
