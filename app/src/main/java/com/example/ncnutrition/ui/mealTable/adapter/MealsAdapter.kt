@@ -12,6 +12,7 @@ import com.example.ncnutrition.model.Meal
 import com.example.ncnutrition.ui.mealTable.fragment.MealsFragmentDirections
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
 import java.time.ZoneId
+import java.util.*
 
 
 class MealsAdapter(
@@ -55,7 +56,7 @@ class MealsAdapter(
             binding.apply {
 //                 set meal to list
                 textViewFoodName.text = meal.food.food_name
-                textViewMealName.text = meal.name
+                textViewMealName.text = meal.name.uppercase()
                 textViewMealDate.text = "${date}th $month $day"
                 buttonRemoveMeal.setOnClickListener {
                     viewModel.deleteMeal(meal)

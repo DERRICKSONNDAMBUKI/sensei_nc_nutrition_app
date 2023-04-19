@@ -120,17 +120,17 @@ class FoodFragment : Fragment() {
                 binding.constraintLayoutFood,
                 "Food for $name on ${
                     date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
-                } " +
-                        "to",
+                }. " +
+                        "Check...",
                 Snackbar.LENGTH_SHORT
             ).setAction("Meals") {
                 val action = FoodFragmentDirections.actionFoodFragmentToNavigationMeals()
                 findNavController().navigate(action)
-            }.setActionTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            }.setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.foreground_color))
+                .setActionTextColor(ContextCompat.getColor(requireContext(), R.color.background_color))
                 .show()
 
             binding.editTextMealName.text.clear()
-
 
         } else {
             Toast.makeText(context, "invalid meal, e.g breakfast", Toast.LENGTH_SHORT).show()
