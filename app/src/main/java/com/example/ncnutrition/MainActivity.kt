@@ -3,6 +3,7 @@ package com.example.ncnutrition
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,7 +24,7 @@ import com.example.ncnutrition.ui.search.viewModel.SearchViewModel
 import com.example.ncnutrition.ui.search.viewModel.SearchViewModelFactory
 
 class MainActivity : AppCompatActivity() {
-//
+    //
 //    private val foodsViewModel: FoodViewModel by viewModels {
 //        FoodViewModelFactory(
 //            (this.application as NCNutritionApplication).database.foodDao()
@@ -73,21 +74,6 @@ class MainActivity : AppCompatActivity() {
 
         initSearchListView()
 
-        searchViewModel.searchQuery().observe(
-            /* owner = */ this
-        ) {
-            searchRecyclerViewAdapter.submitList(it)
-            progressSpinner.visibility = View.GONE
-            searchNotFound.visibility = View.GONE
-
-            if (it.isNullOrEmpty()) {
-                searchList.visibility = View.GONE
-                searchNotFound.visibility = View.VISIBLE
-            } else {
-                searchList.visibility = View.VISIBLE
-                searchNotFound.visibility = View.GONE
-            }
-        }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
@@ -133,19 +119,24 @@ class MainActivity : AppCompatActivity() {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.apply {
             queryHint = getString(R.string.search_hint)
+
+
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String): Boolean {
                     getSearched(query)
-                    return false
+                    searchViewModel.searchQuery(query)
+                    return true
                 }
 
                 override fun onQueryTextChange(query: String): Boolean {
                     // This resets the notes list to display all notes if the query is
                     // cleared.
+                    progressSpinner.visibility = View.VISIBLE
                     if (query.isEmpty()) searchViewModel.searchQuery()
-                    return false
+                    return true
                 }
             })
+
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
     }
@@ -161,6 +152,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getSearched(query: String) {
-        searchViewModel.searchQuery(query)
+        searchViewModel.searchQuery(query).observe(
+            /* owner = */ this
+        ) {
+            progressSpinner.visibility = View.VISIBLE
+            if (it.isNullOrEmpty()) {
+                searchList.visibility = View.GONE
+                searchNotFound.visibility = View.VISIBLE
+            } else {
+                searchRecyclerViewAdapter.submitList(it)
+                searchList.visibility = View.VISIBLE
+                searchNotFound.visibility = View.GONE
+            }
+        }
     }
 }

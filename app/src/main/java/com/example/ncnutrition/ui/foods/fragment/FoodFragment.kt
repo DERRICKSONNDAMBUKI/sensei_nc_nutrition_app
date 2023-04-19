@@ -108,17 +108,17 @@ class FoodFragment : Fragment() {
                 date = date,
                 food = food,
             )
-            Toast.makeText(
-                context,
-                "saved food for $name on  ${
-                    date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
-                }.",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                context,
+//                "saved food for $name on  ${
+//                    date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
+//                }.",
+//                Toast.LENGTH_SHORT
+//            ).show()
 
             Snackbar.make(
                 binding.constraintLayoutFood,
-                "Food for $name on ${
+                "Saved food for $name on ${
                     date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
                 }. " +
                         "Check...",
