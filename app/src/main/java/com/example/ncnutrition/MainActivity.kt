@@ -13,13 +13,6 @@ import androidx.navigation.ui.*
 import com.example.ncnutrition.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    //
-//    private val foodsViewModel: FoodViewModel by viewModels {
-//        FoodViewModelFactory(
-//            (this.application as NCNutritionApplication).database.foodDao()
-//        )
-//    }
-
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var searchView: SearchView
@@ -57,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment_activity_main)
         return NavigationUI.navigateUp(navController, appBarConfiguration)
@@ -81,8 +73,8 @@ class MainActivity : AppCompatActivity() {
 //         // Inflate the options menu from XML
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.apply {
+            queryHint = getString(R.string.search_hint)
 
-            isSubmitButtonEnabled= true
             isQueryRefinementEnabled=true
 //            Assumes current activity is the searchable activity
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
@@ -91,5 +83,4 @@ class MainActivity : AppCompatActivity() {
 
         return true
     }
-
 }

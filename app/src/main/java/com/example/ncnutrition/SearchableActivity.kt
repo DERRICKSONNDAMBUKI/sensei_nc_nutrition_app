@@ -6,18 +6,26 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.util.query
 import com.example.ncnutrition.databinding.ActivityMainBinding
 import com.example.ncnutrition.databinding.ActivitySearchableBinding
+import com.example.ncnutrition.ui.foods.fragment.FoodFragment
 import com.example.ncnutrition.ui.search.search_view.SearchRecyclerViewAdapter
 import com.example.ncnutrition.ui.search.viewModel.SearchViewModel
 import com.example.ncnutrition.ui.search.viewModel.SearchViewModelFactory
@@ -75,32 +83,6 @@ class SearchableActivity : AppCompatActivity() {
         searchList.layoutManager = LinearLayoutManager(this)
     }
 
-//    private fun initQueryListener() {
-//        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-//        searchView.apply {
-//            queryHint = getString(R.string.search_hint)
-//
-//
-//            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String): Boolean {
-//                    getSearched(query)
-//                    searchViewModel.searchQuery(query)
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(query: String): Boolean {
-//                    // This resets the notes list to display all notes if the query is
-//                    // cleared.
-//                    progressSpinner.visibility = View.VISIBLE
-//                    if (query.isEmpty()) searchViewModel.searchQuery()
-//                    return true
-//                }
-//            })
-//            setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//        }
-//    }
-
-
     private fun getSearched(query: String) {
         searchViewModel.searchQuery(query).observe(this) { foods ->
             foods.let {
@@ -110,7 +92,6 @@ class SearchableActivity : AppCompatActivity() {
                 searchList.visibility = View.GONE
                 searchNotFound.visibility = View.VISIBLE
             } else {
-
 
                 searchList.visibility = View.VISIBLE
                 searchNotFound.visibility = View.GONE

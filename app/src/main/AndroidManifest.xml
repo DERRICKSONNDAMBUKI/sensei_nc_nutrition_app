@@ -16,7 +16,6 @@
 
         <activity
             android:name=".SearchableActivity"
-            android:label="@string/search_title"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

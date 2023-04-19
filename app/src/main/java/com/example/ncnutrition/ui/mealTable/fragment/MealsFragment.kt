@@ -16,7 +16,7 @@ import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModelFactory
 import java.util.*
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of Items.import com.example.ncnutrition.databinding.FragmentMealsListBinding
  */
 class MealsFragment : Fragment() {
 
