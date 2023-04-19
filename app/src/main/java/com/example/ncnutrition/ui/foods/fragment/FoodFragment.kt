@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ncnutrition.NCNutritionApplication
+import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentFoodBinding
 import com.example.ncnutrition.model.Food
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModel
 import com.example.ncnutrition.ui.foods.viewModel.FoodViewModelFactory
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModel
 import com.example.ncnutrition.ui.mealTable.viewModel.MealViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import java.time.ZoneId
 import java.util.*
 
@@ -35,7 +39,7 @@ class FoodFragment : Fragment() {
     private val binding get() = _binding!!
 
     lateinit var food: Food
-    private var selectedDate:Date = Date()
+    private var selectedDate: Date = Date()
 
 
     private fun bind(food: Food) {
@@ -111,6 +115,20 @@ class FoodFragment : Fragment() {
                 }.",
                 Toast.LENGTH_SHORT
             ).show()
+
+            Snackbar.make(
+                binding.constraintLayoutFood,
+                "Food for $name on ${
+                    date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
+                } " +
+                        "to",
+                Snackbar.LENGTH_SHORT
+            ).setAction("Meals") {
+                val action = FoodFragmentDirections.actionFoodFragmentToNavigationMeals()
+                findNavController().navigate(action)
+            }.setActionTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                .show()
+
             binding.editTextMealName.text.clear()
 
 

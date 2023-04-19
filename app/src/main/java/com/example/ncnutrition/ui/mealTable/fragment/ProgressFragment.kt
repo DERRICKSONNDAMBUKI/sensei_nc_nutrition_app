@@ -63,7 +63,7 @@ class ProgressFragment : Fragment() {
             if (mealFoods.isEmpty()) {
                 Toast.makeText(
                     context,
-                    "${mealFoods.count()} no meals on $selectedMealDate",
+                    "${mealFoods.count()} no meals on ${selectedMealDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth}",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -75,7 +75,7 @@ class ProgressFragment : Fragment() {
                 Toast.makeText(
                     context,
                     "${mealFoods.count()} meals by date ${
-                        selectedMealDate.toInstant().atZone(ZoneId.systemDefault()).dayOfMonth
+                        selectedMealDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
                     }",
                     Toast.LENGTH_SHORT
                 ).show()

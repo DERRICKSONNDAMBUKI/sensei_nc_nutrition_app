@@ -55,13 +55,15 @@ class DeficiencyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val deficiencyFoodsRecyclerView = binding.deficiencyFoodsRecyclerView
+
         val adapter = FoodsAdapter { food ->
             val action =
                 DeficiencyFragmentDirections.actionDeficiencyFragmentToFoodFragment(food.code)
             this.findNavController().navigate(action)
         }
 //        set adapter
-        binding.deficiencyFoodsRecyclerView.adapter = adapter
+        deficiencyFoodsRecyclerView.adapter = adapter
 
         val id = navigationArgs.id
         viewModel.retrieveDeficiency(id).observe(this.viewLifecycleOwner) { selectedDeficiency ->
@@ -80,7 +82,9 @@ class DeficiencyFragment : Fragment() {
                     .show()
             }
         }
-        binding.deficiencyFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        deficiencyFoodsRecyclerView.isNestedScrollingEnabled = false
+        deficiencyFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
     override fun onDestroyView() {

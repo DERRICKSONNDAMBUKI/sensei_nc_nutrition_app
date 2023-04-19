@@ -56,13 +56,14 @@ class ConditionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val conditionFoodsRecyclerView = binding.conditionFoodsRecyclerView
         val adapter = FoodsAdapter { food ->
             val action =
                 ConditionFragmentDirections.actionConditionFragmentToFoodFragment(food.code)
             this.findNavController().navigate(action)
         }
 //        set adapter
-        binding.conditionFoodsRecyclerView.adapter = adapter
+        conditionFoodsRecyclerView.adapter = adapter
 
         val id = navigationArgs.id
 
@@ -81,8 +82,8 @@ class ConditionFragment : Fragment() {
         }
 
 //        conditionFoodsRecyclerView.adapter = adapter
-
-        binding.conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        conditionFoodsRecyclerView.isNestedScrollingEnabled = false
+        conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
 
 

@@ -74,11 +74,13 @@ class MainActivity : AppCompatActivity() {
         initSearchListView()
 
         searchViewModel.searchQuery().observe(
-            this
+            /* owner = */ this
         ) {
             searchRecyclerViewAdapter.submitList(it)
             progressSpinner.visibility = View.GONE
-            if (it.isEmpty()) {
+            searchNotFound.visibility = View.GONE
+
+            if (it.isNullOrEmpty()) {
                 searchList.visibility = View.GONE
                 searchNotFound.visibility = View.VISIBLE
             } else {
@@ -103,6 +105,7 @@ class MainActivity : AppCompatActivity() {
 //           TODO navigation action
 
         }
+
         searchList.adapter = searchRecyclerViewAdapter
         searchList.addItemDecoration(
             DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
