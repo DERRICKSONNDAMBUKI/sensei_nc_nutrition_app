@@ -155,7 +155,6 @@ class MainActivity : AppCompatActivity() {
         searchViewModel.searchQuery(query).observe(
             /* owner = */ this
         ) {
-            progressSpinner.visibility = View.VISIBLE
             if (it.isNullOrEmpty()) {
                 searchList.visibility = View.GONE
                 searchNotFound.visibility = View.VISIBLE
