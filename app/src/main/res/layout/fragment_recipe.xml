@@ -77,6 +77,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="18sp"
+                android:layout_weight="1"
+                android:letterSpacing="0.001"
+                android:lineSpacingExtra="3sp"
                 android:text="@string/description" />
         </androidx.cardview.widget.CardView>
 
@@ -104,6 +107,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
+                android:layout_weight="1"
+                android:justificationMode="inter_word"
+                android:letterSpacing="0.001"
+                android:lineSpacingExtra="3sp"
                 android:textSize="18sp"
                 android:text="@string/time" />
 
@@ -133,6 +140,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textSize="18sp"
+                android:singleLine="false"
+                android:layout_weight="1"
+                android:letterSpacing="0.001"
+                android:lineSpacingExtra="3sp"
                 android:text="@string/title_ingredients" />
         </androidx.cardview.widget.CardView>
 
@@ -152,6 +163,7 @@
             android:backgroundTint="@color/background_color"
             android:foregroundTint="@color/foreground_color"
             app:cardCornerRadius="8dp"
+
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
@@ -160,7 +172,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
+                android:breakStrategy="high_quality"
                 android:singleLine="false"
+                android:layout_weight="1"
+                android:letterSpacing="0.001"
+                android:lineSpacingExtra="3sp"
                 android:text="@string/large_text"
                 android:textSize="18sp" />
 
