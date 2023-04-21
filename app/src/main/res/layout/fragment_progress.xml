@@ -26,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:textSize="18sp"
-            >
+            android:textSize="18sp">
+            <!--charts-->
 
             <TextView
                 android:id="@+id/textViewProgressTitle"
@@ -37,6 +37,7 @@
                 android:text="@string/title_progress"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            
             <!--            energies-->
             <TextView
                 android:id="@+id/textViewEnergies"
@@ -53,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/energies" />
+
             <TextView
                 android:id="@+id/textViewEnergyInKcal"
                 android:layout_width="match_parent"
@@ -76,30 +78,35 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/proximate" />
+
             <TextView
                 android:id="@+id/textViewProteinInG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/proximate" />
+
             <TextView
                 android:id="@+id/textViewFatInG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/proximate" />
+
             <TextView
                 android:id="@+id/textViewCarbohydrateAvailableInG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/proximate" />
+
             <TextView
                 android:id="@+id/textViewFibreInG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/proximate" />
+
             <TextView
                 android:id="@+id/textViewAshInG"
                 android:layout_width="match_parent"
@@ -123,42 +130,49 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewFeInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewMgInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewPInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewKInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewNaInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewZnInMg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/minerals" />
+
             <TextView
                 android:id="@+id/textViewSeInMg"
                 android:layout_width="match_parent"
@@ -182,60 +196,70 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewVitAReInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewRetinolInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewBetaCaroteneEquivalentInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewThiaminInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewRiboflavinInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewNiacinInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewDietaryFolateInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewFoodFolateInMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewVitB12InMcg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:text="@string/vitamins" />
+
             <TextView
                 android:id="@+id/textViewVitCInMcg"
                 android:layout_width="match_parent"

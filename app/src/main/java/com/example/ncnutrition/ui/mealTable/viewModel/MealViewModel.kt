@@ -17,6 +17,7 @@ class MealViewModel(private val mealDAO: MealDAO) : ViewModel() {
 
     fun getMealsBefore(date: Date): LiveData<List<Food>> {
         val mealsBefore = mealDAO.getMealsBefore(date)
+//        val mealsBefore = mealDAO.getMeal(date)
 
        val foodListLiveData = getMealPropertyList(mealsBefore)
         val mealTotals: MealTotals? = foodListLiveData.value?.let { MealTotals(it) } // totals

@@ -71,6 +71,9 @@ dependencies {
 //  charts
 //    implementation 'com.github.JetBrains.lets-plot-android:lets-plot-android:0.5.1'
 //    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+//    implementation 'com.plotly:plotly-android:3.0.0'
+//    implementation 'com.androidplot:androidplot-core:1.5.8'
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
