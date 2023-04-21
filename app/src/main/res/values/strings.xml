@@ -154,6 +154,8 @@
     <string name="_167cm">167cm</string>
     <string name="height_in_cm">Height in cm</string>
     <string name="measure_bmi">Measure BMI</string>
+    <string name="deficiency_function">Deficiency Function</string>
+    <string name="deficiency_signs_and_symptoms">Signs and Symptoms</string>
 
 
 </resources>

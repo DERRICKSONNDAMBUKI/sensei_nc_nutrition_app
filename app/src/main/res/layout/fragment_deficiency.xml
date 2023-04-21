@@ -15,7 +15,7 @@
             android:id="@+id/deficiencyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_condition"
+            android:text="@string/title_deficiency"
             android:layout_margin="@dimen/text_margin"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -25,7 +25,7 @@
             android:id="@+id/deficiencySignsAndSymptoms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
+            android:text="@string/deficiency_signs_and_symptoms"
             android:layout_margin="@dimen/text_margin"
             android:textSize="20sp" />
 
@@ -42,7 +42,7 @@
             android:id="@+id/deficiencyFunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment"
+            android:text="@string/deficiency_function"
             android:layout_margin="@dimen/text_margin"
             android:textSize="20sp" />
 

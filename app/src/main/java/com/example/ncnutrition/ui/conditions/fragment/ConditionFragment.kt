@@ -73,7 +73,6 @@ class ConditionFragment : Fragment() {
                 Toast.makeText(this.context, "no foods", Toast.LENGTH_SHORT).show()
             } else {
                 conditionFoods.let {
-
                     adapter.submitList(it)
                 }
                 Toast.makeText(this.context, "${conditionFoods.count()} foods", Toast.LENGTH_SHORT)
@@ -84,8 +83,6 @@ class ConditionFragment : Fragment() {
 //        conditionFoodsRecyclerView.adapter = adapter
         conditionFoodsRecyclerView.isNestedScrollingEnabled = false
         conditionFoodsRecyclerView.layoutManager = LinearLayoutManager(this.context)
-
-
 
         viewModel.retrieveCondition(id).observe(this.viewLifecycleOwner) { selectedCondition ->
             condition = selectedCondition

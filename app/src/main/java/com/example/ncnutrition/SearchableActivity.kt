@@ -25,6 +25,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.util.query
 import com.example.ncnutrition.databinding.ActivityMainBinding
 import com.example.ncnutrition.databinding.ActivitySearchableBinding
+import com.example.ncnutrition.model.Food
+import com.example.ncnutrition.ui.foods.adapter.FoodsAdapter
 import com.example.ncnutrition.ui.foods.fragment.FoodFragment
 import com.example.ncnutrition.ui.search.search_view.SearchRecyclerViewAdapter
 import com.example.ncnutrition.ui.search.viewModel.SearchViewModel
@@ -46,9 +48,11 @@ class SearchableActivity : AppCompatActivity() {
     private lateinit var searchNotFound: TextView
     private lateinit var searchList: RecyclerView
     private lateinit var searchView: SearchView
+    private lateinit var searchFoods: List<Food>
 
 
-    private lateinit var searchRecyclerViewAdapter: SearchRecyclerViewAdapter
+    //    private lateinit var searchRecyclerViewAdapter: SearchRecyclerViewAdapter
+    private lateinit var searchRecyclerViewAdapter: FoodsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +76,7 @@ class SearchableActivity : AppCompatActivity() {
     }
 
     private fun initSearchListView() {
-        searchRecyclerViewAdapter = SearchRecyclerViewAdapter { selectedFood->
+        searchRecyclerViewAdapter = FoodsAdapter { selectedFood ->
 //           TODO navigation action
 
 //            val intent = Intent(this, MainActivity::class.java)
@@ -94,19 +98,21 @@ class SearchableActivity : AppCompatActivity() {
 
     private fun getSearched(query: String) {
         searchViewModel.searchQuery(query).observe(this) { foods ->
-            foods.let {
-                searchRecyclerViewAdapter.submitList(it)
-            }
-            if (foods.isNullOrEmpty()) {
+            searchFoods = foods
+            if (searchFoods.isNullOrEmpty()) {
                 searchList.visibility = View.GONE
                 searchNotFound.visibility = View.VISIBLE
+                Toast.makeText(this, "Search Not Found", Toast.LENGTH_SHORT).show()
             } else {
-
+                searchFoods.let {
+                    searchRecyclerViewAdapter.submitList(it)
+                }
                 searchList.visibility = View.VISIBLE
                 searchNotFound.visibility = View.GONE
             }
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.profile_menu, menu)
 //        search
@@ -117,7 +123,7 @@ class SearchableActivity : AppCompatActivity() {
         searchView.apply {
             queryHint = getString(R.string.search_hint)
 
-            isQueryRefinementEnabled=true
+            isQueryRefinementEnabled = true
 //            Assumes current activity is the searchable activity
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
