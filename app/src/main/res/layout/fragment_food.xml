@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollviewLinearLayoutFood"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".ui.foods.fragment.FoodFragment">
 
     <LinearLayout
@@ -21,7 +23,7 @@
             android:text="@string/title_food"
             android:textAlignment="center"
             android:textColor="@color/foreground_color"
-            android:textSize="30sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,8 +42,6 @@
             android:layout_marginTop="8dp"
             android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
             android:foregroundGravity="center"
-            android:outlineAmbientShadowColor="@color/background_color"
-            android:outlineSpotShadowColor="@color/background_color"
             android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Small"
             android:weekNumberColor="@color/foreground_color"
             android:weekSeparatorLineColor="@color/foreground_color"
@@ -86,12 +86,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@color/foreground_color"
             android:text="@string/nutrition_details"
             android:textAlignment="center"
-            android:textColor="@color/foreground_color"
+            android:textColor="@color/background_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!--        energies-->
         <TextView
             android:id="@+id/textViewEnergies"
             android:layout_width="match_parent"
@@ -159,8 +161,765 @@
                 android:textColor="@color/foreground_color"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+        </LinearLayout>
 
+        <!--        proximate-->
+        <TextView
+            android:id="@+id/textViewProximate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center|center_horizontal"
+            android:text="@string/proximate_per_100g"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewWaterInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/water_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewWaterInGValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/water_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewProteinInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/protein_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewProteinInGValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/protein_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewFatInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/fat_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewFatInGValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/fat_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewCarbohydrateAvailableInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/carbohydrates_available_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewCarbohydrateAvailableInGValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/carbohydrates_available_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewFibreInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/fibre_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewFibreIngValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/fibre_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewAshInG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/ash_in_g"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewAshInGValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/ash_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!--        minerals-->
+        <TextView
+            android:id="@+id/textViewMinerals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center|center_horizontal"
+            android:text="@string/minerals_per_100g_or_100_000mg"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewCaInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/calcium_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewCaInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/calcium_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewFeInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/iron_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewFeInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/iron_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewMgInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/magnesium_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewMgInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/magnesium_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewPInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/phosphorus_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewPInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/phosphorus_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewKInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/potassium_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewKInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/potassium_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewNaInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/sodium_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewNaInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/ash_in_g"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewZnInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/zinc_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewZnInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/zinc_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewSeInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/selenium_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewSeInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/selenium_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!--        vitamins-->
+        <TextView
+            android:id="@+id/textViewVitamins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center|center_horizontal"
+            android:text="@string/vitamins_per_100g_or_100_000_000mcg"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewVitARaeInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/vitamin_a_rae_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewVitARaeInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/vitamin_a_rae_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewVitAReInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/vitamin_a_re_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewVitAReInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/vitamin_a_re_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewRetinolInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/retinol_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewRetinolInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/retinol_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewBetaCaroteneEquivalentInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/beta_carotene_equivalent_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewBetaCaroteneEquivalentInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/beta_carotene_equivalent_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewThiaminInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/thiamin_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewThiaminInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/potassium_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewRiboflavinInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/riboflavin_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewRiboflavinInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/riboflavin_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewNiacinInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/niacin_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewNiacinInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/niacin_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewDietaryFolateInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/dietary_folate_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewDietaryFolateInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/dietary_folate_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewFoodFolateInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/food_folate_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewFoodFolateInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/food_folate_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewVitB12InMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/vitamin_b12_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewVitB12InMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/vitamin_b12_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewVitCInMcg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/vitamin_c_in_mcg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewVitCInMcgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/vitamin_c_in_mcg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!--        cholesterol-->
+        <TextView
+            android:id="@+id/textViewCholesterol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center|center_horizontal"
+            android:text="@string/cholesterol_per_100g_or_100_000mg"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewCholesterolInMg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/cholesterol_in_mg"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewCholesterolInMgValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/cholesterol_in_mg"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

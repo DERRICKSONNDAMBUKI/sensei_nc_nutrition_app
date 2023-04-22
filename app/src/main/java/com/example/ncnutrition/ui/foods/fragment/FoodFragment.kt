@@ -41,14 +41,50 @@ class FoodFragment : Fragment() {
     lateinit var food: Food
     private var selectedDate: Date = Date()
 
-//    bind to view
+    //    bind to view
     private fun bind(food: Food) {
         val date = Date()
         binding.apply {
-            foodName.text = food.food_name
-            calendarViewMealDate.minDate = date.time
-            textViewEnergyInKJValue.text = food.energy_in_kJ.toString()
-            textViewEnergyInKcalValue.text = food.energy_in_kcal.toString()
+            food.apply {
+                foodName.text = food.food_name
+                calendarViewMealDate.minDate = date.time
+                textViewEnergyInKJValue.text = food.energy_in_kJ.toString()
+                textViewEnergyInKcalValue.text = food.energy_in_kcal.toString()
+//            proximate
+                textViewWaterInGValue.text = water_in_g.toString()
+                textViewProteinInGValue.text = protein_in_g.toString()
+                textViewFatInGValue.text = fat_in_g.toString()
+                textViewCarbohydrateAvailableInGValue.text = carbohydrate_available_in_g.toString()
+                textViewFibreIngValue.text = fibre_in_g.toString()
+                textViewAshInGValue.text = ash_in_g.toString()
+
+//            minerals
+                textViewCaInMgValue.text = ca_in_mg.toString()
+                textViewFeInMgValue.text = fe_in_mg.toString()
+                textViewMgInMgValue.text = mg_in_mg.toString()
+                textViewPInMgValue.text = p_in_mg.toString()
+                textViewKInMgValue.text = k_in_mg.toString()
+                textViewNaInMgValue.text = na_in_mg.toString()
+                textViewZnInMgValue.text = zn_in_mg.toString()
+                textViewSeInMgValue.text = se_in_mg.toString()
+
+//            vitamins
+                textViewVitARaeInMcgValue.text = vit_a_rae_in_mcg.toString()
+                textViewVitAReInMcgValue.text = vit_a_re_in_mcg.toString()
+                textViewRetinolInMcgValue.text = retinol_in_mcg.toString()
+                textViewBetaCaroteneEquivalentInMcgValue.text =
+                    beta_carotene_equivalent_in_mcg.toString()
+                textViewThiaminInMcgValue.text = thiamin_in_mcg.toString()
+                textViewRiboflavinInMcgValue.text = riboflavin_in_mcg.toString()
+                textViewNiacinInMcgValue.text = niacin_in_mcg.toString()
+                textViewDietaryFolateInMcgValue.text = dietary_folate_eq_in_mcg.toString()
+                textViewFoodFolateInMcgValue.text = food_folate_in_mcg.toString()
+                textViewVitB12InMcgValue.text = vit_b12_in_mcg.toString()
+                textViewVitCInMcgValue.text = vit_c_in_mcg.toString()
+
+//                cholesterol
+                textViewCholesterolInMgValue.text = cholesterol_in_mg.toString()
+            }
         }
     }
 
@@ -66,7 +102,7 @@ class FoodFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //val intentFoodCode = arguments?.getString("Code")
 
-        val code:String = navigationArgs.code
+        val code: String = navigationArgs.code
         viewModel.retrieveFood(code).observe(this.viewLifecycleOwner) { selectedFood ->
             food = selectedFood
             bind(food)
@@ -132,7 +168,12 @@ class FoodFragment : Fragment() {
                 val action = FoodFragmentDirections.actionFoodFragmentToNavigationMeals()
                 findNavController().navigate(action)
             }.setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.foreground_color))
-                .setActionTextColor(ContextCompat.getColor(requireContext(), R.color.background_color))
+                .setActionTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.background_color
+                    )
+                )
                 .show()
 
             binding.editTextMealName.text.clear()

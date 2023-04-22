@@ -160,6 +160,36 @@
     <string name="energy_in_kj">Energy in KJ</string>
     <string name="energy_in_kilocalories">Energy in Kilocalories</string>
     <string name="nutrition_details">Nutrition Details</string>
+    <string name="proximate_per_100g">Proximate per 100g</string>
+    <string name="water_in_g">Water in g</string>
+    <string name="protein_in_g">Protein in g</string>
+    <string name="fat_in_g">Fat in g</string>
+    <string name="carbohydrates_available_in_g">Carbohydrates available in g</string>
+    <string name="fibre_in_g">Fibre in g</string>
+    <string name="ash_in_g">Ash in g</string>
+    <string name="minerals_per_100g_or_100_000mg">Minerals per 100g or 100,000mg</string>
+    <string name="calcium_in_mg">Calcium in mg</string>
+    <string name="iron_in_mg">Iron in mg</string>
+    <string name="magnesium_in_mg">Magnesium in mg</string>
+    <string name="phosphorus_in_mg">Phosphorus in mg</string>
+    <string name="potassium_in_mg">Potassium in mg</string>
+    <string name="sodium_in_mg">Sodium in mg</string>
+    <string name="zinc_in_mg">Zinc in mg</string>
+    <string name="selenium_in_mg">Selenium in mg</string>
+    <string name="vitamins_per_100g_or_100_000_000mcg">Vitamins per 100g or 100,000,000mcg</string>
+    <string name="vitamin_a_rae_in_mcg">Vitamin A RAE in mcg</string>
+    <string name="vitamin_a_re_in_mcg">Vitamin A RE in mcg</string>
+    <string name="retinol_in_mcg">Retinol in mcg</string>
+    <string name="beta_carotene_equivalent_in_mcg">beta-carotene Equivalent in mcg</string>
+    <string name="thiamin_in_mcg">Thiamin in mcg</string>
+    <string name="riboflavin_in_mcg">Riboflavin in mcg</string>
+    <string name="niacin_in_mcg">Niacin in mcg</string>
+    <string name="dietary_folate_in_mcg">Dietary folate in mcg</string>
+    <string name="food_folate_in_mcg">Food folate in mcg</string>
+    <string name="vitamin_b12_in_mcg">Vitamin B12 in mcg</string>
+    <string name="vitamin_c_in_mcg">Vitamin C in mcg</string>
+    <string name="cholesterol_per_100g_or_100_000mg">Cholesterol per 100g or 100,000mg</string>
+    <string name="cholesterol_in_mg">Cholesterol in mg</string>
 
 
 </resources>
