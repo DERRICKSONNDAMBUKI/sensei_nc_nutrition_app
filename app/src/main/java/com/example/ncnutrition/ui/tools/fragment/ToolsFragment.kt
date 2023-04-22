@@ -12,8 +12,11 @@ import androidx.fragment.app.activityViewModels
 import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentToolsBinding
+import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModel
+import com.example.ncnutrition.ui.conditions.viewModel.ConditionViewModelFactory
 import com.example.ncnutrition.ui.tools.viewModel.ToolsViewModel
 import com.example.ncnutrition.ui.tools.viewModel.ToolsViewModelFactory
+import kotlin.properties.Delegates
 
 class ToolsFragment : Fragment() {
 
@@ -23,8 +26,17 @@ class ToolsFragment : Fragment() {
         )
     }
 
+    private val viewModelCondition: ConditionViewModel by activityViewModels {
+        ConditionViewModelFactory(
+            (activity?.application as NCNutritionApplication).database.conditionDao(),
+            (activity?.application as NCNutritionApplication).database.foodDao(),
+        )
+    }
+
     private var _binding: FragmentToolsBinding? = null
     private val binding get() = _binding!!
+
+    private var underWeightId by Delegates.notNull<Int>()
 
 
     override fun onCreateView(
@@ -60,39 +72,102 @@ class ToolsFragment : Fragment() {
                 editTextNumberDecimalWeight.text.clear()
 
                 when (viewModel.getBMI(weight, height)) {
-
-                    "Underweight severe thinness 😒" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.underweight)
+                    "Underweight severe thinness 😒" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.underweight)
+                        }
                     }
-                    "Underweight moderate thinness 😒" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.underweight)
+                    "Underweight severe thinness 😒" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.underweight)
+                        }
                     }
-                    "Underweight mild thinness 😒" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.underweight)
+                    "Underweight mild thinness 😒" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.underweight)
+                        }
                     }
 //                    normal ->
 
 //                    Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa
 //                    Obesity and overweight weight
-                    "Overweight or pre-obese 😮" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    "Overweight or pre-obese 😮" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Obesity and overweight weight"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.obesity_and_overweight_weight)
+                        }
                     }
-                    "Obese class I 😱" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    "Obese class I 😱" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Obesity and overweight weight"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.obesity_and_overweight_weight)
+                        }
                     }
-                    "Obese class II 😱" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    "Obese class II 😱" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Obesity and overweight weight"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.obesity_and_overweight_weight)
+                        }
                     }
-                    "Obese class III 😱" -> textViewCondition.apply {
-                        visibility = View.VISIBLE
-                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    "Obese class III 😱" -> viewModelCondition.allConditions.observe(
+                        viewLifecycleOwner
+                    ) { conditions ->
+                        val condition = conditions.find {
+                            it.name == "Obesity and overweight weight"
+                        }
+                        underWeightId = condition!!.id
+                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        textViewCondition.apply {
+                            visibility = View.VISIBLE
+                            text = context.getString(R.string.obesity_and_overweight_weight)
+                        }
                     }
+
                     else -> textViewCondition.visibility = View.INVISIBLE
                 }
             }
