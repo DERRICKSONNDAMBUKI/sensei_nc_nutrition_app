@@ -1,4 +1,4 @@
-package com.example.ncnutrition.ui.tools.fragment
+package com.example.ncnutrition.ui.tools.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

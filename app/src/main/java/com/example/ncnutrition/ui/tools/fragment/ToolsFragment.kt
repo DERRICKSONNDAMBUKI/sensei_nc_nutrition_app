@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.ncnutrition.NCNutritionApplication
+import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentToolsBinding
+import com.example.ncnutrition.ui.tools.viewModel.ToolsViewModel
+import com.example.ncnutrition.ui.tools.viewModel.ToolsViewModelFactory
 
 class ToolsFragment : Fragment() {
 
@@ -53,7 +56,45 @@ class ToolsFragment : Fragment() {
                 textViewBMIResult.text = viewModel.getBMI(weight, height)
                 editTextNumberDecimalHeight.text.clear()
                 editTextNumberDecimalWeight.text.clear()
+
+                when (viewModel.getBMI(weight, height)) {
+
+                    "Underweight severe thinness 😒" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.underweight)
+                    }
+                    "Underweight moderate thinness 😒" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.underweight)
+                    }
+                    "Underweight mild thinness 😒" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.underweight)
+                    }
+//                    normal ->
+
+//                    Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa
+//                    Obesity and overweight weight
+                    "Overweight or pre-obese 😮" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    }
+                    "Obese class I 😱" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    }
+                    "Obese class II 😱" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    }
+                    "Obese class III 😱" -> textViewCondition.apply {
+                        visibility = View.VISIBLE
+                        text = context.getString(R.string.obesity_and_overweight_weight)
+                    }
+                    else -> textViewCondition.visibility = View.INVISIBLE
+                }
             }
+
 
         } else {
             binding.textViewBMIResult.visibility = View.INVISIBLE

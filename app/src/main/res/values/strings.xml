@@ -190,6 +190,8 @@
     <string name="vitamin_c_in_mcg">Vitamin C in mcg</string>
     <string name="cholesterol_per_100g_or_100_000mg">Cholesterol per 100g or 100,000mg</string>
     <string name="cholesterol_in_mg">Cholesterol in mg</string>
+    <string name="underweight">Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa</string>
+    <string name="obesity_and_overweight_weight">Obesity and overweight weight</string>
 
 
 </resources>
