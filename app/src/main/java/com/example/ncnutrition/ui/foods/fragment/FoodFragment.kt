@@ -41,12 +41,14 @@ class FoodFragment : Fragment() {
     lateinit var food: Food
     private var selectedDate: Date = Date()
 
-
+//    bind to view
     private fun bind(food: Food) {
         val date = Date()
         binding.apply {
             foodName.text = food.food_name
             calendarViewMealDate.minDate = date.time
+            textViewEnergyInKJValue.text = food.energy_in_kJ.toString()
+            textViewEnergyInKcalValue.text = food.energy_in_kcal.toString()
         }
     }
 
@@ -120,7 +122,7 @@ class FoodFragment : Fragment() {
 //            ).show()
 
             Snackbar.make(
-                binding.constraintLayoutFood,
+                binding.scrollviewLinearLayoutFood,
                 "Saved food for $name on ${
                     date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().dayOfMonth
                 }. " +

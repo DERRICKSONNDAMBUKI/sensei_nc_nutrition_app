@@ -1,83 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutFood"
+    android:id="@+id/scrollviewLinearLayoutFood"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.foods.fragment.FoodFragment">
 
-    <TextView
-        android:id="@+id/food_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        android:textColor="@color/foreground_color"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:layout_margin="@dimen/text_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/takeFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/take_food"
-        android:textColor="@color/foreground_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/food_name" />
-
-    <CalendarView
-        android:id="@+id/calendarViewMealDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Small"
-        android:weekNumberColor="@color/foreground_color"
-        android:weekSeparatorLineColor="@color/foreground_color"
-        android:outlineAmbientShadowColor="@color/background_color"
-        android:outlineSpotShadowColor="@color/background_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/takeFood" />
-
-    <EditText
-        android:id="@+id/editTextMealName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints="breakfast"
-        android:ems="10"
-        android:textColor="@color/foreground_color"
-        android:focusableInTouchMode="true"
-        android:importantForAutofill="auto"
-        android:hint="@string/e_g_breakfast"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarViewMealDate"
-        app:layout_constraintVertical_bias="0.064" />
-
-    <Button
-        android:id="@+id/takeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/take"
-        android:textColor="@color/background_color"
-        android:background="@drawable/round_button"
-        android:layout_margin="@dimen/text_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMealName" />
+        android:orientation="vertical">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/food_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_food"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/takeFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/take_food"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color" />
+
+        <CalendarView
+            android:id="@+id/calendarViewMealDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:dateTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:foregroundGravity="center"
+            android:outlineAmbientShadowColor="@color/background_color"
+            android:outlineSpotShadowColor="@color/background_color"
+            android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Small"
+            android:weekNumberColor="@color/foreground_color"
+            android:weekSeparatorLineColor="@color/foreground_color"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextMealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:autofillHints="breakfast"
+                android:ems="10"
+                android:focusableInTouchMode="true"
+                android:hint="@string/e_g_breakfast"
+                android:importantForAutofill="auto"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textAlignment="center"
+                android:textColor="@color/foreground_color"
+                android:textColorHint="#546E7A" />
+
+            <Button
+                android:id="@+id/takeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:text="@string/take"
+                android:textColor="@color/background_color" />
+
+        </LinearLayout>
+
+        <!--            stats-->
+
+        <TextView
+            android:id="@+id/textViewNutritionDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/nutrition_details"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewEnergies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center|center_horizontal"
+            android:text="@string/energies_per_100g"
+            android:textAlignment="center"
+            android:textColor="@color/foreground_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewEnergyInKJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/energy_in_kj"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewEnergyInKJValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/energies"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewEnergyInKcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/energy_in_kilocalories"
+                android:textAlignment="viewStart"
+                android:textColor="@color/foreground_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textViewEnergyInKcalValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/energies"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/foreground_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

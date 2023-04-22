@@ -156,6 +156,10 @@
     <string name="measure_bmi">Measure BMI</string>
     <string name="deficiency_function">Deficiency Function</string>
     <string name="deficiency_signs_and_symptoms">Signs and Symptoms</string>
+    <string name="energies_per_100g">Energies per 100g</string>
+    <string name="energy_in_kj">Energy in KJ</string>
+    <string name="energy_in_kilocalories">Energy in Kilocalories</string>
+    <string name="nutrition_details">Nutrition Details</string>
 
 
 </resources>
