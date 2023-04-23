@@ -18,31 +18,68 @@
             android:text="@string/title_deficiency"
             android:layout_margin="@dimen/text_margin"
             android:textSize="30sp"
+            android:textColor="@color/foreground_color"
             android:textStyle="bold"
              />
 
         <TextView
-            android:id="@+id/deficiencySignsAndSymptoms"
-            android:layout_width="wrap_content"
+            android:id="@+id/deficiencySignsAndSymptomsTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/deficiency_signs_and_symptoms"
+            android:textColor="@color/foreground_color"
+            android:layout_margin="@dimen/text_margin"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/deficiencySignsAndSymptoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/deficiency_signs_and_symptoms"
+            android:textColor="@color/foreground_color"
             android:layout_margin="@dimen/text_margin"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/deficiencyNutrientsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_nutrients"
+            android:textColor="@color/foreground_color"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/deficiencyNutrients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_nutrients"
+            android:textColor="@color/foreground_color"
             android:layout_margin="@dimen/text_margin"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/deficiencyFunction"
-            android:layout_width="wrap_content"
+            android:id="@+id/deficiencyFunctionTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/deficiency_function"
+            android:textColor="@color/foreground_color"
+            android:layout_margin="@dimen/text_margin"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deficiencyFunction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/deficiency_function"
+            android:textColor="@color/foreground_color"
             android:layout_margin="@dimen/text_margin"
             android:textSize="20sp" />
 

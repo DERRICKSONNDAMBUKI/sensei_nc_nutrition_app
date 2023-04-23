@@ -81,7 +81,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
                         }
                         underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
@@ -101,7 +101,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
                         }
                         underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
@@ -121,7 +121,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Underweight or eating disorders such as Anorexia nervosa and bulimia nervosa"
                         }
                         underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
@@ -145,7 +145,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Obesity and overweight weight"
                         }
                         overweightId = condition!!.id
-                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
@@ -165,7 +165,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Obesity and overweight weight"
                         }
                         overweightId = condition!!.id
-                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
@@ -185,7 +185,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Obesity and overweight weight"
                         }
                         overweightId = condition!!.id
-                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
@@ -205,7 +205,7 @@ class ToolsFragment : Fragment() {
                             it.name == "Obesity and overweight weight"
                         }
                         overweightId = condition!!.id
-                        Toast.makeText(context, "id:${overweightId}", Toast.LENGTH_SHORT).show()
+
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
