@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.ncnutrition.NCNutritionApplication
 import com.example.ncnutrition.R
 import com.example.ncnutrition.databinding.FragmentToolsBinding
@@ -37,6 +38,7 @@ class ToolsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var underWeightId by Delegates.notNull<Int>()
+    private var overweightId by Delegates.notNull<Int>()
 
 
     override fun onCreateView(
@@ -83,9 +85,16 @@ class ToolsFragment : Fragment() {
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        underWeightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
-                    "Underweight severe thinness 😒" -> viewModelCondition.allConditions.observe(
+                    "Underweight moderate thinness 😒" -> viewModelCondition.allConditions.observe(
                         viewLifecycleOwner
                     ) { conditions ->
                         val condition = conditions.find {
@@ -96,6 +105,13 @@ class ToolsFragment : Fragment() {
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        underWeightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
                     "Underweight mild thinness 😒" -> viewModelCondition.allConditions.observe(
@@ -109,6 +125,13 @@ class ToolsFragment : Fragment() {
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.underweight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        underWeightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
 //                    normal ->
@@ -121,11 +144,18 @@ class ToolsFragment : Fragment() {
                         val condition = conditions.find {
                             it.name == "Obesity and overweight weight"
                         }
-                        underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        overweightId = condition!!.id
+                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        overweightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
                     "Obese class I 😱" -> viewModelCondition.allConditions.observe(
@@ -134,11 +164,18 @@ class ToolsFragment : Fragment() {
                         val condition = conditions.find {
                             it.name == "Obesity and overweight weight"
                         }
-                        underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        overweightId = condition!!.id
+                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        overweightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
                     "Obese class II 😱" -> viewModelCondition.allConditions.observe(
@@ -147,11 +184,18 @@ class ToolsFragment : Fragment() {
                         val condition = conditions.find {
                             it.name == "Obesity and overweight weight"
                         }
-                        underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        overweightId = condition!!.id
+                        Toast.makeText(context, "id:$overweightId", Toast.LENGTH_SHORT).show()
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        overweightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
                     "Obese class III 😱" -> viewModelCondition.allConditions.observe(
@@ -160,11 +204,18 @@ class ToolsFragment : Fragment() {
                         val condition = conditions.find {
                             it.name == "Obesity and overweight weight"
                         }
-                        underWeightId = condition!!.id
-                        Toast.makeText(context, "id:$underWeightId", Toast.LENGTH_SHORT).show()
+                        overweightId = condition!!.id
+                        Toast.makeText(context, "id:${overweightId}", Toast.LENGTH_SHORT).show()
                         textViewCondition.apply {
                             visibility = View.VISIBLE
                             text = context.getString(R.string.obesity_and_overweight_weight)
+                            setOnClickListener {
+                                val action =
+                                    ToolsFragmentDirections.actionNavigationToolsToConditionFragment(
+                                        overweightId
+                                    )
+                                findNavController().navigate(action)
+                            }
                         }
                     }
 
